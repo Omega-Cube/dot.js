@@ -1,0 +1,1 @@
+NaturalDocs -i ..\dev\ -o HTML . -p project

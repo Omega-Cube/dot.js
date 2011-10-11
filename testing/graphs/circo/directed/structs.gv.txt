@@ -1,0 +1,26 @@
+# Generated lun. 29 août 2011 11:45:57 by circo - graphviz version 2.28.0 (20110507.0327)
+#
+# 
+# real	0m0.075s
+# user	0m0.000s
+# sys	0m0.015s
+
+digraph structs {
+	node [label="\N", shape=record];
+	graph [bb="0,0,558,70",
+		_draw_="c 9 -#ffffffff C 9 -#ffffffff P 4 0 -1 0 70 559 70 559 -1 ",
+		xdotversion="1.2"];
+	struct1 [label="<f0> left|<f1> middle|<f2> right", pos="301.5,35", rects="237,17,271,53 271,17,325,53 325,17,366,53", width="1.7917", height="0.51389", _draw_="c 9 -#000000ff p 4 237 17 237 53 366 53 366 17 c 9 -#000000ff L 2 271 17 271 53 c 9 -#000000ff L 2 325 17 325 53 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 254 28 0 18 4 -left F 14.000000 11 -Times-Roman c 9 -#000000ff T 298 28 0 38 6 -middle\
+ F 14.000000 11 -Times-Roman c 9 -#000000ff T 346 28 0 25 5 -right "];
+	struct2 [label="<f0> one|<f1> two", pos="520.5,35", rects="483,17,520,53 520,17,558,53", width="1.0417", height="0.51389", _draw_="c 9 -#000000ff p 4 483 17 483 53 558 53 558 17 c 9 -#000000ff L 2 520 17 520 53 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 502 28 0 21 3 -one F 14.000000 11 -Times-Roman c 9 -#000000ff T 539 28 0 22 3 -two "];
+	struct3 [label="hello\nworld |{ b |{c|<here> d|e}| f}| g | h", pos="82.5,35", rects="-2.8422e-014,0.5,49,69.5 49,46.5,119,69.5 49,23.5,72,46.5 72,23.5,96,46.5 96,23.5,119,46.5 49,0.5,119,23.5 119,0.5,142,69.5 142,\
+0.5,165,69.5", width="2.2847", height="0.97222", _draw_="c 9 -#000000ff p 4 0 1 0 70 165 70 165 1 c 9 -#000000ff L 2 49 1 49 70 c 9 -#000000ff L 2 49 47 119 47 c 9 -#000000ff L 2 72 24 \
+72 47 c 9 -#000000ff L 2 96 24 96 47 c 9 -#000000ff L 2 49 24 119 24 c 9 -#000000ff L 2 119 1 119 70 c 9 -#000000ff L 2 142 1 142\
+ 70 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 24 36 0 27 5 -hello F 14.000000 11 -Times-Roman c 9 -#000000ff T 24 21 0 33 5 -world\
+ F 14.000000 11 -Times-Roman c 9 -#000000ff T 84 52 0 8 1 -b F 14.000000 11 -Times-Roman c 9 -#000000ff T 60 29 0 7 1 -c F 14.000000\
+ 11 -Times-Roman c 9 -#000000ff T 84 29 0 8 1 -d F 14.000000 11 -Times-Roman c 9 -#000000ff T 107 29 0 7 1 -e F 14.000000 11\
+ -Times-Roman c 9 -#000000ff T 84 6 0 5 1 -f F 14.000000 11 -Times-Roman c 9 -#000000ff T 130 29 0 7 1 -g F 14.000000 11 -Times-Roman\
+ c 9 -#000000ff T 153 29 0 7 1 -h "];
+	struct1:f1 -> struct2:f0 [pos="e,482.5,35 297.5,17 297.5,17 433.51,30.233 472.29,34.007", _draw_="c 9 -#000000ff B 4 298 17 298 17 434 30 472 34 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 472 38 483 35 473 31 "];
+	struct1:f2 -> struct3:here [pos="e,96.052,34.203 345.5,17 345.5,17 169.19,29.159 106.39,33.49", _draw_="c 9 -#000000ff B 4 346 17 346 17 169 29 106 33 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 106 30 96 34 106 37 "];
+}

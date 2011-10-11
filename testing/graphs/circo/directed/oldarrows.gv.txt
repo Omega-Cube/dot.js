@@ -1,0 +1,100 @@
+# Generated lun. 29 août 2011 11:45:03 by circo - graphviz version 2.28.0 (20110507.0327)
+#
+# 
+# real	0m0.659s
+# user	0m0.000s
+# sys	0m0.000s
+
+digraph G {
+	graph [ranksep="1.5", splines=true, overlap=false];
+	node [label="\N", shape=circle, width="0.5"];
+	edge [dir=none, labeldistance=3];
+	graph [bb="0,0,587.47,558.48",
+		_draw_="c 9 -#ffffffff C 9 -#ffffffff P 4 0 -1 0 558 588 558 588 -1 ",
+		xdotversion="1.2"];
+	{
+		graph [bb="",
+			_draw_="",
+			xdotversion=""];
+		node [label=""];
+		edge [samehead=ahead,
+			samearrowhead=1];
+		a [pos="18,279.24", height="0.5", _draw_="c 9 -#000000ff e 18 279 18 18 "];
+		Z [pos="305.17,279.24", height="0.5", _draw_="c 9 -#000000ff e 305 279 18 18 "];
+		b [pos="564.72,323.25", height="0.5", _draw_="c 9 -#000000ff e 565 323 18 18 "];
+		c [pos="551.38,367.25", height="0.5", _draw_="c 9 -#000000ff e 551 367 18 18 "];
+		d [pos="527.19,411.25", height="0.5", _draw_="c 9 -#000000ff e 527 411 18 18 "];
+		e [pos="490.43,455.25", height="0.5", _draw_="c 9 -#000000ff e 490 455 18 18 "];
+		f [pos="446.39,493.1", height="0.5", _draw_="c 9 -#000000ff e 446 493 18 18 "];
+		g [pos="402.39,516.8", height="0.5", _draw_="c 9 -#000000ff e 402 517 18 18 "];
+		h [pos="358.39,533.62", height="0.5", _draw_="c 9 -#000000ff e 358 534 18 18 "];
+		i [pos="314.35,540.48", height="0.5", _draw_="c 9 -#000000ff e 314 540 18 18 "];
+		j [pos="270.33,539.44", height="0.5", _draw_="c 9 -#000000ff e 270 539 18 18 "];
+		k [pos="226.32,528.15", height="0.5", _draw_="c 9 -#000000ff e 226 528 18 18 "];
+		l [pos="182.31,507.85", height="0.5", _draw_="c 9 -#000000ff e 182 508 18 18 "];
+		m [pos="138.31,475.94", height="0.5", _draw_="c 9 -#000000ff e 138 476 18 18 "];
+		n [pos="94.279,433.3", height="0.5", _draw_="c 9 -#000000ff e 94 433 18 18 "];
+		o [pos="66.25,389.28", height="0.5", _draw_="c 9 -#000000ff e 66 389 18 18 "];
+		p [pos="65.464,345.26", height="0.5", _draw_="c 9 -#000000ff e 65 345 18 18 "];
+		q [pos="62.1,301.25", height="0.5", _draw_="c 9 -#000000ff e 62 301 18 18 "];
+		a -> Z [arrowtail=none, taillabel=none, pos="36.401,279.24 88.27,279.24 235.24,279.24 286.93,279.24", tail_lp="63.59,266.56", _draw_="c 9 -#000000ff B 4 36 279 88 279 235 279 287 279 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 64 260 0 28 4 -none "];
+		b -> Z [arrowtail=normal, taillabel=normal, pos="546.88,320.22 499.46,312.18 370.69,290.35 323.14,282.28", tail_lp="517.95,328.18", _draw_="c 9 -#000000ff B 4 547 320 499 312 371 290 323 282 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 518 322 0 39 6 -normal "];
+		c -> Z [arrowtail=inv, taillabel=inv, pos="534.07,361.06 488.75,344.86 367.06,301.36 322.14,285.3", tail_lp="504.2,363.85", _draw_="c 9 -#000000ff B 4 534 361 489 345 367 301 322 285 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 504 357 0 17 3 -inv "];
+		d -> Z [arrowtail=dot, taillabel=dot, pos="511.58,401.97 470.82,377.73 361.51,312.74 320.77,288.51", tail_lp="481.73,398.97", _draw_="c 9 -#000000ff B 4 512 402 471 378 362 313 321 289 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 482 392 0 19 3 -dot "];
+		e -> Z [arrowtail=odot, taillabel=odot, pos="477.1,442.6 442.92,410.12 352.42,324.13 318.38,291.78", tail_lp="448.66,433.06", _draw_="c 9 -#000000ff B 4 477 443 443 410 352 324 318 292 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 449 427 0 27 4 -odot "];
+		f -> Z [arrowtail=invdot, taillabel=invdot, pos="436.46,478.06 410.53,438.8 341.01,333.51 315.09,294.26", tail_lp="410.9,462.36", _draw_="c 9 -#000000ff B 4 436 478 411 439 341 334 315 294 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 411 456 0 36 6 -invdot "];
+		g -> Z [arrowtail=invodot, taillabel=invodot, pos="395.55,500.09 377.7,456.48 329.84,339.52 312,295.92", tail_lp="373.52,479.73", _draw_="c 9 -#000000ff B 4 396 500 378 456 330 340 312 296 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 374 473 0 43 7 -invodot "];
+		h -> Z [arrowtail=open, taillabel=open, pos="354.65,515.73 344.88,469.02 318.68,343.79 308.91,297.11", tail_lp="336.67,491.71", _draw_="c 9 -#000000ff B 4 355 516 345 469 319 344 309 297 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 337 485 0 28 4 -open "];
+		i -> Z [arrowtail=halfopen, taillabel=halfopen, arrowhead=inv, headlabel=samehead, pos="313.7,522.11 312.01,474.02 307.48,344.91 305.81,297.24", head_lp="319.43,323.97", tail_lp="300.08,495.38", _draw_="c 9 -#000000ff B 4 314 522 312 474 307 345 306 297 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 319 317 0 55 8 -samehead ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 300 489 0 49 8 -halfopen "];
+		j -> Z [arrowtail=empty, taillabel=empty, pos="272.73,521.56 279.09,474.02 296.38,344.93 302.76,297.25", tail_lp="263.77,492.92", _draw_="c 9 -#000000ff B 4 273 522 279 474 296 345 303 297 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 264 486 0 35 5 -empty "];
+		k -> Z [arrowtail=invempty, taillabel=invempty, pos="231.86,510.65 246.34,464.95 285.16,342.4 299.63,296.72", tail_lp="227.99,480.9", _draw_="c 9 -#000000ff B 4 232 511 246 465 285 342 300 297 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 228 474 0 52 8 -invempty "];
+		l -> Z [arrowtail=diamond, taillabel=diamond, pos="190.95,491.77 213.51,449.8 274,337.25 296.54,295.3", tail_lp="192.66,461.82", _draw_="c 9 -#000000ff B 4 191 492 214 450 274 337 297 295 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 193 455 0 49 7 -diamond "];
+		m -> Z [arrowtail=odiamond, taillabel=odiamond, pos="150.04,462.11 180.68,425.99 262.83,329.15 293.45,293.05", tail_lp="157.96,433.17", _draw_="c 9 -#000000ff B 4 150 462 181 426 263 329 293 293 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 158 427 0 57 8 -odiamond "];
+		n -> Z [arrowtail=box, taillabel=box, pos="109.11,422.46 147.83,394.18 251.66,318.33 290.36,290.06", tail_lp="123.59,396.19", _draw_="c 9 -#000000ff B 4 109 422 148 394 252 318 290 290 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 124 390 0 22 3 -box "];
+		o -> Z [arrowtail=obox, taillabel=obox, pos="82.672,381.72 126.32,361.61 244.86,307.02 288.64,286.85", tail_lp="102.06,358.83", _draw_="c 9 -#000000ff B 4 83 382 126 362 245 307 289 287 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 102 352 0 30 4 -obox "];
+		p -> Z [arrowtail=tee, taillabel=tee, pos="83.09,340.41 127.42,328.2 243.16,296.32 287.52,284.1", tail_lp="105.94,320.97", _draw_="c 9 -#000000ff B 4 83 340 127 328 243 296 288 284 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 106 314 0 16 3 -tee "];
+		q -> Z [arrowtail=crow, taillabel=crow, pos="80.37,299.6 125.53,295.51 241.99,284.96 287.02,280.88", tail_lp="106.3,284.52", _draw_="c 9 -#000000ff B 4 80 300 126 296 242 285 287 281 ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 106 278 0 29 4 -crow "];
+	}
+	{
+		graph [bb="",
+			_draw_="",
+			xdotversion=""];
+		node [label=""];
+		edge [sametail=atail,
+			samearrowtail=1];
+		A [pos="62.1,257.22", height="0.5", _draw_="c 9 -#000000ff e 62 257 18 18 "];
+		B [pos="65.464,213.21", height="0.5", _draw_="c 9 -#000000ff e 65 213 18 18 "];
+		C [pos="66.25,169.2", height="0.5", _draw_="c 9 -#000000ff e 66 169 18 18 "];
+		D [pos="94.279,125.18", height="0.5", _draw_="c 9 -#000000ff e 94 125 18 18 "];
+		E [pos="138.31,82.539", height="0.5", _draw_="c 9 -#000000ff e 138 83 18 18 "];
+		F [pos="182.31,50.626", height="0.5", _draw_="c 9 -#000000ff e 182 51 18 18 "];
+		G [pos="226.32,30.322", height="0.5", _draw_="c 9 -#000000ff e 226 30 18 18 "];
+		H [pos="270.33,19.035", height="0.5", _draw_="c 9 -#000000ff e 270 19 18 18 "];
+		I [pos="314.35,18", height="0.5", _draw_="c 9 -#000000ff e 314 18 18 18 "];
+		J [pos="358.39,24.859", height="0.5", _draw_="c 9 -#000000ff e 358 25 18 18 "];
+		K [pos="402.39,41.677", height="0.5", _draw_="c 9 -#000000ff e 402 42 18 18 "];
+		L [pos="446.39,65.375", height="0.5", _draw_="c 9 -#000000ff e 446 65 18 18 "];
+		M [pos="490.43,103.22", height="0.5", _draw_="c 9 -#000000ff e 490 103 18 18 "];
+		N [pos="527.19,147.22", height="0.5", _draw_="c 9 -#000000ff e 527 147 18 18 "];
+		O [pos="551.38,191.23", height="0.5", _draw_="c 9 -#000000ff e 551 191 18 18 "];
+		P [pos="564.72,235.23", height="0.5", _draw_="c 9 -#000000ff e 565 235 18 18 "];
+		Q [pos="569.47,279.24", height="0.5", _draw_="c 9 -#000000ff e 569 279 18 18 "];
+		Z -> A [arrowhead=none, headlabel=none, pos="286.9,277.58 241.75,273.49 125.28,262.94 80.25,258.87", head_lp="108.47,248.69", _draw_="c 9 -#000000ff B 4 287 278 242 273 125 263 80 259 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 108 242 0 28 4 -none "];
+		Z -> B [arrowhead=normal, headlabel=normal, pos="287.55,274.38 243.22,262.17 127.47,230.29 83.116,218.07", head_lp="112.7,213.07", _draw_="c 9 -#000000ff B 4 288 274 243 262 127 230 83 218 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 113 207 0 39 6 -normal "];
+		Z -> C [arrowhead=inv, headlabel=inv, pos="288.75,271.67 245.1,251.57 126.57,196.98 82.787,176.81", head_lp="112.79,176.67", _draw_="c 9 -#000000ff B 4 289 272 245 252 127 197 83 177 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 113 170 0 17 3 -inv "];
+		Z -> D [arrowhead=dot, headlabel=dot, pos="290.34,268.4 251.62,240.12 147.8,164.27 109.09,136", head_lp="138.53,141.8", _draw_="c 9 -#000000ff B 4 290 268 252 240 148 164 109 136 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 139 135 0 19 3 -dot "];
+		Z -> E [arrowhead=odot, headlabel=odot, pos="293.44,265.41 262.8,229.29 180.65,132.45 150.03,96.356", head_lp="177.28,108.89", _draw_="c 9 -#000000ff B 4 293 265 263 229 181 132 150 96 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 177 102 0 27 4 -odot "];
+		Z -> F [arrowhead=invdot, headlabel=invdot, pos="296.53,263.16 273.98,221.19 213.49,108.64 190.94,66.684", head_lp="214.98,84.631", _draw_="c 9 -#000000ff B 4 297 263 274 221 213 109 191 67 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 215 78 0 36 6 -invdot "];
+		Z -> G [arrowhead=invodot, headlabel=invodot, pos="299.63,261.73 285.15,216.03 246.33,93.487 231.86,47.806", head_lp="252.16,69.896", _draw_="c 9 -#000000ff B 4 300 262 285 216 246 93 232 48 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 252 63 0 43 7 -invodot "];
+		Z -> H [arrowhead=open, headlabel=open, pos="302.78,261.35 296.41,213.82 279.13,84.723 272.74,37.045", head_lp="288.92,62.311", _draw_="c 9 -#000000ff B 4 303 261 296 214 279 85 273 37 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 289 56 0 28 4 -open "];
+		Z -> I [arrowtail=inv, taillabel=sametail, arrowhead=halfopen, headlabel=halfopen, pos="305.82,260.87 307.51,212.79 312.04,83.669 313.72,36.003", head_lp="325.43,63.62", tail_lp="294.1,233.25", _draw_="c 9 -#000000ff B 4 306 261 308 213 312 84 314 36 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 325 57 0 49 8 -halfopen ", _tldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 294 227 0 45 8 -sametail "];
+		Z -> J [arrowhead=empty, headlabel=empty, pos="308.91,261.35 318.69,214.64 344.88,89.411 354.65,42.727", head_lp="361.49,71.936", _draw_="c 9 -#000000ff B 4 309 261 319 215 345 89 355 43 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 361 65 0 35 5 -empty "];
+		Z -> K [arrowhead=invempty, headlabel=invempty, pos="312.01,262.53 329.86,218.91 377.72,101.96 395.56,58.363", head_lp="397,88.329", _draw_="c 9 -#000000ff B 4 312 263 330 219 378 102 396 58 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 397 82 0 52 8 -invempty "];
+		Z -> L [arrowhead=diamond, headlabel=diamond, pos="315.1,264.2 341.03,224.93 410.56,119.65 436.48,80.397", head_lp="432.07,110.07", _draw_="c 9 -#000000ff B 4 315 264 341 225 411 120 436 80 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 432 104 0 49 7 -diamond "];
+		Z -> M [arrowhead=odiamond, headlabel=odiamond, pos="318.5,266.58 352.68,234.1 443.18,148.12 477.23,115.77", head_lp="466.25,143.68", _draw_="c 9 -#000000ff B 4 318 267 353 234 443 148 477 116 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 466 137 0 57 8 -odiamond "];
+		Z -> N [arrowhead=box, headlabel=box, pos="320.79,269.96 361.55,245.72 470.85,180.72 511.6,156.5", head_lp="494.71,181.29", _draw_="c 9 -#000000ff B 4 321 270 362 246 471 181 512 156 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 495 175 0 22 3 -box "];
+		Z -> O [arrowhead=obox, headlabel=obox, pos="322.49,273.05 367.8,256.85 489.49,213.35 534.42,197.29", head_lp="513.08,218.38", _draw_="c 9 -#000000ff B 4 322 273 368 257 489 213 534 197 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 513 212 0 30 4 -obox "];
+		Z -> P [arrowhead=tee, headlabel=tee, pos="323.01,276.21 370.43,268.17 499.2,246.34 546.75,238.27", head_lp="522.07,255.32", _draw_="c 9 -#000000ff B 4 323 276 370 268 499 246 547 238 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 522 249 0 16 3 -tee "];
+		Z -> Q [arrowhead=crow, headlabel=crow, pos="323.34,279.24 371.62,279.24 502.75,279.24 551.17,279.24", head_lp="523.98,291.92", _draw_="c 9 -#000000ff B 4 323 279 372 279 503 279 551 279 ", _hldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 524 285 0 29 4 -crow "];
+	}
+}

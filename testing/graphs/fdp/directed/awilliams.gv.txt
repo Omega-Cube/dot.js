@@ -1,0 +1,372 @@
+# Generated lun. 29 août 2011 11:43:35 by fdp - graphviz version 2.28.0 (20110507.0327)
+#
+# 
+# real	0m1.589s
+# user	0m0.000s
+# sys	0m0.000s
+
+digraph pvn {
+	graph [ordering=out];
+	node [label="\N"];
+	graph [bb="0,0,1494,1500",
+		_draw_="c 9 -#ffffffff C 9 -#ffffffff P 4 0 -1 0 1500 1495 1500 1495 -1 ",
+		xdotversion="1.2"];
+	node_1 [label="ID: 1\ntype: 48\nnbr out: 0\nnbr chi: 11", pos="296.26,1147", width="1.4825", height="1.3356", _draw_="c 9 -#000000ff e 296 1147 54 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 296 1163 0 28 5 -ID: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T 296 1148 0 45 8\
+ -type: 48 F 14.000000 11 -Times-Roman c 9 -#000000ff T 296 1133 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 296 1118 0 60 11 -nbr chi: 11 "];
+	node_2 [label="ID: 2\ntype: 8\nnbr out: 0\nnbr chi: 0", pos="168.51,1198.9", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 169 1199 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 169 1215 0 28 5 -ID: 2 F 14.000000 11 -Times-Roman c 9 -#000000ff T 169 1200 0 38 7\
+ -type: 8 F 14.000000 11 -Times-Roman c 9 -#000000ff T 169 1185 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T\
+ 169 1170 0 53 10 -nbr chi: 0 "];
+	node_3 [label="ID: 3\ntype: 1\nnbr out: 0\nnbr chi: 0", pos="50.961,1199.1", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 51 1199 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 51 1215 0 28 5 -ID: 3 F 14.000000 11 -Times-Roman c 9 -#000000ff T 51 1200 0 38 7 -type\
+: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T 51 1185 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 51\
+ 1170 0 53 10 -nbr chi: 0 "];
+	node_4 [label="ID: 4\ntype: 6\nnbr out: 0\nnbr chi: 0", pos="104.97,990.38", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 105 990 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 105 1006 0 28 5 -ID: 4 F 14.000000 11 -Times-Roman c 9 -#000000ff T 105 991 0 38 7 \
+-type: 6 F 14.000000 11 -Times-Roman c 9 -#000000ff T 105 976 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 105\
+ 961 0 53 10 -nbr chi: 0 "];
+	node_5 [label="ID: 5\ntype: 14\nnbr out: 0\nnbr chi: 0", pos="170.66,1094.6", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 171 1095 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 171 1111 0 28 5 -ID: 5 F 14.000000 11 -Times-Roman c 9 -#000000ff T 171 1096 0 45 8\
+ -type: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 171 1081 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 171 1066 0 53 10 -nbr chi: 0 "];
+	node_6 [label="ID: 6\ntype: 14\nnbr out: 0\nnbr chi: 0", pos="104.63,1305.4", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 105 1305 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 105 1321 0 28 5 -ID: 6 F 14.000000 11 -Times-Roman c 9 -#000000ff T 105 1306 0 45 8\
+ -type: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 105 1291 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 105 1276 0 53 10 -nbr chi: 0 "];
+	node_7 [label="ID: 7\ntype: 49\nnbr out: 0\nnbr chi: 0", pos="395.48,1042.8", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 395 1043 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 395 1059 0 28 5 -ID: 7 F 14.000000 11 -Times-Roman c 9 -#000000ff T 395 1044 0 45 8\
+ -type: 49 F 14.000000 11 -Times-Roman c 9 -#000000ff T 395 1029 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 395 1014 0 53 10 -nbr chi: 0 "];
+	node_8 [label="ID: 8\ntype: 45\nnbr out: 2\nnbr chi: 0", pos="503.99,975.59", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 504 976 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 504 992 0 28 5 -ID: 8 F 14.000000 11 -Times-Roman c 9 -#000000ff T 504 977 0 45 8 -type\
+: 45 F 14.000000 11 -Times-Roman c 9 -#000000ff T 504 962 0 55 10 -nbr out: 2 F 14.000000 11 -Times-Roman c 9 -#000000ff T 504\
+ 947 0 53 10 -nbr chi: 0 "];
+	node_9 [label="ID: 9\ntype: 48\nnbr out: 0\nnbr chi: 4", pos="352.85,928.52", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 353 929 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 353 945 0 28 5 -ID: 9 F 14.000000 11 -Times-Roman c 9 -#000000ff T 353 930 0 45 8 -type\
+: 48 F 14.000000 11 -Times-Roman c 9 -#000000ff T 353 915 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 353\
+ 900 0 53 10 -nbr chi: 4 "];
+	node_10 [label="ID: 10\ntype: 8\nnbr out: 0\nnbr chi: 0", pos="94.529,747.81", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 95 748 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 95 764 0 35 6 -ID: 10 F 14.000000 11 -Times-Roman c 9 -#000000ff T 95 749 0 38 7 -type\
+: 8 F 14.000000 11 -Times-Roman c 9 -#000000ff T 95 734 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 95 719\
+ 0 53 10 -nbr chi: 0 "];
+	node_11 [label="ID: 11\ntype: 1\nnbr out: 0\nnbr chi: 0", pos="203.03,695.22", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 203 695 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 203 711 0 35 6 -ID: 11 F 14.000000 11 -Times-Roman c 9 -#000000ff T 203 696 0 38 7 \
+-type: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T 203 681 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 203\
+ 666 0 53 10 -nbr chi: 0 "];
+	node_12 [label="ID: 12\ntype: 5\nnbr out: 0\nnbr chi: 0", pos="218.77,956.21", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 219 956 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 219 972 0 35 6 -ID: 12 F 14.000000 11 -Times-Roman c 9 -#000000ff T 219 957 0 38 7 \
+-type: 5 F 14.000000 11 -Times-Roman c 9 -#000000ff T 219 942 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 219\
+ 927 0 53 10 -nbr chi: 0 "];
+	node_13 [label="ID: 13\ntype: 16\nnbr out: 0\nnbr chi: 0", pos="142.13,851.98", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 142 852 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 142 868 0 35 6 -ID: 13 F 14.000000 11 -Times-Roman c 9 -#000000ff T 142 853 0 45 8 \
+-type: 16 F 14.000000 11 -Times-Roman c 9 -#000000ff T 142 838 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+142 823 0 53 10 -nbr chi: 0 "];
+	node_14 [label="ID: 14\ntype: 39\nnbr out: 1\nnbr chi: 0", pos="664.99,971.05", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 665 971 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 665 987 0 35 6 -ID: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 665 972 0 45 8 \
+-type: 39 F 14.000000 11 -Times-Roman c 9 -#000000ff T 665 957 0 55 10 -nbr out: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+665 942 0 53 10 -nbr chi: 0 "];
+	node_15 [label="ID: 15\ntype: 55\nnbr out: 0\nnbr chi: 0", pos="670.83,721.63", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 671 722 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 671 738 0 35 6 -ID: 15 F 14.000000 11 -Times-Roman c 9 -#000000ff T 671 723 0 45 8 \
+-type: 55 F 14.000000 11 -Times-Roman c 9 -#000000ff T 671 708 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+671 693 0 53 10 -nbr chi: 0 "];
+	node_16 [label="ID: 16\ntype: 48\nnbr out: 0\nnbr chi: 3", pos="870.03,565.35", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 870 565 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 870 581 0 35 6 -ID: 16 F 14.000000 11 -Times-Roman c 9 -#000000ff T 870 566 0 45 8 \
+-type: 48 F 14.000000 11 -Times-Roman c 9 -#000000ff T 870 551 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+870 536 0 53 10 -nbr chi: 3 "];
+	node_17 [label="ID: 17\ntype: 1\nnbr out: 0\nnbr chi: 0", pos="884.07,460.9", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 884 461 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 884 477 0 35 6 -ID: 17 F 14.000000 11 -Times-Roman c 9 -#000000ff T 884 462 0 38 7 \
+-type: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T 884 447 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 884\
+ 432 0 53 10 -nbr chi: 0 "];
+	node_18 [label="ID: 18\ntype: 6\nnbr out: 0\nnbr chi: 0", pos="1006.8,543.4", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1007 543 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1007 559 0 35 6 -ID: 18 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1007 544 0 38 \
+7 -type: 6 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1007 529 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 1007 514 0 53 10 -nbr chi: 0 "];
+	node_19 [label="ID: 19\ntype: 45\nnbr out: 1\nnbr chi: 0", pos="992.52,439.19", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 993 439 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 993 455 0 35 6 -ID: 19 F 14.000000 11 -Times-Roman c 9 -#000000ff T 993 440 0 45 8 \
+-type: 45 F 14.000000 11 -Times-Roman c 9 -#000000ff T 993 425 0 55 10 -nbr out: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+993 410 0 53 10 -nbr chi: 0 "];
+	node_20 [label="ID: 20\ntype: 48\nnbr out: 0\nnbr chi: 5", pos="900.9,334.94", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 901 335 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 901 351 0 35 6 -ID: 20 F 14.000000 11 -Times-Roman c 9 -#000000ff T 901 336 0 45 8 \
+-type: 48 F 14.000000 11 -Times-Roman c 9 -#000000ff T 901 321 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+901 306 0 53 10 -nbr chi: 5 "];
+	node_21 [label="ID: 21\ntype: 38\nnbr out: 0\nnbr chi: 0", pos="722.67,185.14", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 723 185 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 723 201 0 35 6 -ID: 21 F 14.000000 11 -Times-Roman c 9 -#000000ff T 723 186 0 45 8 \
+-type: 38 F 14.000000 11 -Times-Roman c 9 -#000000ff T 723 171 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+723 156 0 53 10 -nbr chi: 0 "];
+	node_22 [label="ID: 22\ntype: 8\nnbr out: 0\nnbr chi: 0", pos="831.15,182.94", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 831 183 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 831 199 0 35 6 -ID: 22 F 14.000000 11 -Times-Roman c 9 -#000000ff T 831 184 0 38 7 \
+-type: 8 F 14.000000 11 -Times-Roman c 9 -#000000ff T 831 169 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 831\
+ 154 0 53 10 -nbr chi: 0 "];
+	node_23 [label="ID: 23\ntype: 1\nnbr out: 0\nnbr chi: 0", pos="953.38,174.97", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 953 175 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 953 191 0 35 6 -ID: 23 F 14.000000 11 -Times-Roman c 9 -#000000ff T 953 176 0 38 7 \
+-type: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T 953 161 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 953\
+ 146 0 53 10 -nbr chi: 0 "];
+	node_24 [label="ID: 24\ntype: 5\nnbr out: 0\nnbr chi: 0", pos="844.97,78.747", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 845 79 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 845 95 0 35 6 -ID: 24 F 14.000000 11 -Times-Roman c 9 -#000000ff T 845 80 0 38 7 -type\
+: 5 F 14.000000 11 -Times-Roman c 9 -#000000ff T 845 65 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 845 \
+50 0 53 10 -nbr chi: 0 "];
+	node_25 [label="ID: 25\ntype: 16\nnbr out: 0\nnbr chi: 0", pos="1061.8,279.1", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1062 279 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1062 295 0 35 6 -ID: 25 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1062 280 0 45 \
+8 -type: 16 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1062 265 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1062 250 0 53 10 -nbr chi: 0 "];
+	node_26 [label="ID: 26\ntype: 41\nnbr out: 12\nnbr chi: 0", pos="1105.6,416.89", width="1.5062", height="1.3356", _draw_="c 9 -#000000ff e 1106 417 54 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1106 433 0 35 6 -ID: 26 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1106 418 0 45 \
+8 -type: 41 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1106 403 0 61 11 -nbr out: 12 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1106 388 0 53 10 -nbr chi: 0 "];
+	node_27 [label="ID: 27\ntype: 48\nnbr out: 0\nnbr chi: 5", pos="1218.6,437.32", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1219 437 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1219 453 0 35 6 -ID: 27 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1219 438 0 45 \
+8 -type: 48 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1219 423 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1219 408 0 53 10 -nbr chi: 5 "];
+	node_28 [label="ID: 28\ntype: 38\nnbr out: 0\nnbr chi: 0", pos="1443.4,429.99", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1443 430 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1443 446 0 35 6 -ID: 28 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1443 431 0 45 \
+8 -type: 38 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1443 416 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1443 401 0 53 10 -nbr chi: 0 "];
+	node_29 [label="ID: 29\ntype: 8\nnbr out: 0\nnbr chi: 0", pos="1334.9,415.06", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1335 415 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1335 431 0 35 6 -ID: 29 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1335 416 0 38 \
+7 -type: 8 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1335 401 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 1335 386 0 53 10 -nbr chi: 0 "];
+	node_30 [label="ID: 30\ntype: 1\nnbr out: 0\nnbr chi: 0", pos="1284.3,624", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1284 624 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1284 640 0 35 6 -ID: 30 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1284 625 0 38 \
+7 -type: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1284 610 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 1284 595 0 53 10 -nbr chi: 0 "];
+	node_31 [label="ID: 31\ntype: 5\nnbr out: 0\nnbr chi: 0", pos="1327,519.76", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1327 520 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1327 536 0 35 6 -ID: 31 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1327 521 0 38 \
+7 -type: 5 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1327 506 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 1327 491 0 53 10 -nbr chi: 0 "];
+	node_32 [label="ID: 32\ntype: 16\nnbr out: 0\nnbr chi: 0", pos="1343.5,310.82", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1343 311 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1343 327 0 35 6 -ID: 32 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1343 312 0 45 \
+8 -type: 16 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1343 297 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1343 282 0 53 10 -nbr chi: 0 "];
+	node_33 [label="ID: 33\ntype: 48\nnbr out: 0\nnbr chi: 5", pos="1170.3,269.21", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1170 269 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1170 285 0 35 6 -ID: 33 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1170 270 0 45 \
+8 -type: 48 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1170 255 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1170 240 0 53 10 -nbr chi: 5 "];
+	node_34 [label="ID: 34\ntype: 38\nnbr out: 0\nnbr chi: 0", pos="1215.6,102.35", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1216 102 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1216 118 0 35 6 -ID: 34 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1216 103 0 45 \
+8 -type: 38 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1216 88 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 1216 73 0 53 10 -nbr chi: 0 "];
+	node_35 [label="ID: 35\ntype: 14\nnbr out: 0\nnbr chi: 0", pos="1103.1,159", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1103 159 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1103 175 0 35 6 -ID: 35 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1103 160 0 45 \
+8 -type: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1103 145 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1103 130 0 53 10 -nbr chi: 0 "];
+	node_36 [label="ID: 36\ntype: 14\nnbr out: 0\nnbr chi: 0", pos="990.8,68.959", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 991 69 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 991 85 0 35 6 -ID: 36 F 14.000000 11 -Times-Roman c 9 -#000000ff T 991 70 0 45 8 -type\
+: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 991 55 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 991\
+ 40 0 53 10 -nbr chi: 0 "];
+	node_37 [label="ID: 37\ntype: 20\nnbr out: 0\nnbr chi: 0", pos="1278.7,206.61", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1279 207 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1279 223 0 35 6 -ID: 37 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1279 208 0 45 \
+8 -type: 20 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1279 193 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1279 178 0 53 10 -nbr chi: 0 "];
+	node_38 [label="ID: 38\ntype: 16\nnbr out: 0\nnbr chi: 0", pos="1099.7,47.613", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1100 48 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1100 64 0 35 6 -ID: 38 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1100 49 0 45 8 \
+-type: 16 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1100 34 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+1100 19 0 53 10 -nbr chi: 0 "];
+	node_39 [label="ID: 39\ntype: 45\nnbr out: 1\nnbr chi: 0", pos="761.56,539.86", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 762 540 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 762 556 0 35 6 -ID: 39 F 14.000000 11 -Times-Roman c 9 -#000000ff T 762 541 0 45 8 \
+-type: 45 F 14.000000 11 -Times-Roman c 9 -#000000ff T 762 526 0 55 10 -nbr out: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+762 511 0 53 10 -nbr chi: 0 "];
+	node_40 [label="ID: 40\ntype: 16\nnbr out: 0\nnbr chi: 0", pos="762.49,382.84", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 762 383 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 762 399 0 35 6 -ID: 40 F 14.000000 11 -Times-Roman c 9 -#000000ff T 762 384 0 45 8 \
+-type: 16 F 14.000000 11 -Times-Roman c 9 -#000000ff T 762 369 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+762 354 0 53 10 -nbr chi: 0 "];
+	node_41 [label="ID: 41\ntype: 48\nnbr out: 0\nnbr chi: 3", pos="606.56,276.55", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 607 277 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 607 293 0 35 6 -ID: 41 F 14.000000 11 -Times-Roman c 9 -#000000ff T 607 278 0 45 8 \
+-type: 48 F 14.000000 11 -Times-Roman c 9 -#000000ff T 607 263 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+607 248 0 53 10 -nbr chi: 3 "];
+	node_42 [label="ID: 42\ntype: 14\nnbr out: 0\nnbr chi: 0", pos="614.23,172.34", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 614 172 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 614 188 0 35 6 -ID: 42 F 14.000000 11 -Times-Roman c 9 -#000000ff T 614 173 0 45 8 \
+-type: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 614 158 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+614 143 0 53 10 -nbr chi: 0 "];
+	node_43 [label="ID: 43\ntype: 1\nnbr out: 0\nnbr chi: 0", pos="397.2,239.5", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 397 239 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 397 255 0 35 6 -ID: 43 F 14.000000 11 -Times-Roman c 9 -#000000ff T 397 240 0 38 7 \
+-type: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T 397 225 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 397\
+ 210 0 53 10 -nbr chi: 0 "];
+	node_44 [label="ID: 44\ntype: 6\nnbr out: 0\nnbr chi: 0", pos="505.76,171.74", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 506 172 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 506 188 0 35 6 -ID: 44 F 14.000000 11 -Times-Roman c 9 -#000000ff T 506 173 0 38 7 \
+-type: 6 F 14.000000 11 -Times-Roman c 9 -#000000ff T 506 158 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 506\
+ 143 0 53 10 -nbr chi: 0 "];
+	node_45 [label="ID: 45\ntype: 48\nnbr out: 0\nnbr chi: 4", pos="779.4,709.5", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 779 710 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 779 726 0 35 6 -ID: 45 F 14.000000 11 -Times-Roman c 9 -#000000ff T 779 711 0 45 8 \
+-type: 48 F 14.000000 11 -Times-Roman c 9 -#000000ff T 779 696 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+779 681 0 53 10 -nbr chi: 4 "];
+	node_46 [label="ID: 46\ntype: 14\nnbr out: 0\nnbr chi: 0", pos="887.98,811.22", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 888 811 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 888 827 0 35 6 -ID: 46 F 14.000000 11 -Times-Roman c 9 -#000000ff T 888 812 0 45 8 \
+-type: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 888 797 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+888 782 0 53 10 -nbr chi: 0 "];
+	node_47 [label="ID: 47\ntype: 45\nnbr out: 1\nnbr chi: 0", pos="979.44,695.4", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 979 695 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 979 711 0 35 6 -ID: 47 F 14.000000 11 -Times-Roman c 9 -#000000ff T 979 696 0 45 8 \
+-type: 45 F 14.000000 11 -Times-Roman c 9 -#000000ff T 979 681 0 55 10 -nbr out: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+979 666 0 53 10 -nbr chi: 0 "];
+	node_48 [label="ID: 48\ntype: 14\nnbr out: 0\nnbr chi: 0", pos="1093,647.62", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1093 648 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1093 664 0 35 6 -ID: 48 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1093 649 0 45 \
+8 -type: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1093 634 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1093 619 0 53 10 -nbr chi: 0 "];
+	node_49 [label="ID: 49\ntype: 14\nnbr out: 0\nnbr chi: 0", pos="1110.3,751.82", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1110 752 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1110 768 0 35 6 -ID: 49 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1110 753 0 45 \
+8 -type: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1110 738 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1110 723 0 53 10 -nbr chi: 0 "];
+	node_50 [label="ID: 50\ntype: 14\nnbr out: 0\nnbr chi: 0", pos="776.43,888.77", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 776 889 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 776 905 0 35 6 -ID: 50 F 14.000000 11 -Times-Roman c 9 -#000000ff T 776 890 0 45 8 \
+-type: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 776 875 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+776 860 0 53 10 -nbr chi: 0 "];
+	node_51 [label="ID: 51\ntype: 45\nnbr out: 1\nnbr chi: 0", pos="997.37,882.21", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 997 882 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 997 898 0 35 6 -ID: 51 F 14.000000 11 -Times-Roman c 9 -#000000ff T 997 883 0 45 8 \
+-type: 45 F 14.000000 11 -Times-Roman c 9 -#000000ff T 997 868 0 55 10 -nbr out: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+997 853 0 53 10 -nbr chi: 0 "];
+	node_52 [label="ID: 52\ntype: 45\nnbr out: 1\nnbr chi: 0", pos="1106.1,855.99", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1106 856 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1106 872 0 35 6 -ID: 52 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1106 857 0 45 \
+8 -type: 45 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1106 842 0 55 10 -nbr out: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1106 827 0 53 10 -nbr chi: 0 "];
+	node_53 [label="ID: 53\ntype: 54\nnbr out: 0\nnbr chi: 0", pos="1251.4,768.58", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1251 769 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1251 785 0 35 6 -ID: 53 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1251 770 0 45 \
+8 -type: 54 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1251 755 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1251 740 0 53 10 -nbr chi: 0 "];
+	node_54 [label="ID: 54\ntype: 16\nnbr out: 0\nnbr chi: 0", pos="1297.8,872.79", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1298 873 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1298 889 0 35 6 -ID: 54 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1298 874 0 45 \
+8 -type: 16 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1298 859 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1298 844 0 53 10 -nbr chi: 0 "];
+	node_55 [label="ID: 55\ntype: 48\nnbr out: 0\nnbr chi: 3", pos="1105.9,980.54", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1106 981 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1106 997 0 35 6 -ID: 55 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1106 982 0 45 \
+8 -type: 48 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1106 967 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1106 952 0 53 10 -nbr chi: 3 "];
+	node_56 [label="ID: 56\ntype: 14\nnbr out: 0\nnbr chi: 0", pos="1265.9,976.98", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1266 977 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1266 993 0 35 6 -ID: 56 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1266 978 0 45 \
+8 -type: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1266 963 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1266 948 0 53 10 -nbr chi: 0 "];
+	node_57 [label="ID: 57\ntype: 1\nnbr out: 0\nnbr chi: 0", pos="1220.8,1081.2", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1221 1081 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1221 1097 0 35 6 -ID: 57 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1221 1082 0 38\
+ 7 -type: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1221 1067 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1221 1052 0 53 10 -nbr chi: 0 "];
+	node_58 [label="ID: 58\ntype: 6\nnbr out: 0\nnbr chi: 0", pos="1112.3,1114.1", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1112 1114 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1112 1130 0 35 6 -ID: 58 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1112 1115 0 38\
+ 7 -type: 6 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1112 1100 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1112 1085 0 53 10 -nbr chi: 0 "];
+	node_59 [label="ID: 59\ntype: 48\nnbr out: 0\nnbr chi: 5", pos="562.28,743.71", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 562 744 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 562 760 0 35 6 -ID: 59 F 14.000000 11 -Times-Roman c 9 -#000000ff T 562 745 0 45 8 \
+-type: 48 F 14.000000 11 -Times-Roman c 9 -#000000ff T 562 730 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+562 715 0 53 10 -nbr chi: 5 "];
+	node_60 [label="ID: 60\ntype: 38\nnbr out: 0\nnbr chi: 0", pos="420.02,662.99", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 420 663 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 420 679 0 35 6 -ID: 60 F 14.000000 11 -Times-Roman c 9 -#000000ff T 420 664 0 45 8 \
+-type: 38 F 14.000000 11 -Times-Roman c 9 -#000000ff T 420 649 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+420 634 0 53 10 -nbr chi: 0 "];
+	node_61 [label="ID: 61\ntype: 8\nnbr out: 0\nnbr chi: 0", pos="311.52,659.49", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 312 659 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 312 675 0 35 6 -ID: 61 F 14.000000 11 -Times-Roman c 9 -#000000ff T 312 660 0 38 7 \
+-type: 8 F 14.000000 11 -Times-Roman c 9 -#000000ff T 312 645 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 312\
+ 630 0 53 10 -nbr chi: 0 "];
+	node_62 [label="ID: 62\ntype: 1\nnbr out: 0\nnbr chi: 0", pos="408.73,767.23", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 409 767 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 409 783 0 35 6 -ID: 62 F 14.000000 11 -Times-Roman c 9 -#000000ff T 409 768 0 38 7 \
+-type: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T 409 753 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 409\
+ 738 0 53 10 -nbr chi: 0 "];
+	node_63 [label="ID: 63\ntype: 5\nnbr out: 0\nnbr chi: 0", pos="584.22,861.01", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 584 861 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 584 877 0 35 6 -ID: 63 F 14.000000 11 -Times-Roman c 9 -#000000ff T 584 862 0 38 7 \
+-type: 5 F 14.000000 11 -Times-Roman c 9 -#000000ff T 584 847 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 584\
+ 832 0 53 10 -nbr chi: 0 "];
+	node_64 [label="ID: 64\ntype: 16\nnbr out: 0\nnbr chi: 0", pos="475.77,871.4", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 476 871 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 476 887 0 35 6 -ID: 64 F 14.000000 11 -Times-Roman c 9 -#000000ff T 476 872 0 45 8 \
+-type: 16 F 14.000000 11 -Times-Roman c 9 -#000000ff T 476 857 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+476 842 0 53 10 -nbr chi: 0 "];
+	node_65 [label="ID: 65\ntype: 48\nnbr out: 0\nnbr chi: 5", pos="651.17,617.19", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 651 617 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 651 633 0 35 6 -ID: 65 F 14.000000 11 -Times-Roman c 9 -#000000ff T 651 618 0 45 8 \
+-type: 48 F 14.000000 11 -Times-Roman c 9 -#000000ff T 651 603 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+651 588 0 53 10 -nbr chi: 5 "];
+	node_66 [label="ID: 66\ntype: 38\nnbr out: 0\nnbr chi: 0", pos="536.02,380.72", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 536 381 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 536 397 0 35 6 -ID: 66 F 14.000000 11 -Times-Roman c 9 -#000000ff T 536 382 0 45 8 \
+-type: 38 F 14.000000 11 -Times-Roman c 9 -#000000ff T 536 367 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+536 352 0 53 10 -nbr chi: 0 "];
+	node_67 [label="ID: 67\ntype: 14\nnbr out: 0\nnbr chi: 0", pos="654.01,419.08", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 654 419 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 654 435 0 35 6 -ID: 67 F 14.000000 11 -Times-Roman c 9 -#000000ff T 654 420 0 45 8 \
+-type: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 654 405 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+654 390 0 53 10 -nbr chi: 0 "];
+	node_68 [label="ID: 68\ntype: 14\nnbr out: 0\nnbr chi: 0", pos="436.82,558.81", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 437 559 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 437 575 0 35 6 -ID: 68 F 14.000000 11 -Times-Roman c 9 -#000000ff T 437 560 0 45 8 \
+-type: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 437 545 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+437 530 0 53 10 -nbr chi: 0 "];
+	node_69 [label="ID: 69\ntype: 20\nnbr out: 0\nnbr chi: 0", pos="545.33,484.91", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 545 485 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 545 501 0 35 6 -ID: 69 F 14.000000 11 -Times-Roman c 9 -#000000ff T 545 486 0 45 8 \
+-type: 20 F 14.000000 11 -Times-Roman c 9 -#000000ff T 545 471 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+545 456 0 53 10 -nbr chi: 0 "];
+	node_70 [label="ID: 70\ntype: 16\nnbr out: 0\nnbr chi: 0", pos="422.67,453.91", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 423 454 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 423 470 0 35 6 -ID: 70 F 14.000000 11 -Times-Roman c 9 -#000000ff T 423 455 0 45 8 \
+-type: 16 F 14.000000 11 -Times-Roman c 9 -#000000ff T 423 440 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T \
+423 425 0 53 10 -nbr chi: 0 "];
+	node_71 [label="ID: 71\ntype: 45\nnbr out: 1\nnbr chi: 0", pos="773.49,1075.1", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 773 1075 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 773 1091 0 35 6 -ID: 71 F 14.000000 11 -Times-Roman c 9 -#000000ff T 773 1076 0 45 \
+8 -type: 45 F 14.000000 11 -Times-Roman c 9 -#000000ff T 773 1061 0 55 10 -nbr out: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 773 1046 0 53 10 -nbr chi: 0 "];
+	node_72 [label="ID: 72\ntype: 16\nnbr out: 0\nnbr chi: 0", pos="733.4,1180.4", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 733 1180 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 733 1196 0 35 6 -ID: 72 F 14.000000 11 -Times-Roman c 9 -#000000ff T 733 1181 0 45 \
+8 -type: 16 F 14.000000 11 -Times-Roman c 9 -#000000ff T 733 1166 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 733 1151 0 53 10 -nbr chi: 0 "];
+	node_73 [label="ID: 73\ntype: 48\nnbr out: 0\nnbr chi: 3", pos="844.58,1179.2", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 845 1179 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 845 1195 0 35 6 -ID: 73 F 14.000000 11 -Times-Roman c 9 -#000000ff T 845 1180 0 45 \
+8 -type: 48 F 14.000000 11 -Times-Roman c 9 -#000000ff T 845 1165 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 845 1150 0 53 10 -nbr chi: 3 "];
+	node_74 [label="ID: 74\ntype: 14\nnbr out: 0\nnbr chi: 0", pos="1003.8,1183.6", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 1004 1184 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 1004 1200 0 35 6 -ID: 74 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1004 1185 0 45\
+ 8 -type: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 1004 1170 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 1004 1155 0 53 10 -nbr chi: 0 "];
+	node_75 [label="ID: 75\ntype: 1\nnbr out: 0\nnbr chi: 0", pos="908.52,1287.8", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 909 1288 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 909 1304 0 35 6 -ID: 75 F 14.000000 11 -Times-Roman c 9 -#000000ff T 909 1289 0 38 \
+7 -type: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T 909 1274 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 909 1259 0 53 10 -nbr chi: 0 "];
+	node_76 [label="ID: 76\ntype: 6\nnbr out: 0\nnbr chi: 0", pos="800.03,1304.3", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 800 1304 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 800 1320 0 35 6 -ID: 76 F 14.000000 11 -Times-Roman c 9 -#000000ff T 800 1305 0 38 \
+7 -type: 6 F 14.000000 11 -Times-Roman c 9 -#000000ff T 800 1290 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 800 1275 0 53 10 -nbr chi: 0 "];
+	node_77 [label="ID: 77\ntype: 45\nnbr out: 1\nnbr chi: 0", pos="570.83,1081", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 571 1081 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 571 1097 0 35 6 -ID: 77 F 14.000000 11 -Times-Roman c 9 -#000000ff T 571 1082 0 45 \
+8 -type: 45 F 14.000000 11 -Times-Roman c 9 -#000000ff T 571 1067 0 55 10 -nbr out: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 571 1052 0 53 10 -nbr chi: 0 "];
+	node_78 [label="ID: 78\ntype: 16\nnbr out: 0\nnbr chi: 0", pos="523.78,1185.3", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 524 1185 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 524 1201 0 35 6 -ID: 78 F 14.000000 11 -Times-Roman c 9 -#000000ff T 524 1186 0 45 \
+8 -type: 16 F 14.000000 11 -Times-Roman c 9 -#000000ff T 524 1171 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 524 1156 0 53 10 -nbr chi: 0 "];
+	node_79 [label="ID: 79\ntype: 48\nnbr out: 0\nnbr chi: 3", pos="616.11,1289.6", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 616 1290 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 616 1306 0 35 6 -ID: 79 F 14.000000 11 -Times-Roman c 9 -#000000ff T 616 1291 0 45 \
+8 -type: 48 F 14.000000 11 -Times-Roman c 9 -#000000ff T 616 1276 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 616 1261 0 53 10 -nbr chi: 3 "];
+	node_80 [label="ID: 80\ntype: 14\nnbr out: 0\nnbr chi: 0", pos="488.23,1416.5", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 488 1417 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 488 1433 0 35 6 -ID: 80 F 14.000000 11 -Times-Roman c 9 -#000000ff T 488 1418 0 45 \
+8 -type: 14 F 14.000000 11 -Times-Roman c 9 -#000000ff T 488 1403 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 488 1388 0 53 10 -nbr chi: 0 "];
+	node_81 [label="ID: 81\ntype: 1\nnbr out: 0\nnbr chi: 0", pos="596.7,1452.3", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 597 1452 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 597 1468 0 35 6 -ID: 81 F 14.000000 11 -Times-Roman c 9 -#000000ff T 597 1453 0 38 \
+7 -type: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T 597 1438 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 597 1423 0 53 10 -nbr chi: 0 "];
+	node_82 [label="ID: 82\ntype: 6\nnbr out: 0\nnbr chi: 0", pos="705.18,1408.5", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 705 1409 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 705 1425 0 35 6 -ID: 82 F 14.000000 11 -Times-Roman c 9 -#000000ff T 705 1410 0 38 \
+7 -type: 6 F 14.000000 11 -Times-Roman c 9 -#000000ff T 705 1395 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 705 1380 0 53 10 -nbr chi: 0 "];
+	node_83 [label="ID: 83\ntype: 38\nnbr out: 0\nnbr chi: 0", pos="209.66,1410.7", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 210 1411 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 210 1427 0 35 6 -ID: 83 F 14.000000 11 -Times-Roman c 9 -#000000ff T 210 1412 0 45 \
+8 -type: 38 F 14.000000 11 -Times-Roman c 9 -#000000ff T 210 1397 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 210 1382 0 53 10 -nbr chi: 0 "];
+	node_84 [label="ID: 84\ntype: 8\nnbr out: 0\nnbr chi: 0", pos="318.18,1405.1", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 318 1405 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 318 1421 0 35 6 -ID: 84 F 14.000000 11 -Times-Roman c 9 -#000000ff T 318 1406 0 38 \
+7 -type: 8 F 14.000000 11 -Times-Roman c 9 -#000000ff T 318 1391 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 318 1376 0 53 10 -nbr chi: 0 "];
+	node_85 [label="ID: 85\ntype: 1\nnbr out: 0\nnbr chi: 0", pos="276.94,1300.7", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 277 1301 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 277 1317 0 35 6 -ID: 85 F 14.000000 11 -Times-Roman c 9 -#000000ff T 277 1302 0 38 \
+7 -type: 1 F 14.000000 11 -Times-Roman c 9 -#000000ff T 277 1287 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff \
+T 277 1272 0 53 10 -nbr chi: 0 "];
+	node_86 [label="ID: 86\ntype: 5\nnbr out: 0\nnbr chi: 0", pos="50.04,1094.6", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 50 1095 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 50 1111 0 35 6 -ID: 86 F 14.000000 11 -Times-Roman c 9 -#000000ff T 50 1096 0 38 7 \
+-type: 5 F 14.000000 11 -Times-Roman c 9 -#000000ff T 50 1081 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff T 50\
+ 1066 0 53 10 -nbr chi: 0 "];
+	node_87 [label="ID: 87\ntype: 16\nnbr out: 0\nnbr chi: 0", pos="426.62,1300.9", width="1.3917", height="1.3356", _draw_="c 9 -#000000ff e 427 1301 50 48 ", _ldraw_="F 14.000000 11 -Times-Roman c 9 -#000000ff T 427 1317 0 35 6 -ID: 87 F 14.000000 11 -Times-Roman c 9 -#000000ff T 427 1302 0 45 \
+8 -type: 16 F 14.000000 11 -Times-Roman c 9 -#000000ff T 427 1287 0 55 10 -nbr out: 0 F 14.000000 11 -Times-Roman c 9 -#000000ff\
+ T 427 1272 0 53 10 -nbr chi: 0 "];
+	node_1 -> node_2 [pos="e,215.09,1179.9 247.23,1166.9 239.81,1169.9 232.11,1173 224.55,1176.1", _draw_="c 9 -#000000ff B 4 247 1167 240 1170 232 1173 225 1176 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 223 1173 215 1180 226 1179 "];
+	node_1 -> node_3 [pos="e,99.984,1188.6 244.24,1158 204.87,1166.4 150.78,1177.9 109.83,1186.6", _draw_="c 9 -#000000ff B 4 244 1158 205 1166 151 1178 110 1187 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 109 1183 100 1189 110 1190 "];
+	node_1 -> node_4 [pos="e,143.25,1021.7 256.63,1114.5 225.96,1089.4 183.43,1054.6 151.21,1028.2", _draw_="c 9 -#000000ff B 4 257 1115 226 1089 183 1055 151 1028 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 153 1025 143 1022 149 1031 "];
+	node_1 -> node_5 [pos="e,217.03,1114 247.7,1126.7 240.77,1123.8 233.6,1120.9 226.54,1117.9", _draw_="c 9 -#000000ff B 4 248 1127 241 1124 234 1121 227 1118 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 228 1115 217 1114 225 1121 "];
+	node_1 -> node_6 [pos="e,142.66,1273.9 256.55,1179.8 225.73,1205.3 182.95,1240.6 150.63,1267.3", _draw_="c 9 -#000000ff B 4 257 1180 226 1205 183 1241 151 1267 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 148 1265 143 1274 153 1270 "];
+	node_1 -> node_7 [pos="e,361.48,1078.5 331.24,1110.2 338.76,1102.3 346.77,1093.9 354.49,1085.8", _draw_="c 9 -#000000ff B 4 331 1110 339 1102 347 1094 354 1086 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 357 1088 361 1078 352 1083 "];
+	node_7 -> node_8 [pos="e,461.67,1001.8 437.75,1016.6 442.78,1013.5 447.96,1010.3 453.09,1007.1", _draw_="c 9 -#000000ff B 4 438 1017 443 1013 448 1010 453 1007 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 455 1010 462 1002 451 1004 "];
+	node_8 -> node_9 [pos="e,400.62,943.39 456.17,960.69 441.63,956.16 425.49,951.14 410.38,946.43", _draw_="c 9 -#000000ff B 4 456 961 442 956 425 951 410 946 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 411 943 401 943 409 950 "];
+	node_9 -> node_10 [pos="e,135.37,776.38 312.21,900.08 266.54,868.14 192.43,816.3 143.58,782.13", _draw_="c 9 -#000000ff B 4 312 900 267 868 192 816 144 782 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 146 779 135 776 142 785 "];
+	node_9 -> node_11 [pos="e,229.46,736.37 326.41,887.34 300.87,847.57 262.15,787.28 234.92,744.87", _draw_="c 9 -#000000ff B 4 326 887 301 848 262 787 235 745 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 238 743 229 736 232 747 "];
+	node_9 -> node_12 [pos="e,267.93,946.06 303.69,938.67 295.31,940.4 286.52,942.22 277.92,943.99", _draw_="c 9 -#000000ff B 4 304 939 295 940 287 942 278 944 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 277 941 268 946 278 947 "];
+	node_9 -> node_13 [pos="e,189.38,869.14 305.83,911.44 274.25,899.97 232.47,884.79 199.02,872.65", _draw_="c 9 -#000000ff B 4 306 911 274 900 232 885 199 873 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 200 869 189 869 198 876 "];
+	node_8 -> node_14 [pos="e,614.67,972.47 554.49,974.16 570.38,973.72 588.08,973.22 604.58,972.75", _draw_="c 9 -#000000ff B 4 554 974 570 974 588 973 605 973 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 605 976 615 972 605 969 "];
+	node_14 -> node_15 [pos="e,669.7,770 666.12,922.96 667.07,882.2 668.44,823.62 669.46,780.14", _draw_="c 9 -#000000ff B 4 666 923 667 882 668 824 669 780 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 673 780 670 770 666 780 "];
+	node_15 -> node_16 [pos="e,830.91,596.04 709.71,691.12 742.1,665.71 788.34,629.43 822.85,602.36", _draw_="c 9 -#000000ff B 4 710 691 742 666 788 629 823 602 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 825 605 831 596 821 599 "];
+	node_16 -> node_17 [pos="e,877.64,508.7 876.47,517.41 876.49,517.31 876.5,517.22 876.51,517.13", _draw_="c 9 -#000000ff B 4 876 517 876 517 876 517 877 517 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 880 519 878 509 873 518 "];
+	node_16 -> node_18 [pos="e,956.86,551.42 919.8,557.36 928.57,555.96 937.78,554.48 946.8,553.03", _draw_="c 9 -#000000ff B 4 920 557 929 556 938 554 947 553 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 948 556 957 551 946 550 "];
+	node_16 -> node_19 [pos="e,957.91,474.84 904.48,529.87 918.83,515.09 935.63,497.79 950.68,482.29", _draw_="c 9 -#000000ff B 4 904 530 919 515 936 498 951 482 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 953 484 958 475 948 480 "];
+	node_19 -> node_20 [pos="e,933.35,371.87 959.96,402.14 953.62,394.92 946.9,387.28 940.36,379.84", _draw_="c 9 -#000000ff B 4 960 402 954 395 947 387 940 380 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 943 377 933 372 937 382 "];
+	node_20 -> node_21 [pos="e,760.41,216.86 863.1,303.17 835.33,279.83 797.49,248.02 768.08,223.31", _draw_="c 9 -#000000ff B 4 863 303 835 280 797 248 768 223 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 770 221 760 217 766 226 "];
+	node_20 -> node_22 [pos="e,851.41,227.1 880.53,290.57 872.73,273.55 863.74,253.97 855.59,236.2", _draw_="c 9 -#000000ff B 4 881 291 873 274 864 254 856 236 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 859 235 851 227 852 238 "];
+	node_20 -> node_23 [pos="e,938.32,220.86 916.08,288.67 922.03,270.52 928.92,249.53 935.14,230.56", _draw_="c 9 -#000000ff B 4 916 289 922 271 929 250 935 231 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 939 231 938 221 932 229 "];
+	node_20 -> node_24 [pos="e,855.33,126.19 890.57,287.65 881.24,244.91 867.48,181.87 857.52,136.23", _draw_="c 9 -#000000ff B 4 891 288 881 245 867 182 858 136 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 861 135 855 126 854 137 "];
+	node_20 -> node_25 [pos="e,1014.4,295.53 948.3,318.49 966.06,312.32 986.42,305.26 1004.9,298.83", _draw_="c 9 -#000000ff B 4 948 318 966 312 986 305 1005 299 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1006 302 1014 296 1004 296 "];
+	node_19 -> node_26 [pos="e,1052.2,427.42 1041.8,429.48 1041.9,429.46 1042,429.43 1042.1,429.41", _draw_="c 9 -#000000ff B 4 1042 429 1042 429 1042 429 1042 429 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1043 433 1052 427 1042 426 "];
+	node_26 -> node_27 [pos="e,1198.7,481.57 1108.7,465.24 1122.7,501.61 1163.2,511.72 1191.5,488.58", _draw_="c 9 -#000000ff B 4 1109 465 1123 502 1163 512 1191 489 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1194 491 1199 482 1189 486 "];
+	node_27 -> node_28 [pos="e,1393,431.63 1268.8,435.68 1302.4,434.58 1347,433.13 1382.7,431.97", _draw_="c 9 -#000000ff B 4 1269 436 1302 435 1347 433 1383 432 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1383 435 1393 432 1383 428 "];
+	node_27 -> node_29 [pos="e,1285.5,424.52 1267.9,427.88 1270.5,427.39 1273,426.9 1275.6,426.41", _draw_="c 9 -#000000ff B 4 1268 428 1270 427 1273 427 1276 426 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1276 430 1286 425 1275 423 "];
+	node_27 -> node_30 [pos="e,1268.2,578.16 1234.7,482.98 1243.7,508.75 1255.1,541.14 1264.7,568.38", _draw_="c 9 -#000000ff B 4 1235 483 1244 509 1255 541 1265 568 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1262 570 1268 578 1268 568 "];
+	node_27 -> node_31 [pos="e,1287.4,489.65 1258,467.31 1264.9,472.54 1272.1,478.03 1279.2,483.41", _draw_="c 9 -#000000ff B 4 1258 467 1265 473 1272 478 1279 483 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1277 486 1287 490 1282 481 "];
+	node_27 -> node_32 [pos="e,1308.9,345.87 1253.4,402.08 1268.4,386.87 1286.1,368.94 1301.8,353.02", _draw_="c 9 -#000000ff B 4 1253 402 1268 387 1286 369 1302 353 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1304 355 1309 346 1299 351 "];
+	node_26 -> node_27 [pos="e,1215.6,389.1 1126,372.07 1151.9,343.51 1193,348.46 1211.2,380.01", _draw_="c 9 -#000000ff B 4 1126 372 1152 344 1193 348 1211 380 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1208 382 1216 389 1214 379 "];
+	node_26 -> node_27 [pos="e,1209.3,389.71 1132.2,374.69 1154.2,361.03 1184,364.63 1202.6,382.05", _draw_="c 9 -#000000ff B 4 1132 375 1154 361 1184 365 1203 382 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1200 385 1209 390 1205 380 "];
+	node_26 -> node_27 [pos="e,1199.8,392.73 1141.8,380.97 1157.8,377.4 1176.2,379.9 1191,387.41", _draw_="c 9 -#000000ff B 4 1142 381 1158 377 1176 380 1191 387 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1189 391 1200 393 1193 385 "];
+	node_26 -> node_27 [pos="e,1187.6,399.39 1152.2,392.22 1160.8,392.46 1169.7,393.83 1178.1,396.18", _draw_="c 9 -#000000ff B 4 1152 392 1161 392 1170 394 1178 396 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1177 400 1188 399 1179 393 "];
+	node_26 -> node_27 [pos="e,1177.2,409.65 1158.7,406.06 1161.6,406.45 1164.4,406.92 1167.2,407.45", _draw_="c 9 -#000000ff B 4 1159 406 1162 406 1164 407 1167 407 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1167 411 1177 410 1168 404 "];
+	node_26 -> node_27 [pos="e,1171,421.9 1160,419.87 1160.3,419.93 1160.7,419.99 1161,420.05", _draw_="c 9 -#000000ff B 4 1160 420 1160 420 1161 420 1161 420 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1160 424 1171 422 1162 417 "];
+	node_26 -> node_27 [pos="e,1168.3,435.04 1156.9,433.01 1157.4,433.1 1157.9,433.19 1158.4,433.28", _draw_="c 9 -#000000ff B 4 1157 433 1157 433 1158 433 1158 433 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1158 437 1168 435 1159 430 "];
+	node_26 -> node_27 [pos="e,1169.7,448.69 1149.6,445.2 1152.9,445.97 1156.3,446.65 1159.6,447.23", _draw_="c 9 -#000000ff B 4 1150 445 1153 446 1156 447 1160 447 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1159 451 1170 449 1160 444 "];
+	node_26 -> node_27 [pos="e,1175.5,462.02 1138.1,455.43 1146.7,458.62 1156.1,460.73 1165.4,461.59", _draw_="c 9 -#000000ff B 4 1138 455 1147 459 1156 461 1165 462 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1165 465 1175 462 1166 458 "];
+	node_26 -> node_27 [pos="e,1184.3,472.76 1125.1,461.96 1138.7,471.53 1157.1,476.1 1174,474.54", _draw_="c 9 -#000000ff B 4 1125 462 1139 472 1157 476 1174 475 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1175 478 1184 473 1174 471 "];
+	node_26 -> node_27 [pos="e,1192.8,478.99 1114.7,464.36 1130.1,485.72 1159.7,493.38 1183.6,483.75", _draw_="c 9 -#000000ff B 4 1115 464 1130 486 1160 493 1184 484 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1186 487 1193 479 1182 480 "];
+	node_26 -> node_33 [pos="e,1150.8,313.79 1125.4,371.78 1132.1,356.39 1139.7,339.03 1146.7,323.03", _draw_="c 9 -#000000ff B 4 1125 372 1132 356 1140 339 1147 323 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1150 324 1151 314 1144 322 "];
+	node_33 -> node_34 [pos="e,1203,148.92 1183,222.28 1188.4,202.57 1194.7,179.46 1200.3,158.83", _draw_="c 9 -#000000ff B 4 1183 222 1188 203 1195 179 1200 159 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1204 159 1203 149 1197 158 "];
+	node_33 -> node_35 [pos="e,1128.5,200.72 1144.9,227.54 1141.3,221.65 1137.6,215.53 1133.9,209.49", _draw_="c 9 -#000000ff B 4 1145 228 1141 222 1138 216 1134 209 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1137 207 1129 201 1131 211 "];
+	node_33 -> node_36 [pos="e,1023.5,105.45 1137.4,232.48 1107.3,198.89 1062.7,149.12 1030.6,113.32", _draw_="c 9 -#000000ff B 4 1137 232 1107 199 1063 149 1031 113 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1033 111 1024 105 1028 115 "];
+	node_33 -> node_37 [pos="e,1235.7,231.45 1213.5,244.29 1217.9,241.71 1222.5,239.08 1227,236.45", _draw_="c 9 -#000000ff B 4 1213 244 1218 242 1222 239 1227 236 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1229 239 1236 231 1225 233 "];
+	node_33 -> node_38 [pos="e,1114.4,93.737 1155.6,223.02 1144.5,188.21 1129.2,140.31 1117.4,103.36", _draw_="c 9 -#000000ff B 4 1156 223 1144 188 1129 140 1117 103 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1121 102 1114 94 1114 104 "];
+	node_15 -> node_39 [pos="e,739.85,583.36 692.56,678.09 705.42,652.33 721.79,619.53 735.36,592.35", _draw_="c 9 -#000000ff B 4 693 678 705 652 722 620 735 592 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 739 594 740 583 732 591 "];
+	node_39 -> node_40 [pos="e,762.21,431.07 761.85,491.47 761.94,475.57 762.05,457.74 762.15,441.18", _draw_="c 9 -#000000ff B 4 762 491 762 476 762 458 762 441 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 766 441 762 431 759 441 "];
+	node_39 -> node_41 [pos="e,631.46,318.85 736.83,497.85 709.58,451.55 665.75,377.09 636.56,327.5", _draw_="c 9 -#000000ff B 4 737 498 710 452 666 377 637 328 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 640 326 631 319 634 329 "];
+	node_41 -> node_42 [pos="e,610.69,220.4 610.1,228.41 610.11,228.33 610.12,228.24 610.12,228.16", _draw_="c 9 -#000000ff B 4 610 228 610 228 610 228 610 228 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 613 231 611 220 606 230 "];
+	node_41 -> node_43 [pos="e,446.59,248.23 557.21,267.81 527.11,262.49 488.43,255.64 456.64,250.01", _draw_="c 9 -#000000ff B 4 557 268 527 262 488 256 457 250 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 457 247 447 248 456 253 "];
+	node_41 -> node_44 [pos="e,539.86,207.18 572.44,241.06 564.23,232.53 555.37,223.32 546.88,214.49", _draw_="c 9 -#000000ff B 4 572 241 564 233 555 223 547 214 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 549 212 540 207 544 217 "];
+	node_15 -> node_45 [pos="e,729.38,715.09 720.67,716.06 720.76,716.05 720.85,716.04 720.94,716.03", _draw_="c 9 -#000000ff B 4 721 716 721 716 721 716 721 716 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 720 720 729 715 719 713 "];
+	node_45 -> node_46 [pos="e,851.79,777.32 815.25,743.09 824.6,751.85 834.78,761.39 844.49,770.48", _draw_="c 9 -#000000ff B 4 815 743 825 752 835 761 844 770 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 842 773 852 777 847 768 "];
+	node_45 -> node_47 [pos="e,929.19,698.94 829.62,705.96 856.73,704.05 890.39,701.68 918.93,699.67", _draw_="c 9 -#000000ff B 4 830 706 857 704 890 702 919 700 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 919 703 929 699 919 696 "];
+	node_47 -> node_48 [pos="e,1046.9,667.04 1025.6,675.97 1029.6,674.31 1033.6,672.62 1037.6,670.94", _draw_="c 9 -#000000ff B 4 1026 676 1030 674 1034 673 1038 671 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1039 674 1047 667 1036 668 "];
+	node_47 -> node_49 [pos="e,1064.3,732 1025.2,715.13 1034.8,719.28 1045,723.69 1054.9,727.96", _draw_="c 9 -#000000ff B 4 1025 715 1035 719 1045 724 1055 728 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1054 731 1064 732 1057 725 "];
+	node_45 -> node_50 [pos="e,777.23,840.53 778.59,758.02 778.22,780.33 777.78,806.98 777.4,830.38", _draw_="c 9 -#000000ff B 4 779 758 778 780 778 807 777 830 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 774 830 777 841 781 831 "];
+	node_45 -> node_51 [pos="e,958.65,851.53 818.11,740.18 855.12,769.5 910.97,813.75 950.48,845.05", _draw_="c 9 -#000000ff B 4 818 740 855 770 911 814 950 845 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 949 848 959 852 953 843 "];
+	node_51 -> node_52 [pos="e,1057.2,867.77 1046,870.48 1046.5,870.37 1046.9,870.26 1047.4,870.14", _draw_="c 9 -#000000ff B 4 1046 870 1046 870 1047 870 1047 870 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1048 874 1057 868 1047 867 "];
+	node_52 -> node_53 [pos="e,1208.7,794.3 1148.9,830.24 1165,820.59 1183.3,809.53 1200.1,799.46", _draw_="c 9 -#000000ff B 4 1149 830 1165 821 1183 810 1200 799 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1202 802 1209 794 1198 796 "];
+	node_52 -> node_54 [pos="e,1247.7,868.41 1156.5,860.41 1181.3,862.59 1211.5,865.23 1237.6,867.52", _draw_="c 9 -#000000ff B 4 1156 860 1181 863 1212 865 1238 868 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1237 871 1248 868 1238 864 "];
+	node_51 -> node_55 [pos="e,1069.4,947.44 1033.8,915.22 1042.8,923.33 1052.5,932.1 1061.7,940.5", _draw_="c 9 -#000000ff B 4 1034 915 1043 923 1052 932 1062 940 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1060 943 1069 947 1064 938 "];
+	node_55 -> node_56 [pos="e,1215.6,978.1 1156.1,979.42 1171.7,979.07 1189,978.69 1205.2,978.33", _draw_="c 9 -#000000ff B 4 1156 979 1172 979 1189 979 1205 978 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1206 982 1216 978 1206 975 "];
+	node_55 -> node_57 [pos="e,1183.7,1048.7 1143.2,1013.2 1153.7,1022.4 1165.1,1032.4 1176,1041.9", _draw_="c 9 -#000000ff B 4 1143 1013 1154 1022 1165 1032 1176 1042 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1174 1045 1184 1049 1178 1039 "];
+	node_55 -> node_58 [pos="e,1110,1066 1108.2,1028.8 1108.7,1037.6 1109.1,1046.8 1109.5,1055.9", _draw_="c 9 -#000000ff B 4 1108 1029 1109 1038 1109 1047 1110 1056 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 1106 1056 1110 1066 1113 1056 "];
+	node_15 -> node_59 [pos="e,611.52,733.7 621.64,731.64 621.53,731.66 621.43,731.68 621.32,731.7", _draw_="c 9 -#000000ff B 4 622 732 622 732 621 732 621 732 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 621 728 612 734 622 735 "];
+	node_59 -> node_60 [pos="e,463.7,687.78 518.83,719.06 504.21,710.76 487.74,701.42 472.51,692.77", _draw_="c 9 -#000000ff B 4 519 719 504 711 488 701 473 693 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 474 690 464 688 471 696 "];
+	node_59 -> node_61 [pos="e,359.22,675.51 514.82,727.77 473.37,713.85 413.1,693.6 368.94,678.77", _draw_="c 9 -#000000ff B 4 515 728 473 714 413 694 369 679 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 370 675 359 676 368 682 "];
+	node_59 -> node_62 [pos="e,458.34,759.63 512.43,751.35 498.34,753.51 482.87,755.87 468.27,758.11", _draw_="c 9 -#000000ff B 4 512 751 498 754 483 756 468 758 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 468 755 458 760 469 762 "];
+	node_59 -> node_63 [pos="e,575.33,813.46 571.14,791.09 571.9,795.12 572.67,799.23 573.43,803.33", _draw_="c 9 -#000000ff B 4 571 791 572 795 573 799 573 803 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 570 804 575 813 577 803 "];
+	node_59 -> node_64 [pos="e,503.27,830.82 534.91,784.11 526.71,796.22 517.62,809.64 509.07,822.25", _draw_="c 9 -#000000ff B 4 535 784 527 796 518 810 509 822 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 506 821 503 831 512 825 "];
+	node_15 -> node_65 [pos="e,660.09,664.56 661.92,674.3 661.9,674.19 661.88,674.09 661.87,673.99", _draw_="c 9 -#000000ff B 4 662 674 662 674 662 674 662 674 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 665 674 660 665 658 675 "];
+	node_65 -> node_66 [pos="e,557.35,424.52 629.92,573.54 610.67,534 582.26,475.66 561.73,433.52", _draw_="c 9 -#000000ff B 4 630 574 611 534 582 476 562 434 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 565 432 557 425 559 435 "];
+	node_65 -> node_67 [pos="e,653.32,467.16 651.86,568.98 652.26,541.32 652.76,506.4 653.18,477.22", _draw_="c 9 -#000000ff B 4 652 569 652 541 653 506 653 477 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 657 477 653 467 650 477 "];
+	node_65 -> node_68 [pos="e,485.39,572.04 602.8,604.01 570.88,595.32 528.89,583.89 495.13,574.69", _draw_="c 9 -#000000ff B 4 603 604 571 595 529 584 495 575 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 496 571 485 572 494 578 "];
+	node_65 -> node_69 [pos="e,575.87,523.08 620.56,578.93 608.6,563.98 594.78,546.71 582.28,531.08", _draw_="c 9 -#000000ff B 4 621 579 609 564 595 547 582 531 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 585 529 576 523 579 533 "];
+	node_65 -> node_70 [pos="e,462.98,482.71 610.85,588.37 571.89,560.54 512.84,518.34 471.3,488.66", _draw_="c 9 -#000000ff B 4 611 588 572 561 513 518 471 489 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 473 486 463 483 469 491 "];
+	node_14 -> node_71 [pos="e,737.88,1040.9 700.52,1005.1 710.07,1014.3 720.51,1024.3 730.42,1033.8", _draw_="c 9 -#000000ff B 4 701 1005 710 1014 721 1024 730 1034 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 728 1037 738 1041 733 1031 "];
+	node_71 -> node_72 [pos="e,750.62,1135.1 756.25,1120.3 755.61,1122 754.96,1123.7 754.32,1125.4", _draw_="c 9 -#000000ff B 4 756 1120 756 1122 755 1124 754 1125 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 751 1125 751 1135 757 1127 "];
+	node_71 -> node_73 [pos="e,816.93,1138.7 800.97,1115.3 804.33,1120.2 807.78,1125.3 811.21,1130.3", _draw_="c 9 -#000000ff B 4 801 1115 804 1120 808 1125 811 1130 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 808 1132 817 1139 814 1128 "];
+	node_73 -> node_74 [pos="e,953.51,1182.2 894.97,1180.6 910.3,1181 927.3,1181.5 943.23,1181.9", _draw_="c 9 -#000000ff B 4 895 1181 910 1181 927 1181 943 1182 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 943 1185 954 1182 944 1178 "];
+	node_73 -> node_75 [pos="e,883.65,1245.6 869.3,1221.2 872.31,1226.3 875.42,1231.6 878.51,1236.8", _draw_="c 9 -#000000ff B 4 869 1221 872 1226 875 1232 879 1237 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 876 1239 884 1246 882 1235 "];
+	node_73 -> node_76 [pos="e,816.3,1258.6 828.37,1224.8 825.54,1232.7 822.58,1241 819.67,1249.2", _draw_="c 9 -#000000ff B 4 828 1225 826 1233 823 1241 820 1249 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 816 1248 816 1259 823 1250 "];
+	node_8 -> node_77 [pos="e,544.68,1039.8 530.22,1017 533.19,1021.7 536.24,1026.5 539.27,1031.2", _draw_="c 9 -#000000ff B 4 530 1017 533 1022 536 1026 539 1031 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 536 1033 545 1040 542 1029 "];
+	node_77 -> node_78 [pos="e,543.77,1141 550.88,1125.3 549.92,1127.4 548.96,1129.5 547.99,1131.7", _draw_="c 9 -#000000ff B 4 551 1125 550 1127 549 1130 548 1132 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 545 1130 544 1141 551 1133 "];
+	node_77 -> node_79 [pos="e,605.88,1242.4 581.1,1128.4 587.82,1159.3 596.63,1199.8 603.73,1232.6", _draw_="c 9 -#000000ff B 4 581 1128 588 1159 597 1200 604 1233 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 600 1233 606 1242 607 1232 "];
+	node_79 -> node_80 [pos="e,523.13,1381.9 581.17,1324.3 565.52,1339.8 546.93,1358.2 530.51,1374.6", _draw_="c 9 -#000000ff B 4 581 1324 566 1340 547 1358 531 1375 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 528 1372 523 1382 533 1377 "];
+	node_79 -> node_81 [pos="e,602.41,1404.4 610.39,1337.5 608.27,1355.3 605.84,1375.7 603.62,1394.3", _draw_="c 9 -#000000ff B 4 610 1338 608 1355 606 1376 604 1394 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 600 1394 602 1404 607 1395 "];
+	node_79 -> node_82 [pos="e,675.8,1369.3 645.52,1328.8 653.28,1339.2 661.72,1350.5 669.75,1361.2", _draw_="c 9 -#000000ff B 4 646 1329 653 1339 662 1350 670 1361 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 667 1363 676 1369 673 1359 "];
+	node_1 -> node_83 [pos="e,224.83,1364.5 281.08,1193.2 266.28,1238.3 243.77,1306.8 227.99,1354.9", _draw_="c 9 -#000000ff B 4 281 1193 266 1238 244 1307 228 1355 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 225 1354 225 1365 231 1356 "];
+	node_1 -> node_84 [pos="e,314.1,1357.1 300.36,1195.2 304.01,1238.2 309.36,1301.2 313.24,1347", _draw_="c 9 -#000000ff B 4 300 1195 304 1238 309 1301 313 1347 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 310 1347 314 1357 317 1347 "];
+	node_1 -> node_85 [pos="e,282.94,1252.9 290.25,1194.8 288.34,1210 286.21,1226.9 284.22,1242.7", _draw_="c 9 -#000000ff B 4 290 1195 288 1210 286 1227 284 1243 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 281 1243 283 1253 288 1243 "];
+	node_1 -> node_86 [pos="e,99.246,1105.1 244.04,1135.9 204.53,1127.5 150.23,1115.9 109.13,1107.2", _draw_="c 9 -#000000ff B 4 244 1136 205 1127 150 1116 109 1107 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 110 1104 99 1105 108 1111 "];
+	node_1 -> node_87 [pos="e,394.93,1263.5 328.82,1185.4 346.9,1206.8 369.49,1233.4 388.4,1255.8", _draw_="c 9 -#000000ff B 4 329 1185 347 1207 369 1233 388 1256 ", _hdraw_="S 5 -solid c 9 -#000000ff C 9 -#000000ff P 3 386 1258 395 1263 391 1254 "];
+}
