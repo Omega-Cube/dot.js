@@ -24,13 +24,6 @@ DotUtils.escapeContainer = null;
 DotUtils.escapeText = null;
 
 /*
-	Field: emptyFunction
-	
-	{Function} Static, A cached empty callback
-*/
-DotUtils.emptyFunction = function() {}
-
-/*
 	Method: escapeHtml
 	
 	Static, Escapes HTML code from a string
@@ -55,21 +48,6 @@ DotUtils.escapeHtml = (function() {
 	
 	return realEscape;
 })()
-
-/*
-	Method: setStyle
-	
-	Static, Writes the specified CSS properties to an element
-	
-	Parameters:
-	
-		e - {HTMLElement} The element to write the style to
-		styles - {object} An object containing the styles that should be put into the object.
-*/
-DotUtils.setStyle = function(e, styles) {
-	for(var property in styles)
-		e.style[property] = styles[property];
-}
 
 /*
 	Method: setHtml
@@ -292,6 +270,15 @@ DotUtils.wrap = function(that, wrapper) {
 	XDot tokenizer implementation
 */
 var DotTokenizer = DotUtils.createClass({
+	/*
+		Constructor: initialize
+		
+		Initializes the tokenizer with a text to parse
+		
+		Parameters:
+		
+			str - {string} The XDot file contents
+	*/
 	initialize: function(str) {
 		this.str = str;
 	},
@@ -513,23 +500,21 @@ var DotEntity = DotUtils.createClass({
 										}
 									}
 
-									DotUtils.setStyle(text, {
-										textDecoration: 'none'
-									});
+									text.style.textDecoration = 'none';
 								} else {
 									text = document.createElement('span');
 								}
 								DotUtils.setHtml(text, str);
-								DotUtils.setStyle(text, {
-									fontSize: Math.round(fontSize * ctxScale * this.dot.bbScale) + 'px',
-									fontFamily: fontFamily,
-									color: strokeColor.textColor,
-									position: 'absolute',
-									textAlign: (-1 == textAlign) ? 'left' : (1 == textAlign) ? 'right' : 'center',
-									left: (l - (1 + textAlign) * textWidth) + 'px',
-									top: t + 'px',
-									width: (2 * textWidth) + 'px'
-								});
+								
+								text.style.fontSize = Math.round(fontSize * ctxScale * this.dot.bbScale) + 'px';
+								text.style.fontFamily = fontFamily;
+								text.style.color = strokeColor.textColor;
+								text.style.position = 'absolute';
+								text.style.textAlign = (-1 == textAlign) ? 'left' : (1 == textAlign) ? 'right' : 'center';
+								text.style.left = (l - (1 + textAlign) * textWidth) + 'px';
+								text.style.top = t + 'px';
+								text.style.width = (2 * textWidth) + 'px';
+
 								if (1 != strokeColor.opacity) 
 									text.style.opacity = strokeColor.opacity;
 								this.dot.elements.appendChild(text);
@@ -600,13 +585,11 @@ var DotEntity = DotUtils.createClass({
 					token = tokenizer.takeChars();
 				}
 				if (!redrawCanvasOnly) {
-					DotUtils.setStyle(bbDiv, {
-						position: 'absolute',
-						left:   Math.round(ctxScale * this.bbRect.l + this.dot.padding) + 'px',
-						top:    Math.round(ctxScale * this.bbRect.t + this.dot.padding) + 'px',
-						width:  Math.round(ctxScale * this.bbRect.getWidth()) + 'px',
-						height: Math.round(ctxScale * this.bbRect.getHeight()) + 'px'
-					});
+					bbDiv.style.position = 'absolute';
+					bbDiv.style.left = Math.round(ctxScale * this.bbRect.l + this.dot.padding) + 'px';
+					bbDiv.style.top = Math.round(ctxScale * this.bbRect.t + this.dot.padding) + 'px';
+					bbDiv.style.width = Math.round(ctxScale * this.bbRect.getWidth()) + 'px';
+					bbDiv.style.height = Math.round(ctxScale * this.bbRect.getHeight()) + 'px';
 				}
 				ctx.restore();
 			}
@@ -768,19 +751,13 @@ var Dot = DotUtils.createClass({
 	*/
 	initialize: function(container, url, urlParams) {
 		this.canvas = document.createElement('canvas');
-		DotUtils.setStyle(this.canvas, {
-			position: 'absolute'
-		});
+		this.canvas.style.position = 'absolute';
 		if (!Dot.canvasCounter) Dot.canvasCounter = 0;
 		this.canvas.id = 'dot_canvas_' + ++Dot.canvasCounter;
 		this.elements = document.createElement('div');
-		DotUtils.setStyle(this.elements, {
-			position: 'absolute'
-		});
+		this.elements.style.position = 'absolute';
 		this.container = document.getElementById(container);
-		DotUtils.setStyle(this.container, {
-			position: 'relative'
-		});
+		this.container.style.position = 'relative';
 		this.container.appendChild(this.canvas);
 		if (typeof G_vmlCanvasManager !== 'undefined') {
 			G_vmlCanvasManager.initElement(this.canvas);
@@ -1030,13 +1007,9 @@ var Dot = DotUtils.createClass({
 		if (!redrawCanvasOnly) {
 			this.canvas.width  = width;
 			this.canvas.height = height;
-			DotUtils.setStyle(this.canvas, {
-				width:  width  + 'px',
-				height: height + 'px'
-			});
-			DotUtils.setStyle(this.container, {
-				width:  width  + 'px'
-			});
+			this.canvas.style.width = width + 'px';
+			this.canvas.style.height = height + 'px';
+			this.container.style.width = width + 'px';
 			while (this.elements.firstChild) {
 				this.elements.removeChild(this.elements.firstChild);
 			}
