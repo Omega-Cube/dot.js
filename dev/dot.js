@@ -996,7 +996,7 @@ var Dot = DotUtils.createClass({
 		
 		Parameters:
 		
-			redrawCanvasOnly - {bool} Optionnal. Defines if the method should only redraw the canvas contents
+			redrawCanvasOnly - {Boolean} Optionnal. Defines if the method should only redraw the canvas contents
 								or if the entire DOM tree should be updated. Default is false.
 	*/
 	draw: function(redrawCanvasOnly) {
@@ -1154,6 +1154,11 @@ Dot.prototype.nodeMatchRe = new RegExp('^(' + Dot.prototype.nodeIdMatch + ')\\s+
 Dot.prototype.edgeMatchRe = new RegExp('^(' + Dot.prototype.nodeIdMatch + '\\s*-[->]\\s*' + Dot.prototype.nodeIdMatch + ')\\s+\\[(.+)\\];$');
 Dot.prototype.attrMatchRe = new RegExp('^' + Dot.prototype.idMatch + '=' + Dot.prototype.idMatch + '(?:[,\\s]+|$)');
 
+/*
+	Class: DotImage
+	
+	An image that can be embedded in a graph
+*/
 var DotImage = DotUtils.createClass({
 	initialize: function(dot, src) {
 		this.dot = dot;
@@ -1212,6 +1217,11 @@ function debug(str, escape) {
 	document.getElementById('debug_output').innerHTML += '&raquo;' + str + '&laquo;<br />';
 }
 
+/*
+	Class: Point
+
+	Represents a point in a graph
+*/
 var Point = DotUtils.createClass({
 	initialize: function(x, y) {
 		this.x = x;
@@ -1232,11 +1242,71 @@ var Point = DotUtils.createClass({
 	}
 });
 
+/*
+	Class: Bezier
+	
+	A set of <Point> instances joined by Bezier curves.
+	
+	Note that this class caches some of it's metrics. This means that two consecutive 
+	calls to resource-intensive methods wll return the same result, even if you manually changed
+	the points data between the two. Such cached methods are identified in the documentation
+	as "Caching methods". If you need to force these methods to update their values, call the
+	<reset> method.
+	
+	Some method descriptions may be inaccurate on a mathematical point of view. Feel free to
+	send fixes if needed.
+	
+	Most of this class was taken or inspired by Oliver Steele's bezier.js library.
+	(http://osteele.com/sources/javascript/docs/bezier)
+*/
 var Bezier = DotUtils.createClass({
+	/*
+		Constructor: initialize
+		
+		Initializes a new Bezier instance with the specified points
+		
+		Parameters:
+		
+			points - {array} An array of <Point> instances
+	*/
 	initialize: function(points) {
 		this.points = points;
 		this.order = points.length;
 	},
+	
+	/*
+		Field: pathCommands
+		
+		{array} Wrapper functions to work around Safari, in which, up to at least 2.0.3,
+		fn.apply isn't defined on the context primitives.
+	*/
+	pathCommands: [
+		null,
+		// This will have an effect if there's a line thickness or end cap.
+		function(x, y) {
+			this.lineTo(x + 0.001, y);
+		},
+		function(x, y) {
+			this.lineTo(x, y);
+		},
+		function(x1, y1, x2, y2) {
+			this.quadraticCurveTo(x1, y1, x2, y2);
+		},
+		function(x1, y1, x2, y2, x3, y3) {
+			this.bezierCurveTo(x1, y1, x2, y2, x3, y3);
+		}
+	],
+	
+
+	
+	/*
+		Method: reset
+		
+		Clears all the cached values of this instance.
+		
+		This method forces all the methods caching their results to fully recompute the next time they're called.
+		Such methods are marked as "caching methods" in the documentation.
+	*/
 	reset: function() {
 		with (Bezier.prototype) {
 			this.controlPolygonLength = controlPolygonLength;
@@ -1246,12 +1316,35 @@ var Bezier = DotUtils.createClass({
 			this.coefficients = coefficients;
 		}
 	},
+	
+	/*
+		Method: offset
+		
+		Translates all the points of this figure by the specified coordinates.
+		
+		Note that calling this method will clear this instance's cached values.
+		
+		Parameters:
+		
+			dx - {Number} The translation vector length along the X axis
+			dy - {Number} The translation vector length along the Y axis
+	*/
 	offset: function(dx, dy) {
 		for(var i = 0, l = this.points.length; i < l; ++i) {
 			this.points[i].offset(dx, dy);
 		}
 		this.reset();
 	},
+	
+	/*
+		Method: getBB
+		
+		Returns the bounding box of this shape
+		
+		Returns:
+			
+			{Rect} A <Rect> instance representing the Bezier bounding box
+	*/
 	getBB: function() {
 		if (!this.order) return undefined;
 		var l, t, r, b, p = this.points[0];
@@ -1267,6 +1360,23 @@ var Bezier = DotUtils.createClass({
 		var rect = new Rect(l, t, r, b);
 		return (this.getBB = function() {return rect;})();
 	},
+	
+	/*
+		Method: isPointInBB
+		
+		Indicates whether a specified point is inside or outside the Bezier's bounding box
+		
+		Parameters:
+		
+			x - {Number} The X coordinate of the tested point
+			y - {Number} The Y coordinate of the tested point
+			tolerance - {Number} Optionnal. The maximum distance between the tested point and the bounding
+						box edge before the point is considered outside. Default is 0.
+						
+		Returns:
+		
+			{Boolean} True if the point hits the bouding box, false otherwise.
+	*/
 	isPointInBB: function(x, y, tolerance) {
 		if (typeof tolerance === 'undefined') tolerance = 0;
 		var bb = this.getBB();
@@ -1276,6 +1386,23 @@ var Bezier = DotUtils.createClass({
 		}
 		return !(x < bb.l || x > bb.r || y < bb.t || y > bb.b);
 	},
+	
+	/*
+		Method: isPointOnBezier
+		
+		Determines whether a specified point is located inside or outside the Bezier's shape
+		
+		Parameters:
+		
+			x - {Number} The X coordinates of the tested point
+			y - {Number} The Y coordinates of the tested point
+			tolerance - {Number} Optionnal. The maximum distance between the tested point and the
+						shape's edge before the point is considered outside. Default is 0.
+		
+		Returns:
+		
+			{Boolean} True if the point hits the bouding box, false otherwise.
+	*/
 	isPointOnBezier: function(x, y, tolerance) {
 		if (typeof tolerance === 'undefined') tolerance = 0;
 		if (!this.isPointInBB(x, y, tolerance)) return false;
@@ -1299,7 +1426,17 @@ var Bezier = DotUtils.createClass({
 		}
 		return false;
 	},
-	// Based on Oliver Steele's bezier.js library.
+	
+	/*
+		Method: controlPolygonLength
+		
+		Returns the length of the most direct path between each point 
+		of the shape. This is a cached method.
+		
+		Returns:
+		
+			{Number} The cumulative distance between all the shape's points.
+	*/
 	controlPolygonLength: function() {
 		var len = 0;
 		for (var i = 1; i < this.order; ++i) {
@@ -1307,12 +1444,31 @@ var Bezier = DotUtils.createClass({
 		}
 		return (this.controlPolygonLength = function() {return len;})();
 	},
-	// Based on Oliver Steele's bezier.js library.
+
+	/*
+		Method: chordLength
+		
+		Returns the length of the chord. This is a cached method.
+		
+		Returns:
+		
+			{Number} The length of the chord, which is the distance 
+			between the forst and the last point of the shape.
+	*/
 	chordLength: function() {
 		var len = this.points[0].distanceFrom(this.points[this.order - 1]);
 		return (this.chordLength = function() {return len;})();
 	},
-	// From Oliver Steele's bezier.js library.
+	
+	/*
+		Method: triangle
+		
+		Return the Schneider triangle of successive midpoints.
+		This is a cached method.
+		
+		The left and right edges are the points of the two
+		Beziers that split this one at the midpoint.
+	*/
 	triangle: function() {
 		var upper = this.points;
 		var m = [upper];
@@ -1328,7 +1484,15 @@ var Bezier = DotUtils.createClass({
 		}
 		return (this.triangle = function() {return m;})();
 	},
-	// Based on Oliver Steele's bezier.js library.
+	
+	/*
+		Method: trangleAtT
+		
+		Returns the Schneider triangle with a specified parametric midpoint.
+		
+		Parameters :
+			t - {Number} Optionnal. Default is 0.5.
+	*/
 	triangleAtT: function(t) {
 		var s = 1 - t;
 		var upper = this.points;
@@ -1345,8 +1509,24 @@ var Bezier = DotUtils.createClass({
 		}
 		return m;
 	},
-	// Returns two beziers resulting from splitting this bezier at t=0.5.
-	// Based on Oliver Steele's bezier.js library.
+	
+	/*
+		Method: split
+		
+		Returns two beziers resulting from splitting this bezier at 
+		the specified parametric midpoint.
+		
+		Parameters:
+		
+			t - {Number} Optionnal. Default is 0.5
+			
+		Returns: 
+		
+			An object containing two properties :
+		
+				left - A <Bezier> instance containing the points on the left of the midpoint.
+				right - A <Bezier> instance containing the points on the right of the midpoint.
+	*/
 	split: function(t) {
 		if ('undefined' == typeof t) t = 0.5;
 		var m = (0.5 == t) ? this.triangle() : this.triangleAtT(t);
@@ -1358,18 +1538,52 @@ var Bezier = DotUtils.createClass({
 		}
 		return {left: new Bezier(leftPoints), right: new Bezier(rightPoints)};
 	},
-	// Returns a bezier which is the portion of this bezier from t1 to t2.
-	// Thanks to Peter Zin on comp.graphics.algorithms.
+	
+	/*
+		Method: mid
+		
+		Returns a bezier which is the portion of this bezier from t1 to t2.
+		
+		Thanks to Peter Zin on comp.graphics.algorithms.
+		
+		Parameters:
+		
+			t1 - {Number} The left limit of the fragment
+			t2 - {Number} The right limit of the fragment
+			
+		Returns:
+			
+			{Bezier} A <Bezier> instance containing the points 
+			between the specified left and right limits.
+	*/
 	mid: function(t1, t2) {
 		return this.split(t2).left.split(t1 / t2).right;
 	},
-	// Returns points (and their corresponding times in the bezier) that form
-	// an approximate polygonal representation of the bezier.
-	// Based on the algorithm described in Jeremy Gibbons' dashed.ps.gz
+	
+	/*
+		Method: chordPoints
+		
+		Returns points (and their corresponding times in the bezier) that form
+		an approximate polygonal representation of the bezier.
+		This is a cached method.
+	
+		Based on the algorithm described in Jeremy Gibbons' dashed.ps.gz
+		
+		Returns:
+		
+			{array} An array of objects containing the following properties :
+			
+				tStart - {Number}
+				tEnd - {Number}
+				dt - {Number} Distance between tStart and tEnd
+				p - {Point} A <Point> instance
+	*/
 	chordPoints: function() {
 		var p = [{tStart: 0, tEnd: 0, dt: 0, p: this.points[0]}].concat(this._chordPoints(0, 1));
 		return (this.chordPoints = function() {return p;})();
 	},
+	
+	// Internal.
 	_chordPoints: function(tStart, tEnd) {
 		var tolerance = 0.001;
 		var dt = tEnd - tStart;
@@ -1381,9 +1595,28 @@ var Bezier = DotUtils.createClass({
 			return halves.left._chordPoints(tStart, tMid).concat(halves.right._chordPoints(tMid, tEnd));
 		}
 	},
-	// Returns an array of times between 0 and 1 that mark the bezier evenly
-	// in space.
-	// Based in part on the algorithm described in Jeremy Gibbons' dashed.ps.gz
+	
+	/*
+		Method: markedEvery
+		
+		Returns an array of times between 0 and 1 that mark the bezier evenly
+		in space.
+		
+		Based in part on the algorithm described in Jeremy Gibbons' dashed.ps.gz
+		
+		Parameters:
+			distance - {Number} The distance between each point on the bezier
+			firstDistance - {Number} The distance between the first Bezier's 
+							point and the first returned point 
+		
+		Returns:
+		
+			{object} An object containing the following properties :
+			
+				times - {array} An array of times
+				nextDistance - {Number} The distance between the last returned 
+							   time and the end of the bezier shape
+	*/
 	markedEvery: function(distance, firstDistance) {
 		var nextDistance = firstDistance || distance;
 		var segments = this.chordPoints();
@@ -1415,8 +1648,20 @@ var Bezier = DotUtils.createClass({
 		}
 		return {times: times, nextDistance: nextDistance};
 	},
-	// Return the coefficients of the polynomials for x and y in t.
-	// From Oliver Steele's bezier.js library.
+
+	/*
+		Method: coefficients
+		
+		Return the coefficients of the polynomials for x and y in t.
+		This is a cached method.
+		
+		Returns:
+		
+			{object} An object containing the following properties :
+			
+				xs - {Number}
+				ys - {Number}
+	*/
 	coefficients: function() {
 		// This function deals with polynomials, represented as
 		// arrays of coefficients.  p[i] is the coefficient of n^i.
@@ -1455,8 +1700,23 @@ var Bezier = DotUtils.createClass({
 		var result = {xs: collapse(xps), ys: collapse(yps)};
 		return (this.coefficients = function() {return result;})();
 	},
+	
 	// Return the point at time t.
 	// From Oliver Steele's bezier.js library.
+	/*
+		Method: pointAtT
+		
+		Returns the point at a specified time along the path.
+		This is a cached method.
+		
+		Parameters:
+		
+			t - {Number} The parametric position along the path of the point
+			
+		Returns:
+		
+			{Point} The coordinates of the point
+	*/
 	pointAtT: function(t) {
 		var c = this.coefficients();
 		var cx = c.xs, cy = c.ys;
@@ -1475,8 +1735,20 @@ var Bezier = DotUtils.createClass({
 		}
 		return new Point(x, y);
 	},
-	// Render the Bezier to a WHATWG 2D canvas context.
-	// Based on Oliver Steele's bezier.js library.
+	
+	/*
+		Method: makePath
+		
+		Render the Bezier to a WHATWG 2D canvas context, 
+		using a solid line style.
+		
+		Parameters:
+		
+			ctx - {CanvasRenderingContext2D} A 2D canvas rendering context
+			moveTo - {Boolean} Optionnal. Determines if the shape should be 
+					drawn on the absolute position defined by its points (true)
+					or relatively to the current context position (false).
+	*/
 	makePath: function (ctx, moveTo) {
 		if ('undefined' == typeof moveTo) moveTo = true;
 		if (moveTo) ctx.moveTo(this.points[0].x, this.points[0].y);
@@ -1490,25 +1762,25 @@ var Bezier = DotUtils.createClass({
 			fn.apply(ctx, coords);
 		}
 	},
-	// Wrapper functions to work around Safari, in which, up to at least 2.0.3,
-	// fn.apply isn't defined on the context primitives.
-	// Based on Oliver Steele's bezier.js library.
-	pathCommands: [
-		null,
-		// This will have an effect if there's a line thickness or end cap.
-		function(x, y) {
-			this.lineTo(x + 0.001, y);
-		},
-		function(x, y) {
-			this.lineTo(x, y);
-		},
-		function(x1, y1, x2, y2) {
-			this.quadraticCurveTo(x1, y1, x2, y2);
-		},
-		function(x1, y1, x2, y2, x3, y3) {
-			this.bezierCurveTo(x1, y1, x2, y2, x3, y3);
-		}
-	],
+	
+	
+	/*
+		Method: makeDashedPath
+		
+		Render the Bezier to a WHATWG 2D canvas context, 
+		using a dashed line style.
+		
+		Parameters:
+		
+			ctx - {CanvasRenderingContext2D} A 2D canvas rendering context
+			dashLength - {Number} Length of a dash
+			firstDistance - {Number} Optionnal. Distance between the start 
+							of the path and the first point. Default is the
+							value of the dashLength parameter.
+			drawFirst - {Boolean} Optionnal. Specifies whether the distance
+						between the start of the path and the first point 
+						should be filled or empty. Default is true.
+	*/
 	makeDashedPath: function(ctx, dashLength, firstDistance, drawFirst) {
 		if (!firstDistance) firstDistance = dashLength;
 		if ('undefined' == typeof drawFirst) drawFirst = true;
@@ -1521,6 +1793,21 @@ var Bezier = DotUtils.createClass({
 		}
 		return {firstDistance: markedEvery.nextDistance, drawFirst: drawLast};
 	},
+
+	/*
+		Method: makeDashedPath
+		
+		Render the Bezier to a WHATWG 2D canvas context, 
+		using a dashed line style.
+		
+		Parameters:
+		
+			ctx - {CanvasRenderingContext2D} A 2D canvas rendering context
+			dotSpacing - {Number} Space between each dot
+			firstDistance - {Number} Optionnal. Distance between the start 
+							of the path and the first dot. Default is the
+							value of the dotSpacing parameter.
+	*/
 	makeDottedPath: function(ctx, dotSpacing, firstDistance) {
 		if (!firstDistance) firstDistance = dotSpacing;
 		var markedEvery = this.markedEvery(dotSpacing, firstDistance);
