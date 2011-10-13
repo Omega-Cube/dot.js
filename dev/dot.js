@@ -785,11 +785,24 @@ var Dot = DotUtils.createClass({
 		
 		Parameters:
 		
-			scale - {float} The new scale to apply. 1 is original size.
+			scale - {Number} The new scale to apply. 1 is original size.
 	*/
 	setScale: function(scale) {
 		this.scale = scale;
 	},
+	
+	/*
+		Method: getScale
+		
+		Gets the display scale of the graph
+		
+		Returns:
+		
+			{Number} The current graph scale, 1 being the graph's original size.
+	*/
+	getScale: function() {
+		return this.scale;
+	}
 	
 	/*
 		Method: setImagePath
