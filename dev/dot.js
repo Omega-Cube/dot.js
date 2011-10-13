@@ -179,6 +179,41 @@ DotUtils.extend = function(destination, source) {
   return destination;
 }
 
+/*
+
+*/
+DotUtils.addEventHandler = function(element, event, callback) {
+	if(element.addEventListener) {
+		if(event == 'mousewheel')
+			event = 'DOMMouseScroll';
+		element.addEventListener(event, callback, false);
+	}
+	else if(element.attachEvent)
+		element.attachEvent('on' + event, callback);
+}
+
+DotUtils.removeEventHandler = function(element, event, callback) {
+	if(element.removeEventHandler) {
+		if(event == 'mousewheel')
+			event = 'DOMMouseScroll';
+		element.removeEventHandler(event, callback, false);
+	}
+	else if(element.detachEvent)
+		element.detachEvent('on' + event, callback);
+		
+}
+
+DotUtils.preventDefault = function(event) {
+	if(event.preventDefault)
+		event.preventDefault();
+	if(event.stopPropagation)
+		event.stopPropagation();
+	event.cancelBubble = true;
+	event.cancel = true;
+	event.returnValue = true;
+	return false;
+}
+
 // As the original project's objet model is Prototype's one, this script actually 
 // contains some bits of Prototype required to support the existing Dot classes.
 
@@ -746,7 +781,8 @@ var Dot = DotUtils.createClass({
 		Parameters:
 		
 			container - {HTMLElement} A DOM element (typically a div) in which the graph will be placed
-			url - {string} The URL of the initial XDot file
+			url - {String} Optionnal. The URL of the initial XDot file. If not provided, the user
+				  should call the <load> method after creating the instance.
 			urlParams - {object} Optionnal GET parameters set when requesting the initial XDot file
 	*/
 	initialize: function(container, url, urlParams) {
@@ -759,12 +795,14 @@ var Dot = DotUtils.createClass({
 		this.container = document.getElementById(container);
 		this.container.style.position = 'relative';
 		this.container.appendChild(this.canvas);
+		
 		if (typeof G_vmlCanvasManager !== 'undefined') {
 			G_vmlCanvasManager.initElement(this.canvas);
 			this.canvas = document.getElementById(this.canvas.id);
 		}
 		this.container.appendChild(this.elements);
 		this.ctx = this.canvas.getContext('2d');
+		
 		this.scale = 1;
 		this.padding = 8;
 		this.dashLength = 6;
@@ -773,22 +811,37 @@ var Dot = DotUtils.createClass({
 		this.images = {};
 		this.numImages = 0;
 		this.numImagesFinished = 0;
+		this.graphLoaded = false;
+		this.allowMouseScrolling = true;
+		
 		if (url) {
 			this.load(url, urlParams);
 		}
+		
+		DotUtils.addEventHandler(this.container, 'mousewheel', DotUtils.bind(this, this._handleMouseWheel));
 	},
 	
 	/*
 		Method: setScale
 		
-		Sets the display scale of the graph
+		Sets the display scale of the graph.
+		
+		Calling this method will trigger a graph update.
 		
 		Parameters:
 		
 			scale - {Number} The new scale to apply. 1 is original size.
+					The value must be positive (and NOT zero). If the value
+					is negative or zero, it will be set to 0.001.
 	*/
 	setScale: function(scale) {
-		this.scale = scale;
+		this.scale = (+scale);
+		
+		if(this.scale <= 0)
+			this.scale = 0.001;
+		
+		if(this.graphLoaded)
+			this.draw();
 	},
 	
 	/*
@@ -802,6 +855,35 @@ var Dot = DotUtils.createClass({
 	*/
 	getScale: function() {
 		return this.scale;
+	},
+	
+	
+	/*
+		Method: setAllowMouseScrolling
+		
+		Sets a boolean indicating whether the graph scale is automatically 
+		changed by the user's mouse scroll.
+		
+		Parameters:
+			
+			value - {Boolean} True if the scale should be updated by the mouse's scroll wheel, false otherwise.
+	*/
+	setAllowMouseScrolling: function(value) {
+		this.allowMouseScrolling = !!value;
+	},
+	
+	/*
+		Method: getAllowMouseScrolling
+		
+		Gets a boolean indicating whether the graph scale is automatically 
+		changed by the user's mouse scroll.
+		
+		Returns:
+		
+			{Boolean} True if the mouse's scroll wheel updates the scale, false otherwise.
+	*/
+	getAllowMouseScrolling: function() {
+		return this.allowMouseScrolling;
 	},
 	
 	/*
@@ -998,6 +1080,8 @@ var Dot = DotUtils.createClass({
 			}
 		}
 		this.draw();
+		
+		this.graphLoaded = true;
 	},
 	
 	/*
@@ -1145,6 +1229,31 @@ var Dot = DotUtils.createClass({
 			if (a1 > b1) return 1;
 		}
 		return 0;
+	},
+	
+	// Handles the mouse wheel event
+	_handleMouseWheel: function(event) {
+		if(!this.allowMouseScrolling)
+			return;
+	
+		if(!event)
+			event = window.event;
+			
+		var delta = 0;
+		if(event.wheelDelta) {
+			delta = event.wheelDelta / 120;
+			if(window.opera)
+				delta = -delta;
+		}
+		else if(event.detail) {
+			delta = -event.detail / 3;
+		}
+		
+		if(delta) {
+			this.setScale(this.getScale() + delta / 10);
+		}
+		
+		return DotUtils.preventDefault(event);
 	},
 	
 	/*
