@@ -1,2 +1,3 @@
 #!/bin/sh
-NaturalDocs --input ../dev --output HTML . --project project
+MYDIR="$( cd "$( dirname "$0" )" && pwd )"
+NaturalDocs --input $MYDIR/../dev --output HTML $MYDIR --project $MYDIR/project

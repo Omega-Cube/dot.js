@@ -11,24 +11,38 @@ a replacement for sending graphs as bitmapped images and image maps.
 
 This project is based on a September 2011 fork from Ryan Schmidt's Canviz project (http://canviz.org)
 
+
 Installation
 ------------
 
 To use Dot.js in your website, follow these steps
-- Include Dot.js as a javascript import in your page
-- Optionnaly, you can also include x11colors.js (after Dot.js) for full colors support, 
-  and/or conditionnaliy include ExCanvas (before Dot.js) for IE6 compatibility.
+- Include dot.min.js as a javascript import in your page
+- Optionnaly, you can also include x11colors.min.js (after dot.min.js) for full colors support, 
+  and/or conditionnaly include ExCanvas (before dot.min.js) for IE6 compatibility.
   Node : Be careful not to include ExCanvas when the browser actually supports standard canvas.
   Dot.js will use ExCanvas as soon as it is available, without checking for alternate methods first.
 - Place a <div> tag on the page where you want to place your graph
 - In a javascript function, create an instance of the Dot class, specifying the container div and
   the url of the XDot file you want to display.
   
+
 Demo and testing
 ----------------
 
 If you want to run the demo (located in the "testing" folder) or just run some tests, all you have to do is
-copy Dot.js and x11colors.js from the "dev" or root directory, then run index.html in a browser.
+copy Dot.min.js and x11colors.min.js from the root directory, then run index.html in a browser.
+
+
+Changing the script
+-------------------
+
+If you need to change something in the existing script, the preferred way is to apply your
+changes in /dev/dot.js. When you are done, run the build.sh script in order to update the
+minimized scripts at the root of the project (and in the testing folder).
+Note that the build script requires a working internet connection. It is also recommended
+that you have NaturalDoc installed and available in your PATH, so the build script can
+update the documentation files as well.
+
 
 License
 -------

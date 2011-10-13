@@ -802,7 +802,7 @@ var Dot = DotUtils.createClass({
 	*/
 	getScale: function() {
 		return this.scale;
-	}
+	},
 	
 	/*
 		Method: setImagePath
