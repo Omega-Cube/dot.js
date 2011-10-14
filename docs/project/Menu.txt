@@ -46,7 +46,16 @@ Format: 1.52
 # --------------------------------------------------------------------------
 
 
+File: Bezier  (Primitives/Bezier.js)
+File: DotEdge  (DotEdge.js)
+File: DotEntity  (DotEntity.js)
+File: DotGraph  (DotGraph.js)
+File: DotImage  (DotImage.js)
+File: DotNode  (DotNode.js)
+File: DotTokenizer  (DotTokenizer.js)
 File: DotUtils  (dot.js)
+File: DotUtils  (DotUtils.js)
+File: Point  (Primitives/Point.js)
 
 Group: Index  {
 

@@ -9,8 +9,6 @@ DOT.JS is a library for drawing Graphviz graphs to a web browser canvas. It is
 designed to be used by web applications that need to display or edit graphs, as
 a replacement for sending graphs as bitmapped images and image maps.
 
-This project is based on a September 2011 fork from Ryan Schmidt's Canviz project (http://canviz.org)
-
 
 Installation
 ------------
@@ -51,3 +49,15 @@ Dot.js is provided under the terms of the MIT license. See the file LICENSE.txt.
 
 Dot.js supports the use of some other software, including the Excanvas library, and the Graphviz 
 software, which have licenses of their own.
+
+
+Disclaimers & Contributors
+--------------------------
+
+This project is based on a September 2011 fork from Ryan Schmidt's Canviz project (http://canviz.org)
+
+Canviz itself used Oliver Steele's Bezier.js library for Bezier path commputation (http://osteele.com/sources/javascript/docs/bezier)
+
+The build script uses Google's Closure Compiler (http://code.google.com/closure/compiler/)
+
+Technical documentation is formatted to work with the Natural Docs generator (http://www.naturaldocs.org/)

@@ -1,8 +1,22 @@
 #!/bin/sh
 MYDIR="$( cd "$( dirname "$0" )" && pwd )"
 
-#Download compiled code
-curl -d "compilation_level=SIMPLE_OPTIMIZATIONS" -d "output_format=text" -d "output_info=compiled_code" --data-urlencode "js_code@$MYDIR/dot.js" -o "$MYDIR/comp-out.js" http://closure-compiler.appspot.com/compile
+curl -d "compilation_level=SIMPLE_OPTIMIZATIONS" -d "output_format=text" -d "output_info=compiled_code" \
+--data-urlencode "js_code@$MYDIR/DotUtils.js" \
+--data-urlencode "js_code@$MYDIR/dot.js" \
+--data-urlencode "js_code@$MYDIR/DotTokenizer.js" \
+--data-urlencode "js_code@$MYDIR/DotEntity.js" \
+--data-urlencode "js_code@$MYDIR/DotNode.js" \
+--data-urlencode "js_code@$MYDIR/DotEdge.js" \
+--data-urlencode "js_code@$MYDIR/DotGraph.js" \
+--data-urlencode "js_code@$MYDIR/DotImage.js" \
+--data-urlencode "js_code@$MYDIR/Primitives/Point.js" \
+--data-urlencode "js_code@$MYDIR/Primitives/Bezier.js" \
+--data-urlencode "js_code@$MYDIR/Primitives/Path.js" \
+--data-urlencode "js_code@$MYDIR/Primitives/Polygon.js" \
+--data-urlencode "js_code@$MYDIR/Primitives/Rect.js" \
+--data-urlencode "js_code@$MYDIR/Primitives/Ellipse.js" \
+-o "$MYDIR/comp-out.js" http://closure-compiler.appspot.com/compile
 
 # Copy the code to root directory and test directory
 cp "$MYDIR/comp-out.js" "$MYDIR/../dot.min.js"
