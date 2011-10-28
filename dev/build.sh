@@ -20,12 +20,12 @@ curl -d "compilation_level=SIMPLE_OPTIMIZATIONS" -d "output_format=text" -d "out
 
 # Copy the code to root directory and test directory
 cp "$MYDIR/comp-out.js" "$MYDIR/../dot.min.js"
-mv "$MYDIR/comp-out.js" "$MYDIR/../testing/dot.min.js"
+cp "$MYDIR/comp-out.js" "$MYDIR/../testing/dot.min.js"
 
 #same with the x11 colors file
-curl -d "compilation_level=SIMPLE_OPTIMIZATIONS" -d "output_format=text" -d "output_info=compiled_code" --data-urlencode "js_code@$MYDIR/x11colors.js" -o "$MYDIR/comp-out.js" http://closure-compiler.appspot.com/compile
-cp "$MYDIR/comp-out.js" "$MYDIR/../x11colors.min.js"
-mv "$MYDIR/comp-out.js" "$MYDIR/../testing/x11colors.min.js"
+curl -d "compilation_level=SIMPLE_OPTIMIZATIONS" -d "output_format=text" -d "output_info=compiled_code" --data-urlencode "js_code@$MYDIR/x11colors.js" -o "$MYDIR/comp-out-colors.js" http://closure-compiler.appspot.com/compile
+cp "$MYDIR/comp-out-colors.js" "$MYDIR/../x11colors.min.js"
+cp "$MYDIR/comp-out-colors.js" "$MYDIR/../testing/x11colors.min.js"
 
 #Generate documentation
 "$MYDIR/../docs/build-doc.sh"

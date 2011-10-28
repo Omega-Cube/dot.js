@@ -60,6 +60,8 @@ var Dot = DotUtils.createClass({
 		this.ctx = this.canvas.getContext('2d');
 		
 		this.scale = 1;
+		this.minimumScale = 0.5;
+		this.maximumScale = 2;
 		this.padding = 8;
 		this.dashLength = 6;
 		this.dotSpacing = 4;
@@ -87,14 +89,26 @@ var Dot = DotUtils.createClass({
 		Parameters:
 		
 			scale - {Number} The new scale to apply. 1 is original size.
-					The value must be positive (and NOT zero). If the value
-					is negative or zero, it will be set to 0.001.
+					If the provided value is greater the maximumScale, the new scale
+					will be the maximumScale value. If it is smaller than minimumScale,
+					the new scale will be the minimumScale value.
+		
+		See Also:
+			
+			<setMaximumScale>
+			<getMaximumScale>
+			<setMinimumScale>
+			<getMinimumScale>
+			<getScale>
 	*/
 	setScale: function(scale) {
 		this.scale = (+scale);
 		
-		if(this.scale <= 0)
-			this.scale = 0.001;
+		if(this.scale < this.minimumScale)
+			this.scale = this.minimumScale;
+		
+		if(this.scale > this.maximumScale)
+			this.scale = this.maximumScale;
 		
 		if(this.graphLoaded)
 			this.draw();
@@ -108,11 +122,108 @@ var Dot = DotUtils.createClass({
 		Returns:
 		
 			{Number} The current graph scale, 1 being the graph's original size.
+			
+		See Also:
+		
+			<setScale>
 	*/
 	getScale: function() {
 		return this.scale;
 	},
 	
+	/*
+		Method: setMinimumScale
+		
+		Sets the minimum display scale of the graph.
+		The provided value cannot be smaller than 0.001.
+		
+		Parameters:
+			
+			value - {Number} The minimum possible scale.
+		
+		See Also:
+		
+			<getMinimumScale>
+			<setScale>
+	*/
+	setMinimumScale: function(value) {
+		value = (+value);
+	
+		if(value > this.maximumScale)
+			value = this.maximumScale;
+		
+		if(value <= 0)
+			value = 0.001;
+
+		this.minimumScale = value;
+
+		if(this.scale < value)
+			this.setScale(value);			
+	},
+	
+	/*
+		Method: getMinimumScale
+		
+		Gets the minimum scale of the graph.
+		
+		Returns:
+		
+			{Number} The minimum scale of the graph.
+		
+		See Also:
+			
+			<setMinimumScale>
+			<setScale>
+	*/
+	getMinimumScale: function() {
+		return this.minimumScale;
+	},
+	
+	/*
+		Method: setMaximumScale
+		
+		Sets the maximum display scale of the graph.
+		If the parameter is smaller than the current minimumValue,
+		the minimum value will be saved instead of the parameter.
+		
+		Parameters:
+			
+			value - {Number} The maximum possible scale.
+		
+		See Also:
+		
+			<getMaximumScale>
+			<setScale>
+	*/
+	setMaximumScale: function(value) {
+		value = (+value);
+		
+		if(value < this.minimumScale)
+			value = this.minimumScale;
+		
+		this.maximumScale = value;
+		
+		if(this.scale > this.maximumScale)
+			this.setScale(this.maximumScale);
+	},
+	
+	/*
+		Method: getMaximumScale
+		
+		Gets the current maximum scale of the graph.
+		
+		Returns:
+		
+			{Number} The current maximum scale of the graph.
+		
+		See Also:
+			
+			<setMaximumScale>
+			<setScale>
+	*/
+	getMaximumScale: function() {
+		return this.maximumScale;
+	},
 	
 	/*
 		Method: setAllowMouseScrolling
