@@ -17,17 +17,18 @@ var DotTokenizer = DotUtils.createClass({
 			str - {string} The XDot file contents
 	*/
 	initialize: function(str) {
-		this.str = str;
+		this._str = str;
 	},
+	
 	takeChars: function(num) {
 		if (!num) {
 			num = 1;
 		}
 		var tokens = new Array();
 		while (num--) {
-			var matches = this.str.match(/^(\S+)\s*/);
+			var matches = this._str.match(/^(\S+)\s*/);
 			if (matches) {
-				this.str = this.str.substr(matches[0].length);
+				this._str = this._str.substr(matches[0].length);
 				tokens.push(matches[1]);
 			} else {
 				tokens.push(false);
@@ -55,12 +56,12 @@ var DotTokenizer = DotUtils.createClass({
 	},
 	takeString: function() {
 		var byteCount = Number(this.takeChars()), charCount = 0, charCode;
-		if ('-' != this.str.charAt(0)) {
+		if ('-' != this._str.charAt(0)) {
 			return false;
 		}
 		while (0 < byteCount) {
 			++charCount;
-			charCode = this.str.charCodeAt(charCount);
+			charCode = this._str.charCodeAt(charCount);
 			if (0x80 > charCode) {
 				--byteCount;
 			} else if (0x800 > charCode) {
@@ -69,8 +70,8 @@ var DotTokenizer = DotUtils.createClass({
 				byteCount -= 3;
 			}
 		}
-		var str = this.str.substr(1, charCount);
-		this.str = this.str.substr(1 + charCount).replace(/^\s+/, '');
+		var str = this._str.substr(1, charCount);
+		this._str = this._str.substr(1 + charCount).replace(/^\s+/, '');
 		return str;
 	}
 });

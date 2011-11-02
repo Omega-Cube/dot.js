@@ -7,44 +7,72 @@
 	Base class for all entities found in XDot documents
 */
 var DotEntity = DotUtils.createClass({
+
+	/*
+		Constructor: initialize
+		
+		Initializes new instances of the DotEntity class
+		
+		Parameters:
+		
+			defaultAttrHashName - {String} The identifier in XDot files for this entity type
+			name - {String} The identifier of this entity instance
+			dot - {<Dot>} The dot instance to which this entity is attached
+			rootGraph - {<DotGraph>} The graph instance to whick this instance is attached
+			parentGraph - To be determined. Maybe the direct container element ?
+			immediateGraph - To be determined
+	*/
+	// TODO : Can't we refactor this to remove the dot param ? (infering it from the rootGraph or parentGraph)
 	initialize: function(defaultAttrHashName, name, dot, rootGraph, parentGraph, immediateGraph) {
-		this.defaultAttrHashName = defaultAttrHashName;
-		this.name = name;
-		this.dot = dot;
-		this.rootGraph = rootGraph;
-		this.parentGraph = parentGraph;
-		this.immediateGraph = immediateGraph;
-		this.attrs = {};
-		this.drawAttrs = {};
+		this._defaultAttrHashName = defaultAttrHashName;
+		this._name = name;
+		this._dot = dot;
+		this._rootGraph = rootGraph;
+		this._parentGraph = parentGraph;
+		this._immediateGraph = immediateGraph;
+		this._attrs = {};
+		this._drawAttrs = {};
 	},
-	initBB: function() {
+	_initBB: function() {
 		var matches = this.getAttr('pos').match(/([0-9.]+),([0-9.]+)/);
 		var x = Math.round(matches[1]);
-		var y = Math.round(this.dot.height - matches[2]);
-		this.bbRect = new Rect(x, y, x, y);
+		var y = Math.round(this._dot._height - matches[2]);
+		this._bbRect = new Rect(x, y, x, y);
 	},
+	
+	/*
+		Method: getAttr
+		
+		Gets the value of an XDot attribute of this element
+		
+		Parameters:
+		
+			attrName - {String} The attribute name
+			escString - {Boolean} (Optionnal) A boolean value indicating if the returned value should have
+						escaped substrings (like \T, \H, ...) replaced by actual values. Default is false.
+	*/
 	getAttr: function(attrName, escString) {
 		if (typeof escStrinng === 'undefined') escString = false;
-		var attrValue = this.attrs[attrName];
+		var attrValue = this._attrs[attrName];
 		if (typeof attrValue === 'undefined') {
-			var graph = this.parentGraph;
+			var graph = this._parentGraph;
 			while (typeof graph !== 'undefined') {
-				attrValue = graph[this.defaultAttrHashName][attrName];
+				attrValue = graph[this._defaultAttrHashName][attrName];
 				if (typeof attrValue === 'undefined') {
-					graph = graph.parentGraph;
+					graph = graph._parentGraph;
 				} else {
 					break;
 				}
 			}
 		}
 		if (attrValue && escString) {
-			attrValue = attrValue.replace(this.escStringMatchRe, function(match, p1) {
+			attrValue = attrValue.replace(this._escStringMatchRe, function(match, p1) {
 				switch (p1) {
 					case 'N': // fall through
-					case 'E': return this.name;
-					case 'T': return this.tailNode;
-					case 'H': return this.headNode;
-					case 'G': return this.immediateGraph.name;
+					case 'E': return this._name;
+					case 'T': return this._tailNode;
+					case 'H': return this._headNode;
+					case 'G': return this._immediateGraph._name;
 					case 'L': return this.getAttr('label', true);
 				}
 				return match;
@@ -52,15 +80,16 @@ var DotEntity = DotUtils.createClass({
 		}
 		return attrValue;
 	},
-	draw: function(ctx, ctxScale, redrawCanvasOnly) {
+	_draw: function(ctx, ctxScale, redrawCanvasOnly) {
 		var i, tokens, fillColor, strokeColor;
+		var fontSize = 12;
 		if (!redrawCanvasOnly) {
-			this.initBB();
+			this._initBB();
 			var bbDiv = document.createElement('div');
-			this.dot.elements.appendChild(bbDiv);
+			this._dot._elements.appendChild(bbDiv);
 		}
-		for(daKey in this.drawAttrs) {
-			var command = this.drawAttrs[daKey];
+		for(daKey in this._drawAttrs) {
+			var command = this._drawAttrs[daKey];
 //			debug(command);
 			var tokenizer = new DotTokenizer(command);
 			var token = tokenizer.takeChars();
@@ -74,7 +103,7 @@ var DotEntity = DotUtils.createClass({
 						case 'e': // unfilled ellipse
 							var filled = ('E' == token);
 							var cx = tokenizer.takeNumber();
-							var cy = this.dot.height - tokenizer.takeNumber();
+							var cy = this._dot._height - tokenizer.takeNumber();
 							var rx = tokenizer.takeNumber();
 							var ry = tokenizer.takeNumber();
 							var path = new Ellipse(cx, cy, rx, ry);
@@ -89,14 +118,14 @@ var DotEntity = DotUtils.createClass({
 							var path = new Path();
 							for (i = 2; i < 2 * numPoints; i += 2) {
 								path.addBezier([
-									new Point(tokens[i - 2], this.dot.height - tokens[i - 1]),
-									new Point(tokens[i],     this.dot.height - tokens[i + 1])
+									new Point(tokens[i - 2], this._dot._height - tokens[i - 1]),
+									new Point(tokens[i],     this._dot._height - tokens[i + 1])
 								]);
 							}
 							if (closed) {
 								path.addBezier([
-									new Point(tokens[2 * numPoints - 2], this.dot.height - tokens[2 * numPoints - 1]),
-									new Point(tokens[0],                  this.dot.height - tokens[1])
+									new Point(tokens[2 * numPoints - 2], this._dot._height - tokens[2 * numPoints - 1]),
+									new Point(tokens[0],                  this._dot._height - tokens[1])
 								]);
 							}
 							break;
@@ -108,27 +137,27 @@ var DotEntity = DotUtils.createClass({
 							var path = new Path();
 							for (i = 2; i < 2 * numPoints; i += 6) {
 								path.addBezier([
-									new Point(tokens[i - 2], this.dot.height - tokens[i - 1]),
-									new Point(tokens[i],     this.dot.height - tokens[i + 1]),
-									new Point(tokens[i + 2], this.dot.height - tokens[i + 3]),
-									new Point(tokens[i + 4], this.dot.height - tokens[i + 5])
+									new Point(tokens[i - 2], this._dot._height - tokens[i - 1]),
+									new Point(tokens[i],     this._dot._height - tokens[i + 1]),
+									new Point(tokens[i + 2], this._dot._height - tokens[i + 3]),
+									new Point(tokens[i + 4], this._dot._height - tokens[i + 5])
 								]);
 							}
 							break;
 						case 'I': // image
 							var l = tokenizer.takeNumber();
-							var b = this.dot.height - tokenizer.takeNumber();
+							var b = this._dot._height - tokenizer.takeNumber();
 							var w = tokenizer.takeNumber();
 							var h = tokenizer.takeNumber();
 							var src = tokenizer.takeString();
-							if (!this.dot.images[src]) {
-								this.dot.images[src] = new DotImage(this.dot, src);
+							if (!this._dot._images[src]) {
+								this._dot._images[src] = new DotImage(this._dot, src);
 							}
-							this.dot.images[src].draw(ctx, l, b - h, w, h);
+							this._dot._images[src].draw(ctx, l, b - h, w, h);
 							break;
 						case 'T': // text
-							var l = Math.round(ctxScale * tokenizer.takeNumber() + this.dot.padding);
-							var t = Math.round(ctxScale * this.dot.height + 2 * this.dot.padding - (ctxScale * (tokenizer.takeNumber() + this.dot.bbScale * fontSize) + this.dot.padding));
+							var l = Math.round(ctxScale * tokenizer.takeNumber() + this._dot._padding);
+							var t = Math.round(ctxScale * this._dot._height + 2 * this._dot._padding - (ctxScale * (tokenizer.takeNumber() + this._dot._bbScale * fontSize) + this._dot._padding));
 							var textAlign = tokenizer.takeNumber();
 							var textWidth = Math.round(ctxScale * tokenizer.takeNumber());
 							var str = tokenizer.takeString();
@@ -150,7 +179,7 @@ var DotEntity = DotUtils.createClass({
 								if (href) {
 									var target = this.getAttr('target', true) || '_self';
 									var tooltip = this.getAttr('tooltip', true) || this.getAttr('label', true);
-//									debug(this.name + ', href ' + href + ', target ' + target + ', tooltip ' + tooltip);
+//									debug(this._name + ', href ' + href + ', target ' + target + ', tooltip ' + tooltip);
 									text = document.createElement('a');
 									text.href = href;
 									text.target = target;
@@ -169,7 +198,7 @@ var DotEntity = DotUtils.createClass({
 								}
 								DotUtils.setHtml(text, str);
 								
-								text.style.fontSize = Math.round(fontSize * ctxScale * this.dot.bbScale) + 'px';
+								text.style.fontSize = Math.round(fontSize * ctxScale * this._dot._bbScale) + 'px';
 								text.style.fontFamily = fontFamily;
 								text.style.color = strokeColor.textColor;
 								text.style.position = 'absolute';
@@ -180,13 +209,13 @@ var DotEntity = DotUtils.createClass({
 
 								if (1 != strokeColor.opacity) 
 									text.style.opacity = strokeColor.opacity;
-								this.dot.elements.appendChild(text);
+								this._dot._elements.appendChild(text);
 							}
 							break;
 						case 'C': // set fill color
 						case 'c': // set pen color
 							var fill = ('C' == token);
-							var color = this.parseColor(tokenizer.takeString());
+							var color = this._parseColor(tokenizer.takeString());
 							if (fill) {
 								fillColor = color;
 								ctx.fillStyle = color.canvasColor;
@@ -241,33 +270,33 @@ var DotEntity = DotUtils.createClass({
 							return;
 					}
 					if (path) {
-						this.dot.drawPath(ctx, path, filled, dashStyle);
-						if (!redrawCanvasOnly) this.bbRect.expandToInclude(path.getBB());
+						this._dot._drawPath(ctx, path, filled, dashStyle);
+						if (!redrawCanvasOnly) this._bbRect.expandToInclude(path.getBB());
 						path = undefined;
 					}
 					token = tokenizer.takeChars();
 				}
 				if (!redrawCanvasOnly) {
 					bbDiv.style.position = 'absolute';
-					bbDiv.style.left = Math.round(ctxScale * this.bbRect.l + this.dot.padding) + 'px';
-					bbDiv.style.top = Math.round(ctxScale * this.bbRect.t + this.dot.padding) + 'px';
-					bbDiv.style.width = Math.round(ctxScale * this.bbRect.getWidth()) + 'px';
-					bbDiv.style.height = Math.round(ctxScale * this.bbRect.getHeight()) + 'px';
+					bbDiv.style.left = Math.round(ctxScale * this._bbRect.l + this._dot._padding) + 'px';
+					bbDiv.style.top = Math.round(ctxScale * this._bbRect.t + this._dot._padding) + 'px';
+					bbDiv.style.width = Math.round(ctxScale * this._bbRect.getWidth()) + 'px';
+					bbDiv.style.height = Math.round(ctxScale * this._bbRect.getHeight()) + 'px';
 				}
 				ctx.restore();
 			}
 		}
 	},
-	parseColor: function(color) {
+	_parseColor: function(color) {
 		var parsedColor = {opacity: 1};
 		// rgb/rgba
 		if (/^#(?:[0-9a-f]{2}\s*){3,4}$/i.test(color)) {
-			return this.dot.parseHexColor(color);
+			return this._dot._parseHexColor(color);
 		}
 		// hsv
 		var matches = color.match(/^(\d+(?:\.\d+)?)[\s,]+(\d+(?:\.\d+)?)[\s,]+(\d+(?:\.\d+)?)$/);
 		if (matches) {
-			parsedColor.canvasColor = parsedColor.textColor = this.dot.hsvToRgbColor(matches[1], matches[2], matches[3]);
+			parsedColor.canvasColor = parsedColor.textColor = this._dot._hsvToRgbColor(matches[1], matches[2], matches[3]);
 			return parsedColor;
 		}
 		// named color
@@ -292,12 +321,12 @@ var DotEntity = DotUtils.createClass({
 		if (colorSchemeData) {
 			var colorData = colorSchemeData[colorName];
 			if (colorData) {
-				return this.dot.parseHexColor('#' + colorData);
+				return this._dot._parseHexColor('#' + colorData);
 			}
 		}
 		colorData = Dot.prototype.colors['fallback'][colorName];
 		if (colorData) {
-			return this.dot.parseHexColor('#' + colorData);
+			return this._dot._parseHexColor('#' + colorData);
 		}
 		if (!colorSchemeData) {
 			debug('unknown color scheme ' + colorScheme);

@@ -8,9 +8,8 @@
 */
 var DotNode = DotUtils.createClass(DotEntity, {
 	initialize: function($super, name, dot, rootGraph, parentGraph) {
-		$super('nodeAttrs', name, dot, rootGraph, parentGraph, parentGraph);
+		$super('_nodeAttrs', name, dot, rootGraph, parentGraph, parentGraph);
 	}
 });
-DotUtils.extend(DotNode.prototype, {
-	escStringMatchRe: /\\([NGL])/g
-});
+
+DotNode.prototype.escStringMatchRe = /\\([NGL])/g;

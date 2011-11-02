@@ -5,40 +5,61 @@
 	Class: DotImage
 	
 	An image that can be embedded in a graph
+	
 */
 var DotImage = DotUtils.createClass({
+	/*
+		Constructor: initialize
+		
+		Initializes new instances of the DotGraph class
+		
+		Parameters:
+
+			dot - {Dot} The dot instance this image will be attached to
+			src - {String} The path the image can be found at. This path 
+					must be set relatively to the dot parameter's
+					ImagePath property.
+
+		See Also:
+	
+			<Dot.setImagePath>
+	*/
 	initialize: function(dot, src) {
-		this.dot = dot;
-		++this.dot.numImages;
-		this.finished = this.loaded = false;
-		this.img = new Image();
-		this.img.onload = this.onLoad.bind(this);
-		this.img.onerror = this.onFinish.bind(this);
-		this.img.onabort = this.onFinish.bind(this);
-		this.img.src = this.dot.imagePath + src;
+		this._dot = dot;
+		++this._dot.numImages;
+		this._finished = this._loaded = false;
+		this._img = new Image();
+		this._img.onload = this._onLoad.bind(this);
+		this._img.onerror = this._onFinish.bind(this);
+		this._img.onabort = this._onFinish.bind(this);
+		this._img.src = this._dot.imagePath + src;
 	},
-	onLoad: function() {
-		this.loaded = true;
+	
+	_onLoad: function() {
+		this._loaded = true;
 		this.onFinish();
 	},
-	onFinish: function() {
-		this.finished = true;
-		++this.dot.numImagesFinished;
-		if (this.dot.numImages == this.dot.numImagesFinished) {
-			this.dot.draw(true);
+	
+	_onFinish: function() {
+		this._finished = true;
+		++this._dot._numImagesFinished;
+		if (this._dot._numImages == this._dot._numImagesFinished) {
+			this._dot._draw(true);
 		}
 	},
-	draw: function(ctx, l, t, w, h) {
-		if (this.finished) {
-			if (this.loaded) {
-				ctx.drawImage(this.img, l, t, w, h);
+	
+	_draw: function(ctx, l, t, w, h) {
+		if (this._finished) {
+			if (this._loaded) {
+				ctx.drawImage(this._img, l, t, w, h);
 			} else {
-				debug('can\'t load image ' + this.img.src);
-				this.drawBrokenImage(ctx, l, t, w, h);
+				debug('can\'t load image ' + this._img.src);
+				this._drawBrokenImage(ctx, l, t, w, h);
 			}
 		}
 	},
-	drawBrokenImage: function(ctx, l, t, w, h) {
+	
+	_drawBrokenImage: function(ctx, l, t, w, h) {
 		ctx.save();
 		ctx.beginPath();
 		new Rect(l, t, l + w, t + w).draw(ctx);

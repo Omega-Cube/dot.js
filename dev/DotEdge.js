@@ -8,11 +8,10 @@
 */
 var DotEdge = DotUtils.createClass(DotEntity, {
 	initialize: function($super, name, dot, rootGraph, parentGraph, tailNode, headNode) {
-		$super('edgeAttrs', name, dot, rootGraph, parentGraph, parentGraph);
-		this.tailNode = tailNode;
-		this.headNode = headNode;
+		$super('_edgeAttrs', name, dot, rootGraph, parentGraph, parentGraph);
+		this._tailNode = tailNode;
+		this._headNode = headNode;
 	}
 });
-DotUtils.extend(DotEdge.prototype, {
-	escStringMatchRe: /\\([EGTHL])/g
-});
+
+DotEdge.prototype._escStringMatchRe = /\\([EGTHL])/g;

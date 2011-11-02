@@ -7,30 +7,43 @@
 	Represents an XDot Graph entity
 */
 var DotGraph = DotUtils.createClass(DotEntity, {
+
+	/*
+		Constructor: initialize
+		
+		Initializes new instances of the DotGraph class
+		
+		Parameters:
+		
+			$super - {Function} The parent class constructor
+			name - {String} The graph name
+			dot - {Dot} The associated Dot instance
+			rootgraph - To be determined
+			parentGraph - To be determined
+	*/
 	initialize: function($super, name, dot, rootGraph, parentGraph) {
-		$super('attrs', name, dot, rootGraph, parentGraph, this);
-		this.nodeAttrs = {};
-		this.edgeAttrs = {};
-		this.nodes = [];
-		this.edges = [];
-		this.subgraphs = [];
+		$super('_attrs', name, dot, rootGraph, parentGraph, this);
+		this._nodeAttrs = {};
+		this._edgeAttrs = {};
+		this._nodes = [];
+		this._edges = [];
+		this._subgraphs = [];
 	},
-	initBB: function() {
+	_initBB: function() {
 		var coords = this.getAttr('bb').split(',');
-		this.bbRect = new Rect(coords[0], this.dot.height - coords[1], coords[2], this.dot.height - coords[3]);
+		this._bbRect = new Rect(coords[0], this._dot._height - coords[1], coords[2], this._dot._height - coords[3]);
 	},
-	draw: function($super, ctx, ctxScale, redrawCanvasOnly) {
+	_draw: function($super, ctx, ctxScale, redrawCanvasOnly) {
 		$super(ctx, ctxScale, redrawCanvasOnly);
-		var entities = [this.subgraphs, this.nodes, this.edges];
+		var entities = [this._subgraphs, this._nodes, this._edges];
 		for(var i = 0, l = entities.length; i < l; ++i) {
 			var type = entities[i];
 			for(var j = 0, m = type.length; j < m; ++j) {
 				var ent = type[j];
-				ent.draw(ctx, ctxScale, redrawCanvasOnly);
+				ent._draw(ctx, ctxScale, redrawCanvasOnly);
 			};
 		};
 	}
 });
-DotUtils.extend(DotGraph.prototype, {
-	escStringMatchRe: /\\([GL])/g
-});
+
+DotGraph.prototype.escStringMatchRe = /\\([GL])/g;

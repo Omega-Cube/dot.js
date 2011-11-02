@@ -42,41 +42,43 @@ var Dot = DotUtils.createClass({
 			urlParams - {object} Optionnal GET parameters set when requesting the initial XDot file
 	*/
 	initialize: function(container, url, urlParams) {
-		this.canvas = document.createElement('canvas');
-		this.canvas.style.position = 'absolute';
-		if (!Dot.canvasCounter) Dot.canvasCounter = 0;
-		this.canvas.id = 'dot_canvas_' + ++Dot.canvasCounter;
-		this.elements = document.createElement('div');
-		this.elements.style.position = 'absolute';
-		this.container = document.getElementById(container);
-		this.container.style.position = 'relative';
-		this.container.appendChild(this.canvas);
+		this._canvas = document.createElement('canvas');
+		this._canvas.style.position = 'absolute';
+		if (!Dot._canvasCounter)
+			Dot._canvasCounter = 0;
+		this._canvas.id = 'dot_canvas_' + ++Dot._canvasCounter;
+		this._elements = document.createElement('div');
+		this._elements.style.position = 'absolute';
+		this._container = document.getElementById(container);
+		this._container.style.position = 'relative';
+		this._container.appendChild(this._canvas);
 		
 		if (typeof G_vmlCanvasManager !== 'undefined') {
-			G_vmlCanvasManager.initElement(this.canvas);
-			this.canvas = document.getElementById(this.canvas.id);
+			G_vmlCanvasManager.initElement(this._canvas);
+			this._canvas = document.getElementById(this._canvas.id);
 		}
-		this.container.appendChild(this.elements);
-		this.ctx = this.canvas.getContext('2d');
+		this._container.appendChild(this._elements);
+		this._ctx = this._canvas.getContext('2d');
 		
-		this.scale = 1;
-		this.minimumScale = 0.5;
-		this.maximumScale = 2;
-		this.padding = 8;
-		this.dashLength = 6;
-		this.dotSpacing = 4;
-		this.graphs = [];
-		this.images = {};
-		this.numImages = 0;
-		this.numImagesFinished = 0;
-		this.graphLoaded = false;
-		this.allowMouseScrolling = true;
+		this._scale = 1;
+		this._minimumScale = 0.5;
+		this._maximumScale = 2;
+		this._padding = 8;
+		this._dashLength = 6;
+		this._dotSpacing = 4;
+		this._graphs = [];
+		this._images = {};
+		this._numImages = 0;
+		this._numImagesFinished = 0;
+		this._imagePath = '';
+		this._graphLoaded = false;
+		this._allowMouseScrolling = true;
 		
 		if (url) {
 			this.load(url, urlParams);
 		}
 		
-		DotUtils.addEventHandler(this.container, 'mousewheel', DotUtils.bind(this, this._handleMouseWheel));
+		DotUtils.addEventHandler(this._container, 'mousewheel', DotUtils.bind(this, this._handleMouseWheel));
 	},
 	
 	/*
@@ -102,16 +104,16 @@ var Dot = DotUtils.createClass({
 			<getScale>
 	*/
 	setScale: function(scale) {
-		this.scale = (+scale);
+		this._scale = (+scale);
 		
-		if(this.scale < this.minimumScale)
-			this.scale = this.minimumScale;
+		if(this._scale < this._minimumScale)
+			this._scale = this._minimumScale;
 		
-		if(this.scale > this.maximumScale)
-			this.scale = this.maximumScale;
+		if(this._scale > this._maximumScale)
+			this._scale = this._maximumScale;
 		
-		if(this.graphLoaded)
-			this.draw();
+		if(this._graphLoaded)
+			this._draw();
 	},
 	
 	/*
@@ -128,7 +130,7 @@ var Dot = DotUtils.createClass({
 			<setScale>
 	*/
 	getScale: function() {
-		return this.scale;
+		return this._scale;
 	},
 	
 	/*
@@ -149,15 +151,15 @@ var Dot = DotUtils.createClass({
 	setMinimumScale: function(value) {
 		value = (+value);
 	
-		if(value > this.maximumScale)
-			value = this.maximumScale;
+		if(value > this._maximumScale)
+			value = this._maximumScale;
 		
 		if(value <= 0)
 			value = 0.001;
 
-		this.minimumScale = value;
+		this._minimumScale = value;
 
-		if(this.scale < value)
+		if(this._scale < value)
 			this.setScale(value);			
 	},
 	
@@ -176,7 +178,7 @@ var Dot = DotUtils.createClass({
 			<setScale>
 	*/
 	getMinimumScale: function() {
-		return this.minimumScale;
+		return this._minimumScale;
 	},
 	
 	/*
@@ -198,13 +200,13 @@ var Dot = DotUtils.createClass({
 	setMaximumScale: function(value) {
 		value = (+value);
 		
-		if(value < this.minimumScale)
-			value = this.minimumScale;
+		if(value < this._minimumScale)
+			value = this._minimumScale;
 		
-		this.maximumScale = value;
+		this._maximumScale = value;
 		
-		if(this.scale > this.maximumScale)
-			this.setScale(this.maximumScale);
+		if(this._scale > this._maximumScale)
+			this.setScale(this._maximumScale);
 	},
 	
 	/*
@@ -222,7 +224,7 @@ var Dot = DotUtils.createClass({
 			<setScale>
 	*/
 	getMaximumScale: function() {
-		return this.maximumScale;
+		return this._maximumScale;
 	},
 	
 	/*
@@ -236,7 +238,7 @@ var Dot = DotUtils.createClass({
 			value - {Boolean} True if the scale should be updated by the mouse's scroll wheel, false otherwise.
 	*/
 	setAllowMouseScrolling: function(value) {
-		this.allowMouseScrolling = !!value;
+		this._allowMouseScrolling = !!value;
 	},
 	
 	/*
@@ -250,7 +252,7 @@ var Dot = DotUtils.createClass({
 			{Boolean} True if the mouse's scroll wheel updates the scale, false otherwise.
 	*/
 	getAllowMouseScrolling: function() {
-		return this.allowMouseScrolling;
+		return this._allowMouseScrolling;
 	},
 	
 	/*
@@ -261,9 +263,32 @@ var Dot = DotUtils.createClass({
 		Parameters:
 		
 			imagePath - {String} The base directory containing the graph images.
+		
+		See Also:
+		
+			<getImagePath>
+			<DotImage>
 	*/
 	setImagePath: function(imagePath) {
-		this.imagePath = imagePath;
+		this._imagePath = imagePath;
+	},
+	
+	/*
+		Method: getImagePath
+		
+		Gets the base path of images used in the graph.
+		
+		Returns:
+		
+			{String} The path where graph images can be found.
+		
+		See Also:
+		
+			<setImagePath>
+			<DotImage>
+	*/
+	getImagePath: function() {
+		return this._imagePath;
 	},
 	
 	/*
@@ -304,16 +329,16 @@ var Dot = DotUtils.createClass({
 			xdot - {String} The contents of an XDot file
 	*/
 	parse: function(xdot) {
-		this.graphs = [];
-		this.width = 0;
-		this.height = 0;
-		this.maxWidth = false;
-		this.maxHeight = false;
-		this.bbEnlarge = false;
-		this.bbScale = 1;
-		this.dpi = 96;
-		this.bgcolor = {opacity: 1};
-		this.bgcolor.canvasColor = this.bgcolor.textColor = '#ffffff';
+		this._graphs = [];
+		this._width = 0;
+		this._height = 0;
+		this._maxWidth = false;
+		this._maxHeight = false;
+		this._bbEnlarge = false;
+		this._bbScale = 1;
+		this._dpi = 96;
+		this._bgcolor = {opacity: 1};
+		this._bgcolor.canvasColor = this._bgcolor.textColor = '#ffffff';
 		var lines = xdot.split(/\r?\n/);
 		var i = 0;
 		var line, lastChar, matches, rootGraph, isGraph, entity, entityName, attrs, attrName, attrValue, attrHash, drawAttrHash;
@@ -329,21 +354,21 @@ var Dot = DotUtils.createClass({
 				}
 //				debug(line);
 				if (0 == containers.length) {
-					matches = line.match(this.graphMatchRe);
+					matches = line.match(this._graphMatchRe);
 					if (matches) {
 						rootGraph = new DotGraph(matches[3], this);
 						containers.unshift(rootGraph);
-						containers[0].strict = (typeof matches[1] !== 'undefined');
-						containers[0].type = ('graph' == matches[2]) ? 'undirected' : 'directed';
-						containers[0].attrs['xdotversion'] = '1.0';
-						this.graphs.push(containers[0]);
+						containers[0]._strict = (typeof matches[1] !== 'undefined');
+						containers[0]._type = ('graph' == matches[2]) ? 'undirected' : 'directed';
+						containers[0]._attrs['xdotversion'] = '1.0';
+						this._graphs.push(containers[0]);
 //						debug('graph: ' + containers[0].name);
 					}
 				} else {
-					matches = line.match(this.subgraphMatchRe);
+					matches = line.match(this._subgraphMatchRe);
 					if (matches) {
 						containers.unshift(new DotGraph(matches[1], this, rootGraph, containers[0]));
-						containers[1].subgraphs.push(containers[0]);
+						containers[1]._subgraphs.push(containers[0]);
 //						debug('subgraph: ' + containers[0].name);
 					}
 				}
@@ -356,39 +381,39 @@ var Dot = DotUtils.createClass({
 						break;
 					}
 				} else {
-					matches = line.match(this.nodeMatchRe);
+					matches = line.match(this._nodeMatchRe);
 					if (matches) {
 						entityName = matches[2];
 						attrs = matches[5];
-						drawAttrHash = containers[0].drawAttrs;
+						drawAttrHash = containers[0]._drawAttrs;
 						isGraph = false;
 						switch (entityName) {
 							case 'graph':
-								attrHash = containers[0].attrs;
+								attrHash = containers[0]._attrs;
 								isGraph = true;
 								break;
 							case 'node':
-								attrHash = containers[0].nodeAttrs;
+								attrHash = containers[0]._nodeAttrs;
 								break;
 							case 'edge':
-								attrHash = containers[0].edgeAttrs;
+								attrHash = containers[0]._edgeAttrs;
 								break;
 							default:
 								entity = new DotNode(entityName, this, rootGraph, containers[0]);
-								attrHash = entity.attrs;
-								drawAttrHash = entity.drawAttrs;
-								containers[0].nodes.push(entity);
+								attrHash = entity._attrs;
+								drawAttrHash = entity._drawAttrs;
+								containers[0]._nodes.push(entity);
 						}
 //						debug('node: ' + entityName);
 					} else {
-						matches = line.match(this.edgeMatchRe);
+						matches = line.match(this._edgeMatchRe);
 						if (matches) {
 							entityName = matches[1];
 							attrs = matches[8];
 							entity = new DotEdge(entityName, this, rootGraph, containers[0], matches[2], matches[5]);
-							attrHash = entity.attrs;
-							drawAttrHash = entity.drawAttrs;
-							containers[0].edges.push(entity);
+							attrHash = entity._attrs;
+							drawAttrHash = entity._drawAttrs;
+							containers[0]._edges.push(entity);
 //							debug('edge: ' + entityName);
 						}
 					}
@@ -397,11 +422,11 @@ var Dot = DotUtils.createClass({
 							if (0 == attrs.length) {
 								break;
 							}
-							matches = attrs.match(this.attrMatchRe);
+							matches = attrs.match(this._attrMatchRe);
 							if (matches) {
 								attrs = attrs.substr(matches[0].length);
 								attrName = matches[1];
-								attrValue = this.unescape(matches[2]);
+								attrValue = this._unescape(matches[2]);
 								if (/^_.*draw_$/.test(attrName)) {
 									drawAttrHash[attrName] = attrValue;
 								} else {
@@ -412,27 +437,27 @@ var Dot = DotUtils.createClass({
 									switch (attrName) {
 										case 'bb':
 											var bb = attrValue.split(/,/);
-											this.width  = Number(bb[2]);
-											this.height = Number(bb[3]);
+											this._width  = Number(bb[2]);
+											this._height = Number(bb[3]);
 											break;
 										case 'bgcolor':
-											this.bgcolor = rootGraph.parseColor(attrValue);
+											this._bgcolor = rootGraph.parseColor(attrValue);
 											break;
 										case 'dpi':
-											this.dpi = attrValue;
+											this._dpi = attrValue;
 											break;
 										case 'size':
 											var size = attrValue.match(/^(\d+|\d*(?:\.\d+)),\s*(\d+|\d*(?:\.\d+))(!?)$/);
 											if (size) {
-												this.maxWidth  = 72 * Number(size[1]);
-												this.maxHeight = 72 * Number(size[2]);
-												this.bbEnlarge = ('!' == size[3]);
+												this._maxWidth  = 72 * Number(size[1]);
+												this._maxHeight = 72 * Number(size[2]);
+												this._bbEnlarge = ('!' == size[3]);
 											} else {
 												debug('can\'t parse size');
 											}
 											break;
 										case 'xdotversion':
-											if (0 > this.versionCompare(this.maxXdotVersion, attrHash['xdotversion'])) {
+											if (0 > this._versionCompare(this.maxXdotVersion, attrHash['xdotversion'])) {
 												debug('unsupported xdotversion ' + attrHash['xdotversion'] + '; this script currently supports up to xdotversion ' + this.maxXdotVersion);
 											}
 											break;
@@ -446,13 +471,13 @@ var Dot = DotUtils.createClass({
 				}
 			}
 		}
-		this.draw();
+		this._draw();
 		
-		this.graphLoaded = true;
+		this._graphLoaded = true;
 	},
 	
 	/*
-		Method: draw
+		Method: _draw
 		
 		Updates the graph graphics
 		
@@ -463,37 +488,37 @@ var Dot = DotUtils.createClass({
 			redrawCanvasOnly - {Boolean} Optionnal. Defines if the method should only redraw the canvas contents
 								or if the entire DOM tree should be updated. Default is false.
 	*/
-	draw: function(redrawCanvasOnly) {
+	_draw: function(redrawCanvasOnly) {
 		if (typeof redrawCanvasOnly === 'undefined') redrawCanvasOnly = false;
-		var ctxScale = this.scale * this.dpi / 72;
-		var width  = Math.round(ctxScale * this.width  + 2 * this.padding);
-		var height = Math.round(ctxScale * this.height + 2 * this.padding);
+		var ctxScale = this._scale * this._dpi / 72;
+		var width  = Math.round(ctxScale * this._width  + 2 * this._padding);
+		var height = Math.round(ctxScale * this._height + 2 * this._padding);
 		if (!redrawCanvasOnly) {
-			this.canvas.width  = width;
-			this.canvas.height = height;
-			this.canvas.style.width = width + 'px';
-			this.canvas.style.height = height + 'px';
-			this.container.style.width = width + 'px';
-			while (this.elements.firstChild) {
-				this.elements.removeChild(this.elements.firstChild);
+			this._canvas.width  = width;
+			this._canvas.height = height;
+			this._canvas.style.width = width + 'px';
+			this._canvas.style.height = height + 'px';
+			this._container.style.width = width + 'px';
+			while (this._elements.firstChild) {
+				this._elements.removeChild(this._elements.firstChild);
 			}
 		}
-		this.ctx.save();
-		this.ctx.lineCap = 'round';
-		this.ctx.fillStyle = this.bgcolor.canvasColor;
-		this.ctx.fillRect(0, 0, width, height);
-		this.ctx.translate(this.padding, this.padding);
-		this.ctx.scale(ctxScale, ctxScale);
-		this.graphs[0].draw(this.ctx, ctxScale, redrawCanvasOnly);
-		this.ctx.restore();
+		this._ctx.save();
+		this._ctx.lineCap = 'round';
+		this._ctx.fillStyle = this._bgcolor.canvasColor;
+		this._ctx.fillRect(0, 0, width, height);
+		this._ctx.translate(this._padding, this._padding);
+		this._ctx.scale(ctxScale, ctxScale);
+		this._graphs[0]._draw(this._ctx, ctxScale, redrawCanvasOnly);
+		this._ctx.restore();
 	},
 	
 	/*
-		Method: drawPath
+		Method: _drawPath
 		
 		Draws the specified path on the graph surface
 	*/
-	drawPath: function(ctx, path, filled, dashStyle) {
+	_drawPath: function(ctx, path, filled, dashStyle) {
 		if (filled) {
 			ctx.beginPath();
 			path.makePath(ctx);
@@ -503,13 +528,13 @@ var Dot = DotUtils.createClass({
 			switch (dashStyle) {
 				case 'dashed':
 					ctx.beginPath();
-					path.makeDashedPath(ctx, this.dashLength);
+					path.makeDashedPath(ctx, this._dashLength);
 					break;
 				case 'dotted':
 					var oldLineWidth = ctx.lineWidth;
 					ctx.lineWidth *= 2;
 					ctx.beginPath();
-					path.makeDottedPath(ctx, this.dotSpacing);
+					path.makeDottedPath(ctx, this._dotSpacing);
 					break;
 				case 'solid':
 				default:
@@ -524,11 +549,11 @@ var Dot = DotUtils.createClass({
 	},
 	
 	/*
-		Method: unescape
+		Method: _unescape
 		
 		Unescapes quotes in XDot files
 	*/
-	unescape: function(str) {
+	_unescape: function(str) {
 		var matches = str.match(/^"(.*)"$/);
 		if (matches) {
 			return matches[1].replace(/\\"/g, '"');
@@ -538,11 +563,11 @@ var Dot = DotUtils.createClass({
 	},
 	
 	/*
-		Method: parseHexColor
+		Method: _parseHexColor
 		
 		Parses RGBA colors from XDot files
 	*/
-	parseHexColor: function(color) {
+	_parseHexColor: function(color) {
 		var matches = color.match(/^#([0-9a-f]{2})\s*([0-9a-f]{2})\s*([0-9a-f]{2})\s*([0-9a-f]{2})?$/i);
 		if (matches) {
 			var canvasColor, textColor = '#' + matches[1] + matches[2] + matches[3], opacity = 1;
@@ -557,11 +582,11 @@ var Dot = DotUtils.createClass({
 	},
 	
 	/*
-		Method: hsvToRgbColor
+		Method: _hsvToRgbColor
 		
 		Converts H/S/V color values to a RGB css string
 	*/
-	hsvToRgbColor: function(h, s, v) {
+	_hsvToRgbColor: function(h, s, v) {
 		var i, f, p, q, t, r, g, b;
 		h *= 360;
 		i = Math.floor(h / 60) % 6;
@@ -581,11 +606,11 @@ var Dot = DotUtils.createClass({
 	},
 	
 	/*
-		Method: versionCompare
+		Method: _versionCompare
 		
 		Compares two XDot versions, telling if one is greater than the other.
 	*/
-	versionCompare: function(a, b) {
+	_versionCompare: function(a, b) {
 		a = a.split('.');
 		b = b.split('.');
 		var a1, b1;
@@ -600,7 +625,7 @@ var Dot = DotUtils.createClass({
 	
 	// Handles the mouse wheel event
 	_handleMouseWheel: function(event) {
-		if(!this.allowMouseScrolling)
+		if(!this._allowMouseScrolling)
 			return;
 	
 		if(!event)
@@ -624,22 +649,17 @@ var Dot = DotUtils.createClass({
 	},
 	
 	/*
-		Field: idMatch
+		Field: _idMatch
 		
 		A regular expression representing an alphanumeric string or a number or a double-quoted string or an HTML string
 	*/
-	idMatch: '([a-zA-Z\u0080-\uFFFF_][0-9a-zA-Z\u0080-\uFFFF_]*|-?(?:\\.\\d+|\\d+(?:\\.\\d*)?)|"(?:\\\\"|[^"])*"|<(?:<[^>]*>|[^<>]+?)+>)'
+	_idMatch: '([a-zA-Z\u0080-\uFFFF_][0-9a-zA-Z\u0080-\uFFFF_]*|-?(?:\\.\\d+|\\d+(?:\\.\\d*)?)|"(?:\\\\"|[^"])*"|<(?:<[^>]*>|[^<>]+?)+>)'
 });
 
-/*
-	Field: nodeIdMatch
-	
-	Regex looking up ID or ID:port or ID:compassPoint or ID:port:compassPoint
-*/
-Dot.prototype.nodeIdMatch = Dot.prototype.idMatch + '(?::' + Dot.prototype.idMatch + ')?(?::' + Dot.prototype.idMatch + ')?';
-Dot.prototype.graphMatchRe = new RegExp('^(strict\\s+)?(graph|digraph)(?:\\s+' + Dot.prototype.idMatch + ')?\\s*{$', 'i');
-Dot.prototype.subgraphMatchRe = new RegExp('^(?:subgraph\\s+)?' + Dot.prototype.idMatch + '?\\s*{$', 'i');
-Dot.prototype.nodeMatchRe = new RegExp('^(' + Dot.prototype.nodeIdMatch + ')\\s+\\[(.+)\\];$');
-Dot.prototype.edgeMatchRe = new RegExp('^(' + Dot.prototype.nodeIdMatch + '\\s*-[->]\\s*' + Dot.prototype.nodeIdMatch + ')\\s+\\[(.+)\\];$');
-Dot.prototype.attrMatchRe = new RegExp('^' + Dot.prototype.idMatch + '=' + Dot.prototype.idMatch + '(?:[,\\s]+|$)');
+Dot.prototype._nodeIdMatch = Dot.prototype._idMatch + '(?::' + Dot.prototype._idMatch + ')?(?::' + Dot.prototype._idMatch + ')?';
+Dot.prototype._graphMatchRe = new RegExp('^(strict\\s+)?(graph|digraph)(?:\\s+' + Dot.prototype._idMatch + ')?\\s*{$', 'i');
+Dot.prototype._subgraphMatchRe = new RegExp('^(?:subgraph\\s+)?' + Dot.prototype._idMatch + '?\\s*{$', 'i');
+Dot.prototype._nodeMatchRe = new RegExp('^(' + Dot.prototype._nodeIdMatch + ')\\s+\\[(.+)\\];$');
+Dot.prototype._edgeMatchRe = new RegExp('^(' + Dot.prototype._nodeIdMatch + '\\s*-[->]\\s*' + Dot.prototype._nodeIdMatch + ')\\s+\\[(.+)\\];$');
+Dot.prototype._attrMatchRe = new RegExp('^' + Dot.prototype._idMatch + '=' + Dot.prototype._idMatch + '(?:[,\\s]+|$)');
 
