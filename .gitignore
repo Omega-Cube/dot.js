@@ -5,3 +5,4 @@ testing/dot.js
 testing/x11colors.js
 *~
 dev/comp-out*
+dev/__pycache__
