@@ -67,13 +67,12 @@ var Bezier = DotUtils.createClass({
 		Such methods are marked as "caching methods" in the documentation.
 	*/
 	reset: function() {
-		with (Bezier.prototype) {
-			this.controlPolygonLength = controlPolygonLength;
-			this.chordLength = chordLength;
-			this.triangle = triangle;
-			this.chordPoints = chordPoints;
-			this.coefficients = coefficients;
-		}
+		var bp = Bezier.prototype;
+		this.controlPolygonLength = bp.controlPolygonLength;
+		this.chordLength = bp.chordLength;
+		this.triangle = bp.triangle;
+		this.chordPoints = bp.chordPoints;
+		this.coefficients = bp.coefficients;
 	},
 	
 	/*
