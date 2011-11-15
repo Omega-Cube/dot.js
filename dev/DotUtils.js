@@ -154,7 +154,13 @@ DotUtils.ajaxGet = function(url, params, onComplete) {
 		}
 	}
 	
-	xhr.open("GET", url, true);
+	try {
+		xhr.open("GET", url, true);
+	}
+	catch(e) {
+		xhr = new ActiveXObject('Microsoft.XMLHTTP');
+		xhr.open("GET", url, true);
+	}
 	xhr.onreadystatechange = handlereadystatechange;
 	xhr.send();
 }
@@ -185,7 +191,7 @@ DotUtils.extend = function(destination, source) {
 DotUtils.addEventHandler = function(element, event, callback) {
 	if(element.addEventListener) {
 		if(event == 'mousewheel')
-			event = 'DOMMouseScroll';
+			element.addEventListener('DOMMouseScroll', callback, false);
 		element.addEventListener(event, callback, false);
 	}
 	else if(element.attachEvent)
@@ -195,7 +201,7 @@ DotUtils.addEventHandler = function(element, event, callback) {
 DotUtils.removeEventHandler = function(element, event, callback) {
 	if(element.removeEventHandler) {
 		if(event == 'mousewheel')
-			event = 'DOMMouseScroll';
+			element.removeEventHandler('DOMMouseScroll', callback, false);
 		element.removeEventHandler(event, callback, false);
 	}
 	else if(element.detachEvent)
