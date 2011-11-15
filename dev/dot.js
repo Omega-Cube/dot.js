@@ -47,23 +47,32 @@ var Dot = DotUtils.createClass({
 		if (!Dot._canvasCounter)
 			Dot._canvasCounter = 0;
 		this._canvas.id = 'dot_canvas_' + ++Dot._canvasCounter;
-		this._elements = document.createElement('div');
-		this._elements.style.position = 'absolute';
+		//this._elements = document.createElement('div');
+		//this._elements.style.position = 'absolute';
 		this._container = document.getElementById(container);
 		this._container.style.position = 'relative';
+		this._container.style.overflow = 'hidden';
 		this._container.appendChild(this._canvas);
 		
+		this._cacheCanvas = document.createElement('canvas');
+
+		// TODO : Implement IE6 compatibility for the cache canvas
 		if (typeof G_vmlCanvasManager !== 'undefined') {
 			G_vmlCanvasManager.initElement(this._canvas);
 			this._canvas = document.getElementById(this._canvas.id);
 		}
-		this._container.appendChild(this._elements);
-		this._ctx = this._canvas.getContext('2d');
+		//this._container.appendChild(this._elements);
+		this._ctxScreen = this._canvas.getContext('2d');
+		this._ctxDraw = this._cacheCanvas.getContext('2d');
+		
+		this._isDirty = true;
 		
 		this._scale = 1;
 		this._minimumScale = 0.5;
 		this._maximumScale = 2;
 		this._padding = 8;
+		this._screenWidth = "auto";
+		this._screenHeight = "auto";
 		this._dashLength = 6;
 		this._dotSpacing = 4;
 		this._graphs = [];
@@ -292,6 +301,90 @@ var Dot = DotUtils.createClass({
 	},
 	
 	/*
+		Method: setWidth
+		
+		Sets the desired CSS width of the graph on the screen.
+		The value can be either a pixel value, suffixed with the 'px' string,
+		or a percentage width, suffixed by a '%' string. Any other values will
+		fall back to the "auto" string, which means the graph will always have
+		the size it needs to display all its contents.
+		
+		Parameters:
+		
+			value - {String} A valid CSS pixel or percentage size, or "auto"
+		
+		See Also:
+			<getWidth>
+	*/
+	setWidth: function(value) {
+		// Check the new size syntax
+		if(this._isValidCssSize(value)) {
+			this._screenWidth = value;
+			this._container.style.width = value;
+		}
+		else {
+			this._screenWidth = "auto";
+			this._container.style.width = ((this._width + (this._padding * 2)) * this._scale) + 'px';
+		}
+	},
+	
+	/*
+		Method: getWidth
+		
+		Gets the current screen width of the graph. If <setWidth> were
+		never called before, the original container element size is preserved,
+		and the method will return "original"
+		
+		Returns :
+			{String} A valid CSS pixel or percentage size, or "auto". Default is "auto"
+	*/
+	getWidth: function() {
+		return this._screenWidth;
+	},
+	
+	/*
+		Method: setHeight
+		
+		Sets the desired CSS height of the graph on the screen.
+		The value can be either a pixel value, suffixed with the 'px' string,
+		or a percentage height, suffixed by a '%' string. Any other values will
+		fall back to the "auto" string, which means the graph will always have
+		the size it needs to display all its contents.
+		
+		Parameters:
+		
+			value - {String} A valid CSS pixel or percentage size, or "auto"
+		
+		See Also:
+			<getHeight>
+	*/
+	setHeight: function(value) {
+		// Check the new size syntax
+		if(this._isValidCssSize(value)) {
+			this._screenHeight = value;
+			this._container.style.height = value;
+		}
+		else {
+			this._screenHeight = "auto";
+			this._container.style.height = ((this._height + (this._padding * 2)) * this._scale) + 'px';
+		}
+	},
+	
+	/*
+		Method: getHeight
+		
+		Gets the current screen height of the graph. If <setHeight> were
+		never called before, the original container element size is preserved,
+		and the method will return "original"
+		
+		Returns :
+			{String} A valid CSS pixel or percentage size, or "auto". Default is "auto"
+	*/
+	getHeight: function() {
+		return this._screenHeight;
+	},
+		
+	/*
 		Method: load
 		
 		Loads a new XDot source for the graph
@@ -335,7 +428,6 @@ var Dot = DotUtils.createClass({
 		this._maxWidth = false;
 		this._maxHeight = false;
 		this._bbEnlarge = false;
-		this._bbScale = 1;
 		this._dpi = 96;
 		this._bgcolor = {opacity: 1};
 		this._bgcolor.canvasColor = this._bgcolor.textColor = '#ffffff';
@@ -471,6 +563,7 @@ var Dot = DotUtils.createClass({
 				}
 			}
 		}
+		this._isDirty = true;
 		this._draw();
 		
 		this._graphLoaded = true;
@@ -490,29 +583,45 @@ var Dot = DotUtils.createClass({
 	*/
 	_draw: function(redrawCanvasOnly) {
 		if (typeof redrawCanvasOnly === 'undefined') redrawCanvasOnly = false;
+
 		var ctxScale = this._scale * this._dpi / 72;
+		var oWidth = Math.round((this._width  + (2 * this._padding)) * this._cacheScale);
+		var oHeight = Math.round((this._height  + (2 * this._padding)) * this._cacheScale);
 		var width  = Math.round(ctxScale * this._width  + 2 * this._padding);
 		var height = Math.round(ctxScale * this._height + 2 * this._padding);
-		if (!redrawCanvasOnly) {
-			this._canvas.width  = width;
-			this._canvas.height = height;
-			this._canvas.style.width = width + 'px';
-			this._canvas.style.height = height + 'px';
+		
+		this._canvas.width  = width;
+		this._canvas.height = height;
+		
+		if(this._screenWidth === "auto")
 			this._container.style.width = width + 'px';
-			while (this._elements.firstChild) {
-				this._elements.removeChild(this._elements.firstChild);
+		
+		if(this._screenHeight === "auto")
+			this._container.style.height = height + 'px';
+		
+		if(this._isDirty) {
+			if (!redrawCanvasOnly) {
+				this._cacheCanvas.width  = oWidth;
+				this._cacheCanvas.height = oHeight;
 			}
+			
+			this._ctxDraw.save();
+			this._ctxDraw.lineCap = 'round';
+			this._ctxDraw.fillStyle = this._bgcolor.canvasColor;
+			this._ctxScreen.fillStyle = this._bgcolor.canvasColor;
+			this._ctxDraw.fillRect(0, 0, oWidth, oHeight);
+			this._ctxDraw.translate(this._padding, this._padding);
+			//this._ctxDraw.scale(ctxScale, ctxScale);
+			this._graphs[0]._draw(this._ctxDraw, this._cacheScale, redrawCanvasOnly);
+			this._ctxDraw.restore();
+			
+			this._isDirty = false;
 		}
-		this._ctx.save();
-		this._ctx.lineCap = 'round';
-		this._ctx.fillStyle = this._bgcolor.canvasColor;
-		this._ctx.fillRect(0, 0, width, height);
-		this._ctx.translate(this._padding, this._padding);
-		this._ctx.scale(ctxScale, ctxScale);
-		this._graphs[0]._draw(this._ctx, ctxScale, redrawCanvasOnly);
-		this._ctx.restore();
+
+		
+		this._ctxScreen.fillRect(0, 0, this._canvas.width, this._canvas.height);
+		this._ctxScreen.drawImage(this._cacheCanvas, 0, 0, oWidth, oHeight, 0, 0, width, height);
 	},
-	
 	/*
 		Method: _drawPath
 		
@@ -648,6 +757,10 @@ var Dot = DotUtils.createClass({
 		return DotUtils.preventDefault(event);
 	},
 	
+	_isValidCssSize: function(size) {
+		return (typeof size === 'string' && this.prototype._cssSize.test(size));
+	},
+	
 	/*
 		Field: _idMatch
 		
@@ -662,4 +775,5 @@ Dot.prototype._subgraphMatchRe = new RegExp('^(?:subgraph\\s+)?' + Dot.prototype
 Dot.prototype._nodeMatchRe = new RegExp('^(' + Dot.prototype._nodeIdMatch + ')\\s+\\[(.+)\\];$');
 Dot.prototype._edgeMatchRe = new RegExp('^(' + Dot.prototype._nodeIdMatch + '\\s*-[->]\\s*' + Dot.prototype._nodeIdMatch + ')\\s+\\[(.+)\\];$');
 Dot.prototype._attrMatchRe = new RegExp('^' + Dot.prototype._idMatch + '=' + Dot.prototype._idMatch + '(?:[,\\s]+|$)');
-
+Dot.prototype._cssSize = new RegExp('^\\d+(\\.\\d+)?(px|%)$');
+Dot.prototype._cacheScale = 3; // The cached canvas scale.

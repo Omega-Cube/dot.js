@@ -83,10 +83,11 @@ var DotEntity = DotUtils.createClass({
 	_draw: function(ctx, ctxScale, redrawCanvasOnly) {
 		var i, tokens, fillColor, strokeColor;
 		var fontSize = 12;
+		ctx.lineWidth = ctxScale;
 		if (!redrawCanvasOnly) {
 			this._initBB();
-			var bbDiv = document.createElement('div');
-			this._dot._elements.appendChild(bbDiv);
+			//var bbDiv = document.createElement('div');
+			//this._dot._elements.appendChild(bbDiv);
 		}
 		for(daKey in this._drawAttrs) {
 			var command = this._drawAttrs[daKey];
@@ -102,10 +103,10 @@ var DotEntity = DotUtils.createClass({
 						case 'E': // filled ellipse
 						case 'e': // unfilled ellipse
 							var filled = ('E' == token);
-							var cx = tokenizer.takeNumber();
-							var cy = this._dot._height - tokenizer.takeNumber();
-							var rx = tokenizer.takeNumber();
-							var ry = tokenizer.takeNumber();
+							var cx = tokenizer.takeNumber() * ctxScale;
+							var cy = (this._dot._height - tokenizer.takeNumber()) * ctxScale;
+							var rx = tokenizer.takeNumber() * ctxScale;
+							var ry = tokenizer.takeNumber() * ctxScale;
 							var path = new Ellipse(cx, cy, rx, ry);
 							break;
 						case 'P': // filled polygon
@@ -118,14 +119,14 @@ var DotEntity = DotUtils.createClass({
 							var path = new Path();
 							for (i = 2; i < 2 * numPoints; i += 2) {
 								path.addBezier([
-									new Point(tokens[i - 2], this._dot._height - tokens[i - 1]),
-									new Point(tokens[i],     this._dot._height - tokens[i + 1])
+									new Point(tokens[i - 2] * ctxScale, (this._dot._height - tokens[i - 1]) * ctxScale),
+									new Point(tokens[i] * ctxScale, (this._dot._height - tokens[i + 1]) * ctxScale)
 								]);
 							}
 							if (closed) {
 								path.addBezier([
-									new Point(tokens[2 * numPoints - 2], this._dot._height - tokens[2 * numPoints - 1]),
-									new Point(tokens[0],                  this._dot._height - tokens[1])
+									new Point(tokens[2 * numPoints - 2] * ctxScale, (this._dot._height - tokens[2 * numPoints - 1]) * ctxScale),
+									new Point(tokens[0] * ctxScale, (this._dot._height - tokens[1]) * ctxScale)
 								]);
 							}
 							break;
@@ -137,18 +138,18 @@ var DotEntity = DotUtils.createClass({
 							var path = new Path();
 							for (i = 2; i < 2 * numPoints; i += 6) {
 								path.addBezier([
-									new Point(tokens[i - 2], this._dot._height - tokens[i - 1]),
-									new Point(tokens[i],     this._dot._height - tokens[i + 1]),
-									new Point(tokens[i + 2], this._dot._height - tokens[i + 3]),
-									new Point(tokens[i + 4], this._dot._height - tokens[i + 5])
+									new Point(tokens[i - 2] * ctxScale, (this._dot._height - tokens[i - 1]) * ctxScale),
+									new Point(tokens[i] * ctxScale,     (this._dot._height - tokens[i + 1]) * ctxScale),
+									new Point(tokens[i + 2] * ctxScale, (this._dot._height - tokens[i + 3]) * ctxScale),
+									new Point(tokens[i + 4] * ctxScale, (this._dot._height - tokens[i + 5]) * ctxScale)
 								]);
 							}
 							break;
 						case 'I': // image
-							var l = tokenizer.takeNumber();
-							var b = this._dot._height - tokenizer.takeNumber();
-							var w = tokenizer.takeNumber();
-							var h = tokenizer.takeNumber();
+							var l = tokenizer.takeNumber() * ctxScale;
+							var b = (this._dot._height - tokenizer.takeNumber()) * ctxScale;
+							var w = tokenizer.takeNumber() * ctxScale;
+							var h = tokenizer.takeNumber() * ctxScale;
 							var src = tokenizer.takeString();
 							if (!this._dot._images[src]) {
 								this._dot._images[src] = new DotImage(this._dot, src);
@@ -156,8 +157,9 @@ var DotEntity = DotUtils.createClass({
 							this._dot._images[src].draw(ctx, l, b - h, w, h);
 							break;
 						case 'T': // text
-							var l = Math.round(ctxScale * tokenizer.takeNumber() + this._dot._padding);
-							var t = Math.round(ctxScale * this._dot._height + 2 * this._dot._padding - (ctxScale * (tokenizer.takeNumber() + this._dot._bbScale * fontSize) + this._dot._padding));
+							// TODO : Texts seems better aligned without that padding. Should investigate why
+							var l = Math.round(ctxScale * tokenizer.takeNumber()/* + this._dot._padding*/);
+							var t = Math.round(this._dot._height /* + 2 * this._dot._padding */ - tokenizer.takeNumber() /*- fontSize*/) * ctxScale;
 							var textAlign = tokenizer.takeNumber();
 							var textWidth = Math.round(ctxScale * tokenizer.takeNumber());
 							var str = tokenizer.takeString();
@@ -174,6 +176,10 @@ var DotEntity = DotUtils.createClass({
 										str = str.replace(/  +/, spaces);
 									}
 								} while (matches);
+								/*
+								 * This original version of the algorithm used <span> elements to display text on graphs
+								 * For performance reasons I choose to replace that by pure canvas text rendering.
+								 * This will remove the link feature until I put it back on.
 								var text;
 								var href = this.getAttr('URL', true) || this.getAttr('href', true);
 								if (href) {
@@ -198,18 +204,25 @@ var DotEntity = DotUtils.createClass({
 								}
 								DotUtils.setHtml(text, str);
 								
-								text.style.fontSize = Math.round(fontSize * ctxScale * this._dot._bbScale) + 'px';
+								text.style.fontSize = Math.round(fontSize * ctxScale) + 'px';
 								text.style.fontFamily = fontFamily;
 								text.style.color = strokeColor.textColor;
 								text.style.position = 'absolute';
 								text.style.textAlign = (-1 == textAlign) ? 'left' : (1 == textAlign) ? 'right' : 'center';
-								text.style.left = (l - (1 + textAlign) * textWidth) + 'px';
-								text.style.top = t + 'px';
+								text.style.left = (((l - (1 + textAlign) * textWidth) / (this._dot._width + this._dot._padding * 2)) * 100) + '%';
+								text.style.top = ((t / (this._dot._height + this._dot._padding * 2)) * 100) + '%';
 								text.style.width = (2 * textWidth) + 'px';
+								text._dotjs_originalSize = fontSize;
 
 								if (1 != strokeColor.opacity) 
 									text.style.opacity = strokeColor.opacity;
 								this._dot._elements.appendChild(text);
+								*/
+								
+								ctx.font = "normal normal normal " + fontSize + "px " + fontFamily;
+								ctx.textAlign = (-1 == textAlign) ? 'left' : (1 == textAlign) ? 'right' : 'center';
+								ctx.fillStyle = strokeColor.textColor;
+								ctx.fillText(str, l, t);
 							}
 							break;
 						case 'C': // set fill color
@@ -225,7 +238,7 @@ var DotEntity = DotUtils.createClass({
 							}
 							break;
 						case 'F': // set font
-							fontSize = tokenizer.takeNumber();
+							fontSize = tokenizer.takeNumber() * ctxScale;
 							fontFamily = tokenizer.takeString();
 							switch (fontFamily) {
 								case 'Times-Roman':
@@ -254,12 +267,12 @@ var DotEntity = DotUtils.createClass({
 									dashStyle = style;
 									break;
 								case 'bold':
-									ctx.lineWidth = 2;
+									ctx.lineWidth = 2 * ctxScale;
 									break;
 								default:
 									matches = style.match(/^setlinewidth\((.*)\)$/);
 									if (matches) {
-										ctx.lineWidth = Number(matches[1]);
+										ctx.lineWidth = Number(matches[1]) * ctxScale;
 									} else {
 										debug('unknown style ' + style);
 									}
@@ -276,6 +289,7 @@ var DotEntity = DotUtils.createClass({
 					}
 					token = tokenizer.takeChars();
 				}
+					/*
 				if (!redrawCanvasOnly) {
 					bbDiv.style.position = 'absolute';
 					bbDiv.style.left = Math.round(ctxScale * this._bbRect.l + this._dot._padding) + 'px';
@@ -283,6 +297,7 @@ var DotEntity = DotUtils.createClass({
 					bbDiv.style.width = Math.round(ctxScale * this._bbRect.getWidth()) + 'px';
 					bbDiv.style.height = Math.round(ctxScale * this._bbRect.getHeight()) + 'px';
 				}
+					*/
 				ctx.restore();
 			}
 		}
