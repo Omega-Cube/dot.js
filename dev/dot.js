@@ -237,7 +237,7 @@ var Dot = DotUtils.createClass({
 	},
 	
 	/*
-		Method: setAllowMouseScrolling
+		Method: setAllowMouseZooming
 		
 		Sets a boolean indicating whether the graph scale is automatically 
 		changed by the user's mouse scroll.
@@ -245,13 +245,18 @@ var Dot = DotUtils.createClass({
 		Parameters:
 			
 			value - {Boolean} True if the scale should be updated by the mouse's scroll wheel, false otherwise.
+		
+		See Also:
+		
+			<getAllowMouseZooming>
+			<setScale>
 	*/
-	setAllowMouseScrolling: function(value) {
+	setAllowMouseZooming: function(value) {
 		this._allowMouseScrolling = !!value;
 	},
 	
 	/*
-		Method: getAllowMouseScrolling
+		Method: getAllowMouseZooming
 		
 		Gets a boolean indicating whether the graph scale is automatically 
 		changed by the user's mouse scroll.
@@ -259,8 +264,13 @@ var Dot = DotUtils.createClass({
 		Returns:
 		
 			{Boolean} True if the mouse's scroll wheel updates the scale, false otherwise.
+		
+		See Also:
+		
+			<setAllowMouseZooming>
+			<setScale>
 	*/
-	getAllowMouseScrolling: function() {
+	getAllowMouseZooming: function() {
 		return this._allowMouseScrolling;
 	},
 	

@@ -91,6 +91,10 @@ function graph_url() {
 	var lName = document.getElementById('graph_name');
 	return 'graphs/' + lEngine.options[lEngine.selectedIndex].value + '/' + lName.options[lName.selectedIndex].value;
 }
+function switch_wheel_zoom() {
+	dot.setAllowMouseZooming(!dot.getAllowMouseZooming());
+}
+
 // --></script>
 </head>
 <body onload="init();">
@@ -118,6 +122,9 @@ function graph_url() {
 <input type="button" class="little_button" value="-" onclick="change_scale(1)" />
 <select name="graph_scale" id="graph_scale" onchange="set_graph_scale()"></select>
 <input type="button" class="little_button" value="+" onclick="change_scale(-1)" />
+<br />
+<input type="checkbox" id="wheelMagnification" checked="checked" />
+<label for="wheelMagnification" onclick="switch_wheel_zoom()">Mouse wheel zoom control</label>
 </fieldset>
 
 <fieldset>
