@@ -768,7 +768,7 @@ var Dot = DotUtils.createClass({
 	},
 	
 	_isValidCssSize: function(size) {
-		return (typeof size === 'string' && this.prototype._cssSize.test(size));
+		return (typeof size === 'string' && this._cssSize.test(size));
 	},
 	
 	/*
