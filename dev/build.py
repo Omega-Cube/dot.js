@@ -46,6 +46,9 @@ if __name__ == "__main__":
         basePath + "/Primitives/Rect.js",
         basePath + "/Primitives/Ellipse.js"
         ]
+        
+    if debug:
+        mainFiles.append(basePath + "/debug.js")
 
     colorFiles = basePath + "/x11colors.js"
 
@@ -66,5 +69,4 @@ if __name__ == "__main__":
     
     docDir = os.path.abspath(basePath + "/../docs")
     command = 'NaturalDocs --input "' + basePath + '" --output HTML "' + docDir + '" --project "' + os.path.abspath(docDir + '/project') + '"'
-    print(command)
     subprocess.call(command, shell=True)
