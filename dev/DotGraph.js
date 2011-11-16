@@ -33,14 +33,14 @@ var DotGraph = DotUtils.createClass(DotEntity, {
 		var coords = this.getAttr('bb').split(',');
 		this._bbRect = new Rect(coords[0], this._dot._height - coords[1], coords[2], this._dot._height - coords[3]);
 	},
-	_draw: function($super, ctx, ctxScale, redrawCanvasOnly) {
-		$super(ctx, ctxScale, redrawCanvasOnly);
+	_draw: function($super, ctx, ctxScale) {
+		$super(ctx, ctxScale);
 		var entities = [this._subgraphs, this._nodes, this._edges];
 		for(var i = 0, l = entities.length; i < l; ++i) {
 			var type = entities[i];
 			for(var j = 0, m = type.length; j < m; ++j) {
 				var ent = type[j];
-				ent._draw(ctx, ctxScale, redrawCanvasOnly);
+				ent._draw(ctx, ctxScale);
 			};
 		};
 	}

@@ -585,15 +585,8 @@ var Dot = DotUtils.createClass({
 		Updates the graph graphics
 		
 		This method is generally triggered from other methods, so you should not have to call it explicitely
-		
-		Parameters:
-		
-			redrawCanvasOnly - {Boolean} Optionnal. Defines if the method should only redraw the canvas contents
-								or if the entire DOM tree should be updated. Default is false.
 	*/
-	_draw: function(redrawCanvasOnly) {
-		if (typeof redrawCanvasOnly === 'undefined') redrawCanvasOnly = false;
-
+	_draw: function() {
 		var ctxScale = this._scale * this._dpi / 72;
 		var oWidth = Math.round((this._width  + (2 * this._padding)) * this._cacheScale);
 		var oHeight = Math.round((this._height  + (2 * this._padding)) * this._cacheScale);
@@ -610,10 +603,8 @@ var Dot = DotUtils.createClass({
 			this._container.style.height = height + 'px';
 		
 		if(this._isDirty) {
-			if (!redrawCanvasOnly) {
-				this._cacheCanvas.width  = oWidth;
-				this._cacheCanvas.height = oHeight;
-			}
+			this._cacheCanvas.width  = oWidth;
+			this._cacheCanvas.height = oHeight;
 			
 			this._ctxDraw.save();
 			this._ctxDraw.lineCap = 'round';
@@ -622,7 +613,7 @@ var Dot = DotUtils.createClass({
 			this._ctxDraw.fillRect(0, 0, oWidth, oHeight);
 			this._ctxDraw.translate(this._padding, this._padding);
 			//this._ctxDraw.scale(ctxScale, ctxScale);
-			this._graphs[0]._draw(this._ctxDraw, this._cacheScale, redrawCanvasOnly);
+			this._graphs[0]._draw(this._ctxDraw, this._cacheScale);
 			this._ctxDraw.restore();
 			
 			this._isDirty = false;

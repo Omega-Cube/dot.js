@@ -80,15 +80,12 @@ var DotEntity = DotUtils.createClass({
 		}
 		return attrValue;
 	},
-	_draw: function(ctx, ctxScale, redrawCanvasOnly) {
+	_draw: function(ctx, ctxScale) {
 		var i, tokens, fillColor, strokeColor;
 		var fontSize = 12;
 		ctx.lineWidth = ctxScale;
-		if (!redrawCanvasOnly) {
-			this._initBB();
-			//var bbDiv = document.createElement('div');
-			//this._dot._elements.appendChild(bbDiv);
-		}
+		this._initBB();
+
 		for(daKey in this._drawAttrs) {
 			var command = this._drawAttrs[daKey];
 //			debug(command);
@@ -163,8 +160,7 @@ var DotEntity = DotUtils.createClass({
 							var textAlign = tokenizer.takeNumber();
 							var textWidth = Math.round(ctxScale * tokenizer.takeNumber());
 							var str = tokenizer.takeString();
-							if (!redrawCanvasOnly && !/^\s*$/.test(str)) {
-//								debug('draw text ' + str + ' ' + l + ' ' + t + ' ' + textAlign + ' ' + textWidth);
+							if (!/^\s*$/.test(str)) {
 								str = DotUtils.escapeHtml(str);
 								do {
 									matches = str.match(/ ( +)/);
@@ -176,48 +172,6 @@ var DotEntity = DotUtils.createClass({
 										str = str.replace(/  +/, spaces);
 									}
 								} while (matches);
-								/*
-								 * This original version of the algorithm used <span> elements to display text on graphs
-								 * For performance reasons I choose to replace that by pure canvas text rendering.
-								 * This will remove the link feature until I put it back on.
-								var text;
-								var href = this.getAttr('URL', true) || this.getAttr('href', true);
-								if (href) {
-									var target = this.getAttr('target', true) || '_self';
-									var tooltip = this.getAttr('tooltip', true) || this.getAttr('label', true);
-//									debug(this._name + ', href ' + href + ', target ' + target + ', tooltip ' + tooltip);
-									text = document.createElement('a');
-									text.href = href;
-									text.target = target;
-									text.title = tooltip;
-									var events = ['onclick', 'onmousedown', 'onmouseup', 'onmouseover', 'onmousemove', 'onmouseout'];
-									for(var attrName in events) {
-										var attrValue = this.getAttr(attrName, true);
-										if (attrValue) {
-											text.setAttribute(attrName, attrValue);
-										}
-									}
-
-									text.style.textDecoration = 'none';
-								} else {
-									text = document.createElement('span');
-								}
-								DotUtils.setHtml(text, str);
-								
-								text.style.fontSize = Math.round(fontSize * ctxScale) + 'px';
-								text.style.fontFamily = fontFamily;
-								text.style.color = strokeColor.textColor;
-								text.style.position = 'absolute';
-								text.style.textAlign = (-1 == textAlign) ? 'left' : (1 == textAlign) ? 'right' : 'center';
-								text.style.left = (((l - (1 + textAlign) * textWidth) / (this._dot._width + this._dot._padding * 2)) * 100) + '%';
-								text.style.top = ((t / (this._dot._height + this._dot._padding * 2)) * 100) + '%';
-								text.style.width = (2 * textWidth) + 'px';
-								text._dotjs_originalSize = fontSize;
-
-								if (1 != strokeColor.opacity) 
-									text.style.opacity = strokeColor.opacity;
-								this._dot._elements.appendChild(text);
-								*/
 								
 								ctx.font = "normal normal normal " + fontSize + "px " + fontFamily;
 								ctx.textAlign = (-1 == textAlign) ? 'left' : (1 == textAlign) ? 'right' : 'center';
@@ -284,20 +238,12 @@ var DotEntity = DotUtils.createClass({
 					}
 					if (path) {
 						this._dot._drawPath(ctx, path, filled, dashStyle);
-						if (!redrawCanvasOnly) this._bbRect.expandToInclude(path.getBB());
+						 this._bbRect.expandToInclude(path.getBB());
 						path = undefined;
 					}
 					token = tokenizer.takeChars();
 				}
-					/*
-				if (!redrawCanvasOnly) {
-					bbDiv.style.position = 'absolute';
-					bbDiv.style.left = Math.round(ctxScale * this._bbRect.l + this._dot._padding) + 'px';
-					bbDiv.style.top = Math.round(ctxScale * this._bbRect.t + this._dot._padding) + 'px';
-					bbDiv.style.width = Math.round(ctxScale * this._bbRect.getWidth()) + 'px';
-					bbDiv.style.height = Math.round(ctxScale * this._bbRect.getHeight()) + 'px';
-				}
-					*/
+
 				ctx.restore();
 			}
 		}
