@@ -593,9 +593,6 @@ var Dot = DotUtils.createClass({
 		var width  = Math.round(ctxScale * this._width  + 2 * this._padding);
 		var height = Math.round(ctxScale * this._height + 2 * this._padding);
 		
-		this._canvas.width  = width;
-		this._canvas.height = height;
-		
 		if(this._screenWidth === "auto")
 			this._container.style.width = width + 'px';
 		
@@ -605,6 +602,8 @@ var Dot = DotUtils.createClass({
 		if(this._isDirty) {
 			this._cacheCanvas.width  = oWidth;
 			this._cacheCanvas.height = oHeight;
+			this._canvas.width  = oWidth;
+			this._canvas.height = oHeight;
 			
 			this._ctxDraw.save();
 			this._ctxDraw.lineCap = 'round';
@@ -617,11 +616,12 @@ var Dot = DotUtils.createClass({
 			this._ctxDraw.restore();
 			
 			this._isDirty = false;
+			this._ctxScreen.fillRect(0, 0, this._canvas.width, this._canvas.height);
+			this._ctxScreen.drawImage(this._cacheCanvas, 0, 0, oWidth, oHeight);
 		}
 
-		
-		this._ctxScreen.fillRect(0, 0, this._canvas.width, this._canvas.height);
-		this._ctxScreen.drawImage(this._cacheCanvas, 0, 0, oWidth, oHeight, 0, 0, width, height);
+		this._canvas.style.width = width + "px";
+		this._canvas.style.height = height + "px";
 	},
 	/*
 		Method: _drawPath
