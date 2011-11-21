@@ -44,6 +44,8 @@ var Dot = DotUtils.createClass({
 	initialize: function(container, url, urlParams) {
 		this._canvas = document.createElement('canvas');
 		this._canvas.style.position = 'absolute';
+		this._canvas.style.top = "0px";
+		this._canvas.style.left = "0px";
 		if (!Dot._canvasCounter)
 			Dot._canvasCounter = 0;
 		this._canvas.id = 'dot_canvas_' + ++Dot._canvasCounter;
@@ -54,7 +56,7 @@ var Dot = DotUtils.createClass({
 		this._container.style.overflow = 'hidden';
 		this._container.appendChild(this._canvas);
 		
-		this._cacheCanvas = document.createElement('canvas');
+		//this._cacheCanvas = document.createElement('canvas');
 
 		// TODO : Implement IE6 compatibility for the cache canvas
 		if (typeof G_vmlCanvasManager !== 'undefined') {
@@ -63,7 +65,7 @@ var Dot = DotUtils.createClass({
 		}
 		//this._container.appendChild(this._elements);
 		this._ctxScreen = this._canvas.getContext('2d');
-		this._ctxDraw = this._cacheCanvas.getContext('2d');
+		//this._ctxDraw = this._cacheCanvas.getContext('2d');
 		
 		this._isDirty = true;
 		
@@ -82,12 +84,19 @@ var Dot = DotUtils.createClass({
 		this._imagePath = '';
 		this._graphLoaded = false;
 		this._allowMouseScrolling = true;
+		this._viewPos = {x: 0, y: 0};
+		this._mouseIsDown = false;
+		this._lastMousePos = {x: 0, y: 0};
 		
 		if (url) {
 			this.load(url, urlParams);
 		}
 		
+		// Register DOM events
 		DotUtils.addEventHandler(this._container, 'mousewheel', DotUtils.bind(this, this._handleMouseWheel));
+		DotUtils.addEventHandler(document, 'mousemove', DotUtils.bind(this, this._handleMouseMove));
+		DotUtils.addEventHandler(this._container, 'mousedown', DotUtils.bind(this, this._handleMouseDown));
+		DotUtils.addEventHandler(document, 'mouseup', DotUtils.bind(this, this._handleMouseUp));
 	},
 	
 	/*
@@ -393,6 +402,26 @@ var Dot = DotUtils.createClass({
 	getHeight: function() {
 		return this._screenHeight;
 	},
+	
+	setXPos: function(value) {
+		if(value < 0)
+			value = 0;
+		this._viewPos.x = -value;
+	},
+	
+	getXPos: function() {
+		return -this._viewPos.x;
+	},
+	
+	setYPos: function(value) {
+		if(value < 0)
+			value = 0;
+		this._viewPos.y = -value;
+	},
+	
+	getYPos: function() {
+		return -this._viewPos.y;
+	},
 		
 	/*
 		Method: load
@@ -432,6 +461,7 @@ var Dot = DotUtils.createClass({
 			xdot - {String} The contents of an XDot file
 	*/
 	parse: function(xdot) {
+		this._viewPos.x = this._viewPos.y = 0;
 		this._graphs = [];
 		this._width = 0;
 		this._height = 0;
@@ -600,28 +630,32 @@ var Dot = DotUtils.createClass({
 			this._container.style.height = height + 'px';
 		
 		if(this._isDirty) {
-			this._cacheCanvas.width  = oWidth;
-			this._cacheCanvas.height = oHeight;
+			//this._cacheCanvas.width  = oWidth;
+			//this._cacheCanvas.height = oHeight;
 			this._canvas.width  = oWidth;
 			this._canvas.height = oHeight;
 			
-			this._ctxDraw.save();
-			this._ctxDraw.lineCap = 'round';
-			this._ctxDraw.fillStyle = this._bgcolor.canvasColor;
+			this._ctxScreen.save();
+			this._ctxScreen.lineCap = 'round';
 			this._ctxScreen.fillStyle = this._bgcolor.canvasColor;
-			this._ctxDraw.fillRect(0, 0, oWidth, oHeight);
-			this._ctxDraw.translate(this._padding, this._padding);
-			//this._ctxDraw.scale(ctxScale, ctxScale);
-			this._graphs[0]._draw(this._ctxDraw, this._cacheScale);
-			this._ctxDraw.restore();
+			//this._ctxScreen.fillStyle = this._bgcolor.canvasColor;
+			this._ctxScreen.fillRect(0, 0, oWidth, oHeight);
+			this._ctxScreen.translate(this._padding, this._padding);
+			this._ctxScreen.scale(this._cacheScale, this._cacheScale); // TODO : Un-comment this and remove the manual shape zooming
+			this._graphs[0]._draw(this._ctxScreen, this._cacheScale);
+			this._ctxScreen.restore();
 			
 			this._isDirty = false;
-			this._ctxScreen.fillRect(0, 0, this._canvas.width, this._canvas.height);
-			this._ctxScreen.drawImage(this._cacheCanvas, 0, 0, oWidth, oHeight);
+			//this._ctxScreen.fillRect(0, 0, this._canvas.width, this._canvas.height);
+			//this._ctxScreen.drawImage(this._cacheCanvas, 0, 0, oWidth, oHeight);
 		}
-
+		
 		this._canvas.style.width = width + "px";
 		this._canvas.style.height = height + "px";
+		this._canvas._dot_width = width;
+		this._canvas._dot_height = height;
+		this._canvas.style.top = this._viewPos.y + "px";
+		this._canvas.style.left = this._viewPos.x + "px";
 	},
 	/*
 		Method: _drawPath
@@ -752,10 +786,79 @@ var Dot = DotUtils.createClass({
 		}
 		
 		if(delta) {
-			this.setScale(this.getScale() + delta / 10);
+			var newScale = this.getScale() + delta / 10;
+			/*
+			var scaleMult = newScale + this.getScale();
+			
+			// Apply a translation so that the current graph center stays the same
+			if(this._width != "auto")
+				this._xPos = (this._xPos * scaleMult) + (this._container.offsetWidth / 2 * scaleMult)
+			
+			if(this._height != "auto")
+				this._yPos = (this._yPos * scaleMult) + (this._container.offsetHeight / 2 * scaleMult)
+			*/
+			this.setScale(newScale);
 		}
 		
 		return DotUtils.preventDefault(event);
+	},
+	
+	_handleMouseMove: function(e) {
+		if(this._mouseIsDown) {
+			if(typeof event !== "undefined")
+				e = event;
+			
+			var newPos = {};
+			newPos.x = e.pageX || (e.clientX + document.body.scrollLeft);
+			newPos.y = e.pageY || (e.clientY + document.body.scrollTop);
+			
+			var delta = {x: newPos.x - this._lastMousePos.x, y: newPos.y - this._lastMousePos.y};
+			
+			this._viewPos.x += delta.x;
+			this._viewPos.y += delta.y;
+			
+			// Do not scroll over the top-left limits
+			if(this._viewPos.x > 0)
+				this._viewPos.x = 0;
+			if(this._viewPos.y > 0)
+				this._viewPos.y = 0;
+			
+			var maxDistance = {
+				x: this._container.offsetWidth - this._canvas._dot_width,
+				y: this._container.offsetHeight - this._canvas._dot_height
+			};
+			if(maxDistance.x > 0) {
+				this._viewPos.x = 0;
+			}
+			else if(this._viewPos.x < maxDistance.x) {
+				this._viewPos.x  = maxDistance.x;
+			}
+				
+			if(maxDistance.y > 0) {
+				this._viewPos.y = 0;
+			}
+			else if(this._viewPos.y < maxDistance.y) {
+				this._viewPos.y = maxDistance.y;
+			}
+			
+			
+			this._lastMousePos = newPos;
+			
+			this._draw();
+		}
+	},
+	
+	_handleMouseDown: function(e) {
+		this._mouseIsDown = true;
+		
+		var newPos = {};
+		newPos.x = e.pageX || (e.clientX + document.body.scrollLeft);
+		newPos.y = e.pageY || (e.clientY + document.body.scrollTop);
+		this._lastMousePos = newPos;
+	},
+	
+	_handleMouseUp: function(e) {
+		this._mouseIsDown = false;
 	},
 	
 	_isValidCssSize: function(size) {
@@ -777,4 +880,4 @@ Dot.prototype._nodeMatchRe = new RegExp('^(' + Dot.prototype._nodeIdMatch + ')\\
 Dot.prototype._edgeMatchRe = new RegExp('^(' + Dot.prototype._nodeIdMatch + '\\s*-[->]\\s*' + Dot.prototype._nodeIdMatch + ')\\s+\\[(.+)\\];$');
 Dot.prototype._attrMatchRe = new RegExp('^' + Dot.prototype._idMatch + '=' + Dot.prototype._idMatch + '(?:[,\\s]+|$)');
 Dot.prototype._cssSize = new RegExp('^\\d+(\\.\\d+)?(px|%)$');
-Dot.prototype._cacheScale = 3; // The cached canvas scale.
+Dot.prototype._cacheScale = 2; // The cached canvas scale.

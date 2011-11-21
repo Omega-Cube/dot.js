@@ -26,4 +26,9 @@ if(window.console.firebug !== undefined) {
 	
 	p._round = p.round;
 	p.round = function(number) { return this._round(number); }
+	
+	
+	function __debug(message) {
+		console.log(message);
+	}
 }

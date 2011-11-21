@@ -75,11 +75,11 @@ DotUtils.setHtml = function(e, content) {
 	
 		context - {mixed} The element to bind the function to
 				  That means the function will be executed with this value in the this keyword
-		func - {Function} The function to bind the context to
+		func - {Method} The function to bind the context to
 	
 	Returns:
 	
-		{Function} The function bound to the context
+		{Method} The function bound to the context
 */
 DotUtils.bind = function(context, func) {
     return function() {
@@ -88,7 +88,7 @@ DotUtils.bind = function(context, func) {
 }
 
 /*
-	Function: ajaxGet
+	Method: ajaxGet
 	
 	Static, Sends a simple asynchronous GET request
 	
@@ -97,7 +97,7 @@ DotUtils.bind = function(context, func) {
 		url - {String} The URL to send the request to
 		params - {object} An object containing a list of parameters that should be attached to the url before sending the request.
 		         This parameter is optionnal (can be undefined or null)
-		onComplete - {Function} A callback function that will be called when the request completes.
+		onComplete - {Method} A callback function that will be called when the request completes.
 		             It will be called with a string parameter containing the raw response's body.
 */
 DotUtils.ajaxGet = function(url, params, onComplete) {
@@ -166,7 +166,7 @@ DotUtils.ajaxGet = function(url, params, onComplete) {
 }
 
 /*
-	Function: extend
+	Method: extend
 	
 	Static, Extends an object with the contents of another one
 	
@@ -186,7 +186,19 @@ DotUtils.extend = function(destination, source) {
 }
 
 /*
-
+	Method: addEventHandler
+	
+	Static, registers a function with the specified event on the specified element
+	
+	Parameters:
+	
+		element - {HTMLElement} The element to register the function on
+		event - {String} The name of the event
+		callback - {Method} A function that will be called when the event occurs.
+		
+	See Also:
+	
+		<removeEventHandler>
 */
 DotUtils.addEventHandler = function(element, event, callback) {
 	if(element.addEventListener) {
@@ -198,6 +210,21 @@ DotUtils.addEventHandler = function(element, event, callback) {
 		element.attachEvent('on' + event, callback);
 }
 
+/*
+	Method: removeEventHandler
+	
+	Static, unregisters a function that was registered with <addEventHandler> earlier
+	
+	Parameters:
+	
+		element - {HTMLElement} The element to register the function on
+		event - {String} The name of the event
+		callback - {Method} A function that will be called when the event occurs.
+	
+	See Also:
+	
+		<addEventHandler>
+*/
 DotUtils.removeEventHandler = function(element, event, callback) {
 	if(element.removeEventHandler) {
 		if(event == 'mousewheel')
@@ -224,7 +251,7 @@ DotUtils.preventDefault = function(event) {
 // contains some bits of Prototype required to support the existing Dot classes.
 
 /*
-	Function: createClass
+	Method: createClass
 	
 	Static, Creates a class with the provided members
 	
@@ -258,7 +285,7 @@ DotUtils.createClass = function() {
       DotUtils.addMethods(klass, properties[i]);
 
     if (!klass.prototype.initialize)
-      klass.prototype.initialize = DotUtils.emptyFunction;
+      klass.prototype.initialize = DotUtils.emptyMethod;
 
     klass.prototype.constructor = klass;
 
@@ -266,7 +293,7 @@ DotUtils.createClass = function() {
 }
 
 // Object model support method
-DotUtils.emptyFunction = function() {};
+DotUtils.emptyMethod = function() {};
 
 // Object model support method
 DotUtils.addMethods = function(that, source) {
